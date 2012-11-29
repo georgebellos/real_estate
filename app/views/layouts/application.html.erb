@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Katikia</title>
+  <title><%= yield_or_default :title, "Real Estate" %></title>
+  <meta name="description" content="<%= yield_or_default :description, "Real Estate Greece" %>" >
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
