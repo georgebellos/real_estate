@@ -35,6 +35,7 @@ group :development do
   gem 'spork', '~> 1.0rc'
   gem 'guard-spork'
   gem 'pry-rails'
+  gem 'fuubar'
 end
 
 gem 'foreman'
