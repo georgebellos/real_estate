@@ -4,5 +4,9 @@ FactoryGirl.define do
     email "foobar@mail.com"
     password "foobar"
     password_confirmation "foobar"
+
+    factory :invalid_user do
+      password nil
+    end
   end
 end

@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= yield_or_default :title, "Real Estate" %></title>
-  <meta name="description" content="<%= yield_or_default :description, "Real Estate Greece" %>" >
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render 'layouts/header' %>
-  <div class="container">
-    <%= yield %>
-  </div>
-  <%= render 'layouts/footer' %>
-</body>
+  <head>
+    <title><%= yield_or_default :title, "Real Estate" %></title>
+    <meta name="description" content="<%= yield_or_default :description, "Real Estate Greece" %>">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <%= render "layouts/header" %>
+      <div class="content">
+        <div class="main">
+          <%= render "shared/flash_messages", flash: flash %>
+          <%= yield %>
+        </div>
+      </div>
+    <%= render "layouts/footer" %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

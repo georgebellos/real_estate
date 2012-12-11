@@ -1,8 +1,12 @@
 <header class= 'navbar navbar-static-top navbar-inverse'>
   <div class='navbar-inner'>
-    <div class='container' >
+    <div class='container'>
       <%= link_to "Real Estate", root_path, class: "brand", id: "logo" %>
-      <ul class='nav pull-right'> <li><%= link_to "Sign Up", "#" %> </li></ul>
+      <nav>
+        <ul class='nav pull-right'>
+          <li><%= link_to "Sign Up", new_user_path %> </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
