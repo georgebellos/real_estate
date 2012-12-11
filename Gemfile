@@ -36,6 +36,7 @@ group :development do
   gem 'guard-spork'
   gem 'pry-rails'
   gem 'fuubar'
+  gem 'rails-footnotes', '~> 3.7.0'
 end
 
 gem 'foreman'

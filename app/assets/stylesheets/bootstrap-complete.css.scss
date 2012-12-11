@@ -4,3 +4,24 @@
   font-size: 13px;
   padding: 10px;
 }
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.debug_dump {
+  font-size: 11px;
+}
+
+div#footnotes_debug {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 0em 0px 0em;
+  font-size: 11px;
+  display: block;
+  background-color: rgb(235, 235, 235);
+  @include box-sizing;
+}
