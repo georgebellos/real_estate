@@ -2,8 +2,8 @@ Katikia::Application.routes.draw do
   get '/home' => "pages#home"
   get '/about' => "pages#about"
   get '/contact' => "pages#contact"
+  resources :users, only: [:new, :create]
 
-  resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
