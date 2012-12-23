@@ -40,4 +40,22 @@ describe UserSessionsController do
       end
     end
   end
+  context 'when user is already signed in' do
+    before do
+      post :create, user: attributes_for(:registered_user)
+    end
+
+    describe "Delete #destroy" do
+
+      it "sign out user" do
+        delete :destroy
+        expect(session[:user_id]).to be_nil
+      end
+
+      it "redirects to home page" do
+        delete :destroy
+        expect(response).to redirect_to root_url
+      end
+    end
+  end
 end

@@ -44,3 +44,19 @@ feature 'User Sign in' do
     expect(page).to have_content('Wrong email or password')
   end
 end
+
+feature 'Signed in user' do
+  background do
+    create(:user)
+  end
+
+  scenario 'Sign out' do
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: 'foobar@mail.com'
+    fill_in 'Password', with: 'foobar'
+    click_button 'Login'
+    click_link 'Sign Out'
+    expect(page).to have_content('You are now signed out ')
+  end
+end
