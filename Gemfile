@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'pg'
 gem 'simple_form'
+gem 'jquery-rails'
+gem 'bcrypt-ruby'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -10,8 +12,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.2.1.1'
 end
-
-gem 'jquery-rails'
 
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
 
@@ -35,6 +35,8 @@ group :development do
   gem 'spork', '~> 1.0rc'
   gem 'guard-spork'
   gem 'pry-rails'
+  gem 'fuubar'
+  gem 'rails-footnotes', '~> 3.7.0'
 end
 
 gem 'foreman'

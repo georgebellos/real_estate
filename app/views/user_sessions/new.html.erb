@@ -1,0 +1,10 @@
+<%= title "Sign in" %>
+<div class="span5 offset4">
+  <h1>Login </h1>
+  <%= simple_form_for(:user, url: signin_path) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.button :submit, value: "Login" ,class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>

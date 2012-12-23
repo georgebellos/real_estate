@@ -1,7 +1,12 @@
 Katikia::Application.routes.draw do
-  get '/home' => "pages#home"
-  get '/about' => "pages#about"
-  get '/contact' => "pages#contact"
+  get '/home' => 'pages#home'
+  get '/about' => 'pages#about'
+  get '/contact' => 'pages#contact'
+
+  resources :users, only: [:new, :create]
+  get '/signin' => 'user_sessions#new'
+  post '/signin' => 'user_sessions#create'
+  get 'sign_out' => 'user_sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
