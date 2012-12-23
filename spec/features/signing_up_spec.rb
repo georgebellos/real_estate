@@ -59,4 +59,15 @@ feature 'Signed in user' do
     click_link 'Sign Out'
     expect(page).to have_content('You are now signed out ')
   end
+
+  scenario 'Sign up' do
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: 'foobar@mail.com'
+    fill_in 'Password', with: 'foobar'
+    click_button 'Login'
+    expect(page).not_to have_content('Sign in')
+    visit signin_path
+    expect(page).to have_content('Sign Out')
+  end
 end

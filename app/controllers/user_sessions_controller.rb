@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  before_filter :signed_in, only: [:new , :create]
 
   def new
   end
@@ -19,4 +20,8 @@ class UserSessionsController < ApplicationController
     redirect_to root_path, :notice => 'You are now signed out'
   end
 
+  private
+  def signed_in
+    redirect_to root_url if signed_in?
+  end
 end

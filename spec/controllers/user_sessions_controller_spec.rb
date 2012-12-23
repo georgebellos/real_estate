@@ -45,6 +45,19 @@ describe UserSessionsController do
       post :create, user: attributes_for(:registered_user)
     end
 
+    describe 'Get #new' do
+      it 'redirects to home page' do
+        get :new
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    describe 'Post #create' do
+      it 'redirects to home page' do
+        post :create, user: attributes_for(:user)
+        expect(response).to redirect_to root_url
+      end
+    end
     describe "Delete #destroy" do
 
       it "sign out user" do
