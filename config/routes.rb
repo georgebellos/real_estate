@@ -4,6 +4,7 @@ Katikia::Application.routes.draw do
   get '/contact' => 'pages#contact'
 
   resources :users, only: [:new, :create]
+  resources :properties, only: [:new, :create]
   get '/signin' => 'user_sessions#new'
   post '/signin' => 'user_sessions#create'
   get 'sign_out' => 'user_sessions#destroy', via: :delete

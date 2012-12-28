@@ -1,0 +1,15 @@
+<%= title('New property') %>
+<div class="span5 offset2">
+<h1>Create a property</h1>
+  <%= simple_form_for(@property, :html => { class: "form-horizontal" }) do |f| %>
+    <%= f.error_notification message: 'Something went wrong' %>
+    <%= f.input :status, collection: ['Rent', 'Buy'] %>
+    <%= f.input :area %>
+    <%= f.input :price %>
+    <%= f.input :street %>
+    <%= f.input :street_number %>
+    <%= f.input :year %>
+    <%= f.input :summary, input_html: { rows: '4' } %>
+    <%= f.button :submit, value: "Create Property" ,class: "pull-right btn-large btn-primary" %>
+  <% end %>
+</div>
