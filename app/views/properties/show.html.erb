@@ -1,0 +1,21 @@
+<%= title('Property')%>
+<div>
+<h3> Property Key Features </h3>
+  <ul>
+    <li>Floor Size: <%= @property.floor_size %></li>
+    <li>Bedrooms: <%= @property.bedroom %></li>
+    <li>Bathrooms: <%= @property.bathroom %></li>
+    <li>Parking: <%= @property.parking %></li>
+    <li>Construction Year: <%= @property.year %></li>
+    <li>Location: <%= @property.street %><%= @property.street_number %></li>
+  </ul>
+</div>
+<div>
+  <p>
+    <%= @property.summary %></br>
+    Price: <%= @property.price %>
+  </p>
+</div>
+<div>
+  <h3> Contact Info: <%= @property.contact_info %> </h3>
+</div>

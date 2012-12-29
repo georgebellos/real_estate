@@ -3,13 +3,17 @@ class PropertiesController < ApplicationController
     @property = Property.new
   end
 
-  def create
+ def create
     @property = Property.new(params[:property])
     if @property.save
-      redirect_to root_path
+      redirect_to @property
       flash[:success] = 'You have created a new property'
     else
       render :new
     end
+  end
+
+  def show
+    @property = Property.find(params[:id])
   end
 end

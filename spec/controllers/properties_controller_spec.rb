@@ -26,6 +26,11 @@ describe PropertiesController do
         post :create, property: attributes_for(:property)
         expect(flash[:success]).to eql('You have created a new property')
       end
+
+      it 'redirects to property page' do
+        post :create, property: attributes_for(:property)
+        expect(response).to redirect_to property_path(assigns :property)
+      end
     end
 
     context 'with invalid attributes' do
@@ -39,6 +44,19 @@ describe PropertiesController do
         post :create, property: attributes_for(:invalid_property)
         expect(response).to render_template :new
       end
+    end
+  end
+
+  describe 'Get #show' do
+    let(:property) { create(:property) }
+    it 'assigns the requested property to @property' do
+      get :show, id: property
+      expect(assigns :property).to eq(property)
+    end
+
+    it 'renders the #show template' do
+      get :show, id: property
+      expect(response).to render_template :show
     end
   end
 end
