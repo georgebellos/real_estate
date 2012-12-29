@@ -59,4 +59,58 @@ describe PropertiesController do
       expect(response).to render_template :show
     end
   end
+  describe 'Get #edit' do
+    let(:property) { create(:property) }
+    it 'assigns the requested property to @properdy' do
+      get :edit, id: property
+      expect(assigns :property).to eq(property)
+    end
+
+    it 'renders the #edit template' do
+      get :edit, id: property
+      expect(response).to render_template :edit
+    end
+  end
+
+  describe 'Put #update' do
+    before :each do
+      @property = create(:property)
+    end
+
+    it 'assigns the proper property to @property' do
+      put :update, id: @property, property: attributes_for(:property)
+      expect(assigns :property).to eq @property
+    end
+
+    context 'with valid attributes' do
+      it 'modifies @property s attributes' do
+        put :update, id: @property, property: attributes_for(:property, price: 200)
+        @property.reload
+        expect(@property.price).to eq 200
+      end
+
+      it 'redirects to the updated property' do
+        put :update, id: @property, property: attributes_for(:property)
+        expect(response).to redirect_to property_url
+      end
+
+      it 'sets a flash[:success] messsage' do
+        put :update, id: @property, property: attributes_for(:property, price: 300)
+        expect(flash[:success]).to eq 'Property updated'
+      end
+    end
+
+    context 'with invalid attributes' do
+      it 're-renders the edit template' do
+        put :update, id: @property, property: attributes_for(:invalid_property)
+        expect(response).to render_template :edit
+      end
+
+      it 'does not change the attributes of @property' do
+        put :update, id: @property, property: attributes_for(:property, price: nil)
+        @property.reload
+        expect(@property.price).not_to be_nil
+      end
+    end
+  end
 end

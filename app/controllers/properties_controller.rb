@@ -16,4 +16,17 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
   end
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update_attributes(params[:property])
+      redirect_to property_path
+      flash[:success] = 'Property updated'
+    else
+      render :edit
+    end
+  end
 end
