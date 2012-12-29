@@ -5,12 +5,12 @@ describe Property do
     expect(create :property).to be_valid
   end
 
-  %w{area price status street street_number year }.each do |attr|
+  %w{floor_size price status bedroom bathroom parking street street_number year }.each do |attr|
     it "is invalid without #{ attr }" do
       expect(build :property, attr.to_sym => nil).not_to be_valid
     end
   end
-  %w{ area street_number }.each do |attr|
+  %w{ floor_size bathroom bedroom parking street_number }.each do |attr|
     it "is invalid when #{ attr } is not a number " do
       expect(build :property, attr.to_sym => "string").not_to be_valid
     end
