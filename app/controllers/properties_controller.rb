@@ -16,6 +16,11 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
   end
+
+  def index
+    @properties = Property.all
+  end
+
   def edit
     @property = Property.find(params[:id])
   end
@@ -28,5 +33,12 @@ class PropertiesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect_to properties_path
+    flash[:success] = 'Property destroyed'
   end
 end

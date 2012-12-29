@@ -59,6 +59,20 @@ describe PropertiesController do
       expect(response).to render_template :show
     end
   end
+
+  describe 'Get #index' do
+    it 'populates an array of properties' do
+      @property = create(:property)
+      get :index
+      expect(assigns :properties).to eq [@property]
+    end
+
+    it 'renders the #index tempalte' do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+
   describe 'Get #edit' do
     let(:property) { create(:property) }
     it 'assigns the requested property to @properdy' do
@@ -111,6 +125,31 @@ describe PropertiesController do
         @property.reload
         expect(@property.price).not_to be_nil
       end
+    end
+  end
+
+  describe 'Delete #destroy' do
+    before { @property = create(:property) }
+
+    it 'assigns the proper property to @property' do
+      delete :destroy, id: @property
+      expect(assigns :property).to eq @property
+    end
+
+    it 'deletes the property listing' do
+      expect{
+        delete :destroy, id: @property
+      }.to change(Property, :count).by(-1)
+    end
+
+    it 'sets a flash[:success] message' do
+      delete :destroy, id: @property
+      expect(flash[:success]).to eql 'Property destroyed'
+    end
+
+    it 'redirects to properties#index' do
+      delete :destroy, id: @property
+      expect(response).to redirect_to properties_url
     end
   end
 end
