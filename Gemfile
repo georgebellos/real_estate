@@ -37,6 +37,7 @@ group :development do
   gem 'pry-rails'
   gem 'fuubar'
   gem 'rails-footnotes', '~> 3.7.0'
+  gem 'meta_request', '0.2.0'
 end
 
 gem 'foreman'
