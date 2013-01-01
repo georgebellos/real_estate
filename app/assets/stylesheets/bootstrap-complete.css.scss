@@ -21,16 +21,35 @@
 
 /*debugging information*/
 div#footnotes_debug {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin: 0em 0px 0em;
-  font-size: 11px;
-  display: block;
   background-color: rgb(235, 235, 235);
-  @include box-sizing;
 }
 
 .debug_dump {
   font-size: 11px;
+}
+
+body {
+  height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+   /*Negative indent footer by it's height*/
+  margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+{
+  height: 120px;
+}
+
+#footer {
+  height: 40px;
+}
+#footer {
+  background-color: #f5f5f5;
 }
