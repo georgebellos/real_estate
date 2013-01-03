@@ -8,12 +8,16 @@
   </head>
   <body>
   <%= render "layouts/header" %>
+    <div id="wrap">
       <div class="content">
         <div class="main">
           <%= render "shared/flash_messages", flash: flash %>
           <%= yield %>
         </div>
       </div>
+      <div id="footnotes_holder"></div>
+      <div id="push"></div>
+    </div>
     <%= render "layouts/footer" %>
     <%= javascript_include_tag "application" %>
   </body>
