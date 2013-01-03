@@ -22,4 +22,9 @@ describe Image do
     expect(build :image, attachment: File.open(
       Rails.root + 'spec/support/files/wrong_file_type.txt')).not_to be_valid
   end
+
+  it 'is invalid with size over 2 mb' do
+    expect(build :image, attachment: File.open(
+      Rails.root + 'spec/support/files/over_2mb_image.png')).not_to be_valid
+  end
 end
