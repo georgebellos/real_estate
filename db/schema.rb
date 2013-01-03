@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229162248) do
+ActiveRecord::Schema.define(:version => 20121230170523) do
+
+  create_table "images", :force => true do |t|
+    t.string   "attachment"
+    t.integer  "property_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "images", ["property_id"], :name => "index_images_on_property_id"
 
   create_table "properties", :force => true do |t|
     t.string   "status"
