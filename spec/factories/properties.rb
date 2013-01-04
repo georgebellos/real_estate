@@ -9,12 +9,21 @@ FactoryGirl.define do
     year 1981
     street 'Doiranis'
     street_number 39
-    summary 'This is a sample listing'
-    association :user
+    summary 'Lorem ipsum'
+    user
 
     factory :invalid_property do
       status nil
       price nil
+    end
+
+    factory :property_with_images do
+      ignore do
+        number_of_images 3
+      end
+      after(:create) do |property, evaluator|
+        FactoryGirl.create_list(:image, evaluator.number_of_images, property: property)
+      end
     end
   end
 end

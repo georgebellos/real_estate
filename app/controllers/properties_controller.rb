@@ -1,9 +1,10 @@
 class PropertiesController < ApplicationController
   def new
     @property = Property.new
+    @property.images.build
   end
 
- def create
+  def create
     @property = Property.new(params[:property])
     if @property.save
       redirect_to @property

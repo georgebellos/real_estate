@@ -1,5 +1,12 @@
 <%= title('Property')%>
 <div>
+  <p>
+    <% @property.images.each do |image| %>
+      <%= image_tag image.attachment.url %>
+    <% end %>
+  </p>
+</div>
+<div>
 <h3> Property Key Features </h3>
   <ul>
     <li>Floor Size: <%= @property.floor_size %></li>

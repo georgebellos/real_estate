@@ -31,6 +31,7 @@ describe PropertiesController do
         post :create, property: attributes_for(:property)
         expect(response).to redirect_to property_path(assigns :property)
       end
+
     end
 
     context 'with invalid attributes' do
@@ -39,6 +40,13 @@ describe PropertiesController do
           post :create, property: attributes_for(:invalid_property)
         }.not_to change(Property, :count).by(1)
       end
+
+      it 'does not create an image' do
+        expect{
+          post :create, property: attributes_for(:invalid_property)
+        }.not_to change(Image, :count).by(1)
+      end
+
 
       it 're-renders the #new template' do
         post :create, property: attributes_for(:invalid_property)
@@ -67,7 +75,7 @@ describe PropertiesController do
       expect(assigns :properties).to eq [@property]
     end
 
-    it 'renders the #index tempalte' do
+    it 'renders the index template' do
       get :index
       expect(response).to render_template :index
     end
@@ -129,27 +137,39 @@ describe PropertiesController do
   end
 
   describe 'Delete #destroy' do
-    before { @property = create(:property) }
+    context 'without an image' do
+      before { @property = create(:property) }
 
-    it 'assigns the proper property to @property' do
-      delete :destroy, id: @property
-      expect(assigns :property).to eq @property
-    end
-
-    it 'deletes the property listing' do
-      expect{
+      it 'assigns the proper property to @property' do
         delete :destroy, id: @property
-      }.to change(Property, :count).by(-1)
+        expect(assigns :property).to eq @property
+      end
+
+      it 'deletes the property listing' do
+        expect{
+          delete :destroy, id: @property
+        }.to change(Property, :count).by(-1)
+      end
+
+
+      it 'sets a flash[:success] message' do
+        delete :destroy, id: @property
+        expect(flash[:success]).to eql 'Property destroyed'
+      end
+
+      it 'redirects to properties#index' do
+        delete :destroy, id: @property
+        expect(response).to redirect_to properties_url
+      end
     end
 
-    it 'sets a flash[:success] message' do
-      delete :destroy, id: @property
-      expect(flash[:success]).to eql 'Property destroyed'
-    end
-
-    it 'redirects to properties#index' do
-      delete :destroy, id: @property
-      expect(response).to redirect_to properties_url
+    context 'with image' do
+      it 'deletes the property images' do
+        @property = create(:property_with_images, number_of_images: 2)
+        expect{
+          delete :destroy, id: @property
+        }.to change(Image, :count).by(-2)
+      end
     end
   end
 end
