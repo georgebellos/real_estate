@@ -5,7 +5,7 @@ describe Property do
     expect(create :property).to be_valid
   end
 
-  %w{floor_size price status bedroom bathroom parking street street_number year }.each do |attr|
+  %w{floor_size price status bedroom bathroom parking street street_number year category }.each do |attr|
     it "is invalid without #{ attr }" do
       expect(build :property, attr.to_sym => nil).not_to be_valid
     end

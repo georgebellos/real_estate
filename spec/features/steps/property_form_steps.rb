@@ -2,6 +2,7 @@ module PropertySteps
   def fill_in_property_form(image = false)
     visit new_property_path
     select 'Rent', from: 'Status'
+    select 'Apartment', from: 'Category'
     fill_in 'Floor size', with: '100'
     fill_in 'Bedroom', with: '4'
     fill_in 'Bathroom', with: '2'

@@ -10,6 +10,7 @@ FactoryGirl.define do
     street 'Doiranis'
     street_number 39
     summary 'Lorem ipsum'
+    category 'Apartment'
     user
 
     factory :invalid_property do
