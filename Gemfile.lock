@@ -74,6 +74,8 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 1.0.0)
+    geocoder (1.1.6)
+    gmaps4rails (1.5.6)
     growl (1.0.3)
     guard (1.5.4)
       listen (>= 0.4.2)
@@ -229,6 +231,8 @@ DEPENDENCIES
   foobar
   foreman
   fuubar
+  geocoder
+  gmaps4rails
   growl
   guard
   guard-rspec
