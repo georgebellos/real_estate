@@ -9,6 +9,7 @@ FactoryGirl.define do
     year 1981
     street 'Doiranis'
     street_number 39
+    city 'Patra'
     summary 'Lorem ipsum'
     category 'Apartment'
     user

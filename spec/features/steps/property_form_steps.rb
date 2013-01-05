@@ -10,6 +10,7 @@ module PropertySteps
     fill_in 'Price', with: '300'
     fill_in 'Street', with: 'kefallinias'
     fill_in 'Number', with: '45'
+    fill_in 'City', with: 'Patra'
     fill_in 'Year', with: '1981'
     fill_in 'Summary', with: 'Lorem ipsum dolor sit amet incididunt'
     attach_file 'Picture', Rails.root + 'spec/support/files/property.png' if image
