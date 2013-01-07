@@ -24,6 +24,8 @@
     Price: <%= @property.price %>
   </p>
 </div>
+<h2> Location </h2>
+<%= gmaps4rails(@json) %>
 <div>
   <h3> Contact Info: <%= @property.contact_info %> </h3>
 </div>
