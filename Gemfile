@@ -5,10 +5,11 @@ gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
-gem 'carrierwave'
-gem "mini_magick"
-gem 'geocoder'
-gem 'gmaps4rails'
+
+gem "carrierwave", "~> 0.7.1"
+gem "mini_magick", "~> 3.4"
+gem 'geocoder', '~> 1.1.6'
+gem 'gmaps4rails', '~> 1.5.6'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -27,6 +28,8 @@ group :test do
   gem 'launchy'
   gem 'foobar'
   gem 'simplecov', require: false
+  gem 'vcr', '~> 2.4.0'
+  gem "webmock", "~> 1.9.0"
 end
 
 group :development do
