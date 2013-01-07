@@ -11,12 +11,14 @@ gem "mini_magick", "~> 3.4"
 gem 'geocoder', '~> 1.1.6'
 gem 'gmaps4rails', '~> 1.5.6'
 
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.2.1.1'
 end
+gem 'font-awesome-sass-rails'
 
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
 
