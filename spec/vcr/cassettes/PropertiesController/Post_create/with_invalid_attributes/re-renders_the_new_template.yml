@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=Doiranis%2039,%20Patra,%20Greece&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 06 Jan 2013 10:19:01 GMT
+      Expires:
+      - Mon, 07 Jan 2013 10:19:01 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! "{\n   \"results\" : [\n      {\n         \"address_components\" :
+        [\n            {\n               \"long_name\" : \"39\",\n               \"short_name\"
+        : \"39\",\n               \"types\" : [ \"street_number\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Doiranis\",\n               \"short_name\"
+        : \"Doiranis\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Patra\",\n               \"short_name\"
+        : \"Patra\",\n               \"types\" : [ \"locality\", \"political\" ]\n
+        \           },\n            {\n               \"long_name\" : \"Patra\",\n
+        \              \"short_name\" : \"Patra\",\n               \"types\" : [ \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Patra\",\n
+        \              \"short_name\" : \"Patra\",\n               \"types\" : [ \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Achaea\",\n
+        \              \"short_name\" : \"Achaea\",\n               \"types\" : [
+        \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"West Greece\",\n               \"short_name\"
+        : \"West Greece\",\n               \"types\" : [ \"administrative_area_level_2\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Peloponnisos Dytiki Ellada ke Ionio\",\n               \"short_name\"
+        : \"Peloponnisos Dytiki Ellada ke Ionio\",\n               \"types\" : [ \"administrative_area_level_1\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Greece\",\n               \"short_name\" : \"GR\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"264 41\",\n               \"short_name\" : \"264 41\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"Doiranis 39, Patra 264 41, Greece\",\n         \"geometry\" : {\n            \"bounds\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : 38.25862630,\n
+        \                 \"lng\" : 21.74530420\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 38.25862110,\n                  \"lng\" :
+        21.74528690\n               }\n            },\n            \"location\" :
+        {\n               \"lat\" : 38.25862110,\n               \"lng\" : 21.74530420\n
+        \           },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 38.25997268029150,\n                  \"lng\" : 21.74664453029150\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 38.25727471970850,\n
+        \                 \"lng\" : 21.74394656970850\n               }\n            }\n
+        \        },\n         \"types\" : [ \"street_address\" ]\n      }\n   ],\n
+        \  \"status\" : \"OK\"\n}\n"
+    http_version: 
+  recorded_at: Sun, 06 Jan 2013 10:19:02 GMT
+recorded_with: VCR 2.4.0

@@ -14,6 +14,9 @@ FactoryGirl.define do
     category 'Apartment'
     user
 
+    after(:build) { |place, evaluator| place.stub(geocode: [1,1]) }
+    before(:create) { |place, evaluator| place.stub(geocode: [1,1]) }
+
     factory :invalid_property do
       status nil
       price nil

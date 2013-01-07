@@ -14,7 +14,7 @@ describe PropertiesController do
     end
   end
 
-  describe 'Post #create' do
+  describe 'Post #create', :vcr do
     context 'with valid attributes' do
       it 'creates a new property listing' do
         expect{
@@ -94,7 +94,7 @@ describe PropertiesController do
     end
   end
 
-  describe 'Put #update' do
+  describe 'Put #update', :vcr do
     before :each do
       @property = create(:property)
     end

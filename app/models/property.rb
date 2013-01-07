@@ -15,4 +15,10 @@ class Property < ActiveRecord::Base
   validates :year, numericality: { greater_than: 1900 }
   validates :summary, length: { maximum: 400 }
 
+  geocoded_by :property_address
+  after_validation :geocode
+
+  def property_address
+    "#{ self.street } #{ self.street_number }, #{ self.city }, Greece"
+  end
 end

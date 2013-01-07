@@ -1,7 +1,7 @@
 require 'spec_helper'
 include PropertySteps
 
-feature 'Property' do
+feature 'Property', :vcr do
   scenario 'Successfull creation via form' do
     fill_in_property_form(true)
     expect{ click_button 'New Property' }.to change(Image, :count)
