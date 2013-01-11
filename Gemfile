@@ -47,6 +47,8 @@ group :development do
   gem 'fuubar'
   gem 'rails-footnotes', '~> 3.7.0'
   gem 'meta_request', '0.2.0'
+  gem 'better_errors', '~> 0.3.2'
+  gem 'binding_of_caller', '~> 0.6.8'
 end
 
 gem 'foreman'
