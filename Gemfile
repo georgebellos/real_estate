@@ -10,7 +10,7 @@ gem "carrierwave", "~> 0.7.1"
 gem "mini_magick", "~> 3.4"
 gem 'geocoder', '~> 1.1.6'
 gem 'gmaps4rails', '~> 1.5.6'
-
+gem 'kaminari', '~> 0.14.1'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
