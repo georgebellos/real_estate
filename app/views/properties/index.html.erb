@@ -1,5 +1,4 @@
 <%= title("Listings")%>
-
 <h1>Latest Listings</h1>
 <% @properties.each do |property| %>
   <ul>
@@ -7,3 +6,4 @@
     <li><%= property.price %></li>
   </ul>
 <% end %>
+<%= paginate @properties %>
