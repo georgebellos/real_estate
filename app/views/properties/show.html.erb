@@ -1,31 +1,38 @@
-<%= title('Property')%>
-<div>
-  <p>
-    <% @property.images.each do |image| %>
-      <%= image_tag image.attachment.url %>
-    <% end %>
-  </p>
+<%= title(@property.category)%>
+<div class="row">
+  <div class="span7">
+    <h3><%= @property.status %> <%=@property.category %> <%= @property.street %></h3>
+    <p>
+      <% @property.images.each do |image| %>
+        <%= image_tag image.attachment.url, class: "img-polaroid" %>
+      <% end %>
+    </p>
+  </div>
+  <div class="span4 offset1">
+  <h3> Property Key Features </h3>
+    <ul>
+      <li><i class="icon-ok"></i> Category: <%= @property.category %></li>
+      <li><i class="icon-ok"></i> Floor Size: <%= @property.floor_size %></li>
+      <li><i class="icon-ok"></i> Bedrooms: <%= @property.bedroom %></li>
+      <li><i class="icon-ok"></i> Bathrooms: <%= @property.bathroom %></li>
+      <li><i class="icon-ok"></i> Parking: <%= @property.parking %></li>
+      <li><i class="icon-ok"></i> Construction Year: <%= @property.year %></li>
+      <li><i class="icon-ok"></i> Location: <%= @property.street %><%= @property.street_number %></li>
+    </ul>
+  </div>
 </div>
-<div>
-<h3> Property Key Features </h3>
-  <ul>
-    <li>Category: <%= @property.category %></li>
-    <li>Floor Size: <%= @property.floor_size %></li>
-    <li>Bedrooms: <%= @property.bedroom %></li>
-    <li>Bathrooms: <%= @property.bathroom %></li>
-    <li>Parking: <%= @property.parking %></li>
-    <li>Construction Year: <%= @property.year %></li>
-    <li>Location: <%= @property.street %><%= @property.street_number %></li>
-  </ul>
-</div>
-<div>
-  <p>
+<div class="row">
+  <div class="span7">
+    <h3> About Property </h3>
+    <p>
     <%= @property.summary %></br>
     Price: <%= @property.price %>
-  </p>
-</div>
-<h2> Location </h2>
-<%= gmaps4rails(@json) %>
-<div>
-  <h3> Contact Info: <%= @property.contact_info %> </h3>
+    </p>
+  </div>
+
+  <div class="span4 offset1">
+    <h3> Location </h3>
+    <%= gmaps4rails(@json) %>
+  </div>
+    <h3> Contact Info: <%= @property.contact_info %> </h3>
 </div>
