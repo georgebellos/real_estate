@@ -7,6 +7,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
+
   # background processing via sidekiq
   include ::CarrierWave::Backgrounder::Delay
 
@@ -24,12 +27,9 @@ class PictureUploader < CarrierWave::Uploader::Base
     'uploads/'
   end
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  def default_url
+    "/images/fallback/" + [:small, "default.png"].compact.join('_')
+  end
 
   # Process files as they are uploaded:
   #process resize_to_fill: [500, 500]
