@@ -4,7 +4,7 @@
     <h3><%= @property.status %> <%=@property.category %> <%= @property.street %></h3>
     <p>
       <% @property.images.each do |image| %>
-        <%= image_tag image.attachment.url, class: "img-polaroid" %>
+        <%= image_tag image.attachment.normal.url, class: "img-polaroid" %>
       <% end %>
     </p>
   </div>
@@ -29,7 +29,6 @@
     Price: <%= @property.price %>
     </p>
   </div>
-
   <div class="span4 offset1">
     <h3> Location </h3>
     <%= gmaps4rails(@json) %>

@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.page(params[:page]).per(10)
+    @properties = Property.page(params[:page]).per(12)
   end
 
   def edit

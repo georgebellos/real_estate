@@ -1,9 +1,23 @@
 <%= title("Listings")%>
-<h1>Latest Listings</h1>
-<% @properties.each do |property| %>
-  <ul>
-    <li><%= property.status %></li>
-    <li><%= property.price %></li>
-  </ul>
-<% end %>
-<%= paginate @properties %>
+<div class="row">
+  <div class="span9">
+    <h1>Latest Listings</h1>
+    <ul class="thumbnails">
+      <% @properties.each do |property| %>
+        <li class="span3">
+      <div class="thumbnail">
+          <%= image_tag thumbnail(property) %>
+        <h3><%= property.status %></h3>
+        <p>Bathrooms:<%= property.bathroom %>-
+           Bedrooms:<%= property.bedroom %>
+           Price:<%= property.price %>
+         </p>
+        <p><%= property.summary %></p>
+        <ul><li><%=link_to "Info", property_path(property), class: "btn btn-medium btn-info" %></li></ul>
+      </div>
+      </li>
+    <% end %>
+    </ul>
+    <%= paginate @properties %>
+  </div>
+</div>

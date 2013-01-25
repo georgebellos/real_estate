@@ -12,7 +12,6 @@ FactoryGirl.define do
     city 'Patra'
     summary 'Lorem ipsum'
     category 'Apartment'
-    user
 
     after(:build) { |place, evaluator| place.stub(geocode: [1,1]) }
     before(:create) { |place, evaluator| place.stub(geocode: [1,1]) }
