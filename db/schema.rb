@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105224046) do
+ActiveRecord::Schema.define(:version => 20130124172644) do
 
   create_table "images", :force => true do |t|
     t.string   "attachment"
     t.integer  "property_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "attachment_processing"
   end
 
   add_index "images", ["property_id"], :name => "index_images_on_property_id"
