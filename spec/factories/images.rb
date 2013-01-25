@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :image do
+    process_attachment_upload  true
     attachment { File.open(Rails.root + 'spec/support/files/property.png') }
     property
 
