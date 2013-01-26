@@ -118,7 +118,7 @@ describe PropertiesController do
 
       it 'sets a flash[:success] messsage' do
         put :update, id: @property, property: attributes_for(:property, price: 300)
-        expect(flash[:success]).to eq 'Property updated'
+        expect(flash[:success]).to eq 'Property has been updated'
       end
     end
 
@@ -154,7 +154,7 @@ describe PropertiesController do
 
       it 'sets a flash[:success] message' do
         delete :destroy, id: @property
-        expect(flash[:success]).to eql 'Property destroyed'
+        expect(flash[:success]).to eql 'Property has been destroyed'
       end
 
       it 'redirects to properties#index' do

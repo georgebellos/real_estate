@@ -31,7 +31,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     if @property.update_attributes(params[:property])
       redirect_to property_path
-      flash[:success] = 'Property updated'
+      flash[:success] = 'Property has been updated'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
+    flash[:success] = 'Property has been destroyed'
     redirect_to properties_path
-    flash[:success] = 'Property destroyed'
   end
 end
