@@ -24,8 +24,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def cache_dir
-    'uploads/'
+    'uploads/tmp'
   end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     "/images/fallback/" + [:small, "default.png"].compact.join('_')
