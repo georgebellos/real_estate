@@ -1,0 +1,20 @@
+<%= simple_form_for(@property, :html => { multipart: true, class: "form-horizontal" }) do |f| %>
+  <%= f.error_notification message: 'Something went wrong' %>
+  <%= f.input :status, collection: ['Rent', 'Buy'] %>
+  <%= f.input :category, collection: ['Apartment', 'Condo', 'Land', 'Duplex', 'Triplex', 'House'] %>
+  <%= f.input :floor_size %>
+  <%= f.input :bedroom %>
+  <%= f.input :bathroom %>
+  <%= f.input :parking %>
+  <%= f.input :price %>
+  <%= f.input :street %>
+  <%= f.input :street_number, label: "Number" %>
+  <%= f.input :city %>
+  <%= f.input :year %>
+  <%= f.input :summary, input_html: { rows: '4' } %>
+  <%= f.simple_fields_for :images do |img_form| %>
+    <%= img_form.input :attachment, label: 'Picture' %>
+  <% end %>
+  <%= f.button :submit, value: "#{ controller.action_name.camelcase } Property",
+                        class: "pull-right btn-large btn-primary" %>
+<% end %>

@@ -1,0 +1,47 @@
+<%= title(@property.category)%>
+<div class="row">
+  <div class="span7">
+    <h3><%= @property.status %> <%=@property.category %> <%= @property.street %></h3>
+    <p>
+      <% @property.images.each do |image| %>
+        <%= image_tag image.attachment.normal.url, class: "img-polaroid" %>
+      <% end %>
+    </p>
+  </div>
+  <div class="span4 offset1">
+  <h3> Property Key Features </h3>
+    <ul>
+      <li><i class="icon-ok"></i> Category: <%= @property.category %></li>
+      <li><i class="icon-ok"></i> Floor Size: <%= @property.floor_size %></li>
+      <li><i class="icon-ok"></i> Bedrooms: <%= @property.bedroom %></li>
+      <li><i class="icon-ok"></i> Bathrooms: <%= @property.bathroom %></li>
+      <li><i class="icon-ok"></i> Parking: <%= @property.parking %></li>
+      <li><i class="icon-ok"></i> Construction Year: <%= @property.year %></li>
+      <li><i class="icon-ok"></i> Location: <%= @property.street %><%= @property.street_number %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span7">
+    <h3> About Property </h3>
+    <p>
+    <%= @property.summary %></br>
+    Price: <%= @property.price %>
+    </p>
+  </div>
+  <div class="span4 offset1">
+    <h3> Location </h3>
+    <%= gmaps4rails(@json) %>
+  </div>
+</div>
+<div class="row">
+  <div class="span7">
+    <h3> Contact Info: <%= @property.contact_info %> </h3>
+  </div>
+  <div class="span4 offset1">
+    <h3> Actions </h3>
+    <%= link_to 'Edit Property', edit_property_path, class: "btn btn-success" %>
+    <%= link_to 'Delete Property', property_path, method: :delete,
+      confirm: 'Are you sure you want to delete this property', class: "btn btn-danger" %>
+  </div>
+</div>

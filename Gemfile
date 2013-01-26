@@ -1,10 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
+
+gem 'carrierwave', '~> 0.7.1'
+gem 'mini_magick', '~> 3.4'
+gem 'geocoder', '~> 1.1.6'
+gem 'gmaps4rails', '~> 1.5.6'
+gem 'kaminari', '~> 0.14.1'
+gem 'tire', '~> 0.5.4'
+gem 'sidekiq', '~> 2.6.5'
+gem 'carrierwave_backgrounder', '~> 0.1.3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -12,6 +21,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.2.1.1'
 end
+gem 'font-awesome-sass-rails'
 
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
 
@@ -23,6 +33,8 @@ group :test do
   gem 'launchy'
   gem 'foobar'
   gem 'simplecov', require: false
+  gem 'vcr', '~> 2.4.0'
+  gem 'webmock', '~> 1.9.0'
 end
 
 group :development do
@@ -37,6 +49,9 @@ group :development do
   gem 'pry-rails'
   gem 'fuubar'
   gem 'rails-footnotes', '~> 3.7.0'
+  gem 'meta_request', '0.2.0'
+  gem 'better_errors', '~> 0.3.2'
+  gem 'binding_of_caller', '~> 0.6.8'
 end
 
 gem 'foreman'

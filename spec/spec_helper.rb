@@ -11,7 +11,6 @@ Spork.prefork do
     require 'simplecov'
     SimpleCov.start 'rails'
   end
-  # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
 
   require File.expand_path("../../config/environment", __FILE__)
@@ -25,9 +24,13 @@ Spork.prefork do
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f }
+
+  # Requires supporting ruby files for capybara
+  Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f }
 
   RSpec.configure do |config|
+    config.treat_symbols_as_metadata_keys_with_true_values = true
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -56,6 +59,7 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+
     config.before(:suite) do
       DatabaseCleaner.clean_with(:truncation)
     end
@@ -76,6 +80,28 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
 
+    #use different directories for file uploads
+    if defined?(CarrierWave)
+      CarrierWave::Uploader::Base.descendants.each do |klass|
+        next if klass.anonymous?
+        klass.class_eval do
+          def cache_dir
+            "#{Rails.root}/spec/support/uploads/tmp"
+          end
+
+          def store_dir
+            "#{Rails.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+          end
+        end
+      end
+    end
+
+    # delete image uploads
+    config.after(:all) do
+      if Rails.env.test?
+        FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+      end
+    end
   end
 end
 

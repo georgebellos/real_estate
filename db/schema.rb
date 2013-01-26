@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210205556) do
+ActiveRecord::Schema.define(:version => 20130124172644) do
+
+  create_table "images", :force => true do |t|
+    t.string   "attachment"
+    t.integer  "property_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "attachment_processing"
+  end
+
+  add_index "images", ["property_id"], :name => "index_images_on_property_id"
+
+  create_table "properties", :force => true do |t|
+    t.string   "status"
+    t.integer  "price"
+    t.integer  "floor_size"
+    t.integer  "year"
+    t.string   "street"
+    t.integer  "street_number"
+    t.boolean  "moderation",    :default => false
+    t.string   "contact_info"
+    t.text     "summary"
+    t.integer  "user_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "bathroom"
+    t.integer  "bedroom"
+    t.integer  "parking"
+    t.string   "category"
+    t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
 
   create_table "users", :force => true do |t|
     t.string "name"
