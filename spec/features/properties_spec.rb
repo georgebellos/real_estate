@@ -49,3 +49,37 @@ feature 'Viewing Property listings' do
     expect(page).to have_content('Rent Apartment')
   end
 end
+
+feature 'Editing Property listings', :vcr do
+  background do
+    @property = create :property
+  end
+
+  scenario 'Editing a property listing' do
+    visit property_path(@property)
+    click_link 'Edit Property'
+    fill_in 'Floor size', with: '200'
+    click_button 'Edit Property'
+    expect(page).to have_content('Property has been updated')
+  end
+
+  scenario 'Editing a property listing with invalid attributes' do
+    visit property_path(@property)
+    click_link 'Edit Property'
+    fill_in 'Floor size', with: 'invalid data'
+    click_button 'Edit Property'
+    expect(page).to have_content('Something went wrong')
+  end
+end
+
+feature 'Deleting Property listings' do
+  background do
+    @property = create :property
+  end
+
+  scenario 'Deleting a property listing' do
+    visit property_path(@property)
+    click_link 'Delete Property'
+    expect(page).to have_content('Property has been destroyed')
+  end
+end
