@@ -40,12 +40,13 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec'
+  gem 'guard-zeus'
   gem 'growl'
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'rb-inotify', :require => false
-  gem 'spork', '~> 1.0rc'
-  gem 'guard-spork'
+  #gem 'spork', '~> 1.0rc'
+  #gem 'guard-spork'
   gem 'pry-rails'
   gem 'fuubar'
   gem 'rails-footnotes', '~> 3.7.0'
@@ -56,3 +57,5 @@ end
 
 gem 'foreman'
 gem 'puma'
+
+gem 'zeus'
