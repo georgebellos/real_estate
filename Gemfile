@@ -57,5 +57,3 @@ end
 
 gem 'foreman'
 gem 'puma'
-
-gem 'zeus'

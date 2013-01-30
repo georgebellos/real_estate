@@ -304,4 +304,3 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   vcr (~> 2.4.0)
   webmock (~> 1.9.0)
-  zeus

@@ -1,10 +1,11 @@
 require 'rubygems'
 require 'simplecov'
-SimpleCov.start 'rails'
+require_relative 'mock_tire'
+require 'webmock'
 
-#require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
+Tire.disable!
+
+SimpleCov.start 'rails'
 
 prefork = lambda do
   unless ENV['DRB']
@@ -82,6 +83,16 @@ prefork = lambda do
     config.after(:all) do
       if Rails.env.test?
         FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+      end
+    end
+
+    config.around do |example|
+      if !example.metadata[:elasticsearch]
+        example.call
+      else
+        Tire.enable! do
+          example.call
+        end
       end
     end
   end
