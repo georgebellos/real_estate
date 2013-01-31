@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'simplecov'
-require_relative 'mock_tire'
-require 'webmock'
-
-Tire.disable!
+REDIS_SERVER_ADDRESS_REGEXP = %r{\Ahttp://localhost:9200}
 
 SimpleCov.start 'rails'
 
@@ -58,7 +55,6 @@ prefork = lambda do
     #     --seed 1234
     config.order = "random"
 
-
     config.before(:suite) do
       DatabaseCleaner.clean_with(:truncation)
     end
@@ -73,6 +69,11 @@ prefork = lambda do
 
     config.before(:each) do
       DatabaseCleaner.start
+
+      # mock any request to redis server for tests without elasticsearch metadata
+      if !example.metadata[:elasticsearch]
+        WebMock.stub_request(:any, REDIS_SERVER_ADDRESS_REGEXP).to_return(body: "{}")
+      end
     end
 
     config.after(:each) do
@@ -83,16 +84,6 @@ prefork = lambda do
     config.after(:all) do
       if Rails.env.test?
         FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-      end
-    end
-
-    config.around do |example|
-      if !example.metadata[:elasticsearch]
-        example.call
-      else
-        Tire.enable! do
-          example.call
-        end
       end
     end
   end
