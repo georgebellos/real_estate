@@ -1,17 +1,24 @@
 <%= title("Listings")%>
 <div class="row">
+  <div class="span3 search_form">
+    <%= simple_form_for :search, method: :get  do |f| %>
+      <%= f.input :query, label: false, required: false, input_html: { :value => (params[:search][:query] if params[:search]) } %>
+    <%= f.button :submit, value: "Quick Search", name: nil %>
+  <% end %>
+  </div>
   <div class="span9">
     <h1>Latest Listings</h1>
+    <%= property_search_results(@properties) if params[:search].present? %>
     <ul class="thumbnails">
       <% @properties.each do |property| %>
         <li class="span3">
       <div class="thumbnail">
-          <%= image_tag thumbnail(property) %>
-        <h3><%= property.status %></h3>
-        <p>Bathrooms:<%= property.bathroom %>-
-           Bedrooms:<%= property.bedroom %>
-           Price:<%= property.price %>
-         </p>
+        <%= image_tag thumbnail(property) %>
+        <h4><%= property.status %> - <%= property.street %> </h4>
+        <p>Bathrooms:<%= property.bathroom %>
+      Bedrooms:<%= property.bedroom %>
+      Price:<%= property.price %>
+      </p>
         <p><%= property.summary %></p>
         <ul><li><%=link_to "Info", property_path(property), class: "btn btn-medium btn-info" %></li></ul>
       </div>

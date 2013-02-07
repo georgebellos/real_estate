@@ -1,4 +1,7 @@
 class Property < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
   belongs_to :user
   has_many :images, dependent: :destroy
 
@@ -22,5 +25,14 @@ class Property < ActiveRecord::Base
 
   def gmaps4rails_address
     "#{self.street} #{self.street_number}, Patra, Greece"
+  end
+
+  index_name("#{Rails.env}-search-properties")
+
+  def self.search(params)
+    query = params[:search][:query] if params[:search].present?
+    tire.search(load: true, page: params[:page], per_page: 12) do
+      query { string query, default_operator: "AND" } if query.present?
+    end
   end
 end
