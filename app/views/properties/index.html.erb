@@ -1,30 +1,59 @@
 <%= title("Listings")%>
 <div class="row">
   <div class="span3 search_form">
-    <%= simple_form_for :search, method: :get  do |f| %>
-      <%= f.input :query, label: false, required: false, input_html: { :value => (params[:search][:query] if params[:search]) } %>
-    <%= f.button :submit, value: "Quick Search", name: nil %>
-  <% end %>
-  </div>
-  <div class="span9">
-    <h1>Latest Listings</h1>
-    <%= property_search_results(@properties) if params[:search].present? %>
-    <ul class="thumbnails">
-      <% @properties.each do |property| %>
-        <li class="span3">
-      <div class="thumbnail">
-        <%= image_tag thumbnail(property) %>
-        <h4><%= property.status %> - <%= property.street %> </h4>
-        <p>Bathrooms:<%= property.bathroom %>
-      Bedrooms:<%= property.bedroom %>
-      Price:<%= property.price %>
+    <%= form_tag properties_path, method: :get, name: :search do %>
+      <fieldset>
+      <%= label_tag "query", "Quick Search" %>
+      <%= text_field_tag "search[query]", (params[:search][:query] if params[:search]) %>
+      <%= submit_tag "Quick Search", name: nil %>
+        <h4>Filter</h4>
+        <% %w{ Apartment Condo Land Duplex Triplex House }.each do |type| %>
+          <%= check_box_tag "search[types][]", type, 
+            (params[:search][:types].try(:include?,type) if params[:search]), id: type %>
+          <%= label_tag "property[types][]", type %>
+      <% end %>
+        <h5>Price</h5>
+        <%= label_tag :price_from %>
+        <%= search_field_tag("search[price_from]", (params[:search][:price_from] if params[:search])) %>
+        <%= label_tag :price_to %>
+        <%= search_field_tag("search[price_to]", (params[:search][:price_to] if params[:search]) ) %>
+        <h5> Bedrooms </h5>
+        <%= label_tag :bedrooms_from %>
+        <%= search_field_tag("search[bedrooms_from]", (params[:search][:bedrooms_from] if params[:search]) ) %>
+        <%= label_tag :bedrooms_to %>
+        <%= search_field_tag("search[bedrooms_to]", (params[:search][:bedrooms_to] if params[:search]) ) %>
+        <h5> Floor Size </h5>
+        <%= label_tag :floor_size_from %>
+        <%= search_field_tag("search[floor_size_from]", (params[:search][:floor_size_from] if params[:search])) %>
+        <%= label_tag :floor_size_from %>
+        <%= search_field_tag("search[floor_size_to]", (params[:search][:floor_size_to] if params[:search])) %>
+      </fieldset>
+      <p>
+      <%= submit_tag "Filter", name: nil %>
       </p>
-        <p><%= property.summary %></p>
-        <ul><li><%=link_to "Info", property_path(property), class: "btn btn-medium btn-info" %></li></ul>
-      </div>
-      </li>
     <% end %>
-    </ul>
-    <%= paginate @properties %>
+    </div>
+    <div class="span9">
+      <h1>Latest Listings</h1>
+      <%= property_search_results(@properties) if params[:search].present? %>
+      <ul class="thumbnails">
+        <% @properties.each do |property| %>
+          <li class="span3">
+        <div class="thumbnail">
+          <%= image_tag thumbnail(property) %>
+          <h4><%= property.status %> - <%= property.street %> </h4>
+          <p>Bathrooms:<%= property.bathroom %>
+        Bedrooms:<%= property.bedroom %>
+        Price:<%= property.price %>
+        </p>
+          <p><%= property.summary %></p>
+          <ul><li><%=link_to "Info", property_path(property), class: "btn btn-medium btn-info" %></li></ul>
+        </div>
+        </li>
+      <% end %>
+      </ul>
+      <%= paginate @properties %>
+    </div>
   </div>
-</div>
+
+
