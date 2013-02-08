@@ -20,7 +20,11 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.page(params[:page]).per(12)
+    if params[:search].present?
+      @properties = Property.search(params)
+    else
+      @properties = Property.page(params[:page]).per(12)
+    end
   end
 
   def edit

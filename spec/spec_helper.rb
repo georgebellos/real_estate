@@ -1,24 +1,22 @@
 require 'rubygems'
 require 'simplecov'
+require_relative 'mock_tire'
+require 'webmock'
+
 SimpleCov.start 'rails'
+Tire.disable!
 
-require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
-
-Spork.prefork do
+prefork = lambda do
   unless ENV['DRB']
     require 'simplecov'
     SimpleCov.start 'rails'
   end
-  ENV["RAILS_ENV"] ||= 'test'
+  ENV["RAILS_ENV"] = 'test'
 
   require File.expand_path("../../config/environment", __FILE__)
 
   require "rails/application"
-  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
   require 'rspec/rails'
-  require 'rspec/autorun'
   require 'capybara/rails'
   require 'capybara/rspec'
 
@@ -59,7 +57,6 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
-
     config.before(:suite) do
       DatabaseCleaner.clean_with(:truncation)
     end
@@ -76,24 +73,19 @@ Spork.prefork do
       DatabaseCleaner.start
     end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
-
-    #use different directories for file uploads
-    if defined?(CarrierWave)
-      CarrierWave::Uploader::Base.descendants.each do |klass|
-        next if klass.anonymous?
-        klass.class_eval do
-          def cache_dir
-            "#{Rails.root}/spec/support/uploads/tmp"
-          end
-
-          def store_dir
-            "#{Rails.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-          end
+    # disable tire and elastic search for non elastic search based tests
+    config.around do |example|
+      if !example.metadata[:elasticsearch]
+        example.call
+      else
+        Tire.enable! do
+          example.call
         end
       end
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
     end
 
     # delete image uploads
@@ -103,12 +95,43 @@ Spork.prefork do
       end
     end
   end
+
+  #use different directories for file uploads
+  if defined?(CarrierWave)
+    CarrierWave::Uploader::Base.descendants.each do |klass|
+      next if klass.anonymous?
+      klass.class_eval do
+        def cache_dir
+          "#{Rails.root}/spec/support/uploads/tmp"
+        end
+
+        def store_dir
+          "#{Rails.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+        end
+      end
+    end
+  end
 end
 
-Spork.each_run do
+each_run = lambda do
   if ENV['DRB']
     require 'simplecov'
     SimpleCov.start 'rails'
   end
   FactoryGirl.reload
+end
+
+if defined?(Zeus)
+  prefork.call
+  $each_run = each_run
+  class << Zeus.plan
+    def after_fork_with_test
+      after_fork_without_test
+      $each_run.call
+    end
+    alias_method_chain :after_fork, :test
+  end
+else
+  prefork.call
+  each_run.call
 end
