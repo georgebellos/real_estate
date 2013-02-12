@@ -40,7 +40,6 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-zeus'
   gem 'growl'
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
