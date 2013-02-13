@@ -35,6 +35,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'vcr', '~> 2.4.0'
   gem 'webmock', '~> 1.9.0'
+  gem 'rack_session_access', '~>0.0.3'
 end
 
 group :development do
