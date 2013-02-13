@@ -5,10 +5,11 @@ feature 'Search', :elasticsearch do
   background do
     Property.tire.index.delete
     Property.tire.index.create
+    @user = create :user
     create :property, status: 'Buy', category: 'Triplex', street: 'Doiranis',
-                               price: 500, bedroom: 4, floor_size: 350
+                               price: 500, bedroom: 4, floor_size: 350, user: @user
     create :property, status: 'Rent', category: 'Apartment', street: 'Kefalinias',
-                               price: 1000, bedroom: 8, floor_size: 1000
+                               price: 1000, bedroom: 8, floor_size: 1000, user: @user
     Property.tire.index.refresh
     visit properties_path
   end
