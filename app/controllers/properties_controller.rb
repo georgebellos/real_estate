@@ -1,11 +1,14 @@
 class PropertiesController < ApplicationController
+  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @property = Property.new
     @property.images.build
   end
 
   def create
-    @property = Property.new(params[:property])
+    @property = current_user.properties.build(params[:property]) if signed_in?
     if @property.save
       redirect_to @property
       flash[:success] = 'You have created a new property'
@@ -46,5 +49,14 @@ class PropertiesController < ApplicationController
     @property.destroy
     flash[:success] = 'Property has been destroyed'
     redirect_to properties_path
+  end
+
+  private
+  def signed_in
+    redirect_to signin_path, notice: 'Please sign in' unless signed_in?
+  end
+
+  def correct_user
+    redirect_to root_path if current_user.properties.find_by_id(params[:id]).nil?
   end
 end

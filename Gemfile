@@ -35,12 +35,12 @@ group :test do
   gem 'simplecov', require: false
   gem 'vcr', '~> 2.4.0'
   gem 'webmock', '~> 1.9.0'
+  gem 'rack_session_access', '~>0.0.3'
 end
 
 group :development do
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-zeus'
   gem 'growl'
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false

@@ -24,7 +24,7 @@ In order to create property listings and favorites} do
 end
 
 feature 'User Sign in' do
-  background { create(:user) }
+  background { create(:user, email: 'foobar@mail.com') }
 
   scenario 'with valid credentials' do
     visit root_path
@@ -47,7 +47,7 @@ end
 
 feature 'Signed in user' do
   background do
-    create(:user)
+    create(:user, email: 'foobar@mail.com')
   end
 
   scenario 'Sign out' do
