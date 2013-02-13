@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UserSessionsController do
-  before { @user = create(:user) }
+  before { @user = create(:user, email: 'foobar@mail.com') }
 
   describe 'Get #new' do
     it 'renders the new template' do
