@@ -4,6 +4,8 @@ class Property < ActiveRecord::Base
 
   belongs_to :user
   has_many :images, dependent: :destroy
+  has_many :favorite_properties
+  has_many :favorite_by, through: :favorite_properties, source: :user
 
   attr_accessible :floor_size, :price, :status, :street, :bedroom, :bathroom,
                   :parking, :street_number, :city, :summary, :year,

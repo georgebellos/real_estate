@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :properties
+  has_many :favorite_properties
+  has_many :favorites, through: :favorite_properties, source: :property
+
   attr_accessible :name, :email, :password, :password_confirmation
   validates :email, presence: true, uniqueness: true,
                     format: { with: /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/ }
