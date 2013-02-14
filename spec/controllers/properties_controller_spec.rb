@@ -45,6 +45,14 @@ describe PropertiesController do
         expect(response).to redirect_to signin_path
       end
     end
+
+    describe 'Post #favorite' do
+      it 'requires login' do
+        property = create(:property)
+        post :favorite, id: property
+        expect(response).to redirect_to signin_path
+      end
+    end
   end
 
   describe 'User access' do
@@ -219,6 +227,50 @@ describe PropertiesController do
           expect{
             delete :destroy, id: @property
           }.to change(Image, :count).by(-2)
+        end
+      end
+    end
+
+    describe 'Post #favorite' do
+      before :each do
+        @property = create(:property, user: @user)
+        @other_property = create(:property)
+      end
+      context 'when a user favorites a property' do
+        it 'increases the number of favorites listings by 1' do
+          expect {
+            post :favorite, id: @other_property, type: 'favorite'
+          }.to change(@user.favorites, :count).by(1)
+        end
+
+        it 'redirects back to the show template' do
+          post :favorite, id: @other_property, type: 'favorite'
+          expect(response).to redirect_to property_path(@other_property)
+        end
+
+        it 'sets a flash[:notice] message' do
+          post :favorite, id: @other_property, type: 'favorite'
+          expect(flash[:notice]).to eql('You favorited Apartment at Doiranis')
+        end
+      end
+
+      context 'when a user unfavorites a property' do
+        before { @user.favorites << @other_property }
+
+        it 'reduces the number of favorite listings by 1' do
+          expect {
+            post :favorite, id: @other_property, type: 'unfavorite'
+          }.to change(@user.favorites, :count).by(-1)
+        end
+
+        it 'redirects back to the show template' do
+          post :favorite, id: @other_property, type: 'unfavorite'
+          expect(response).to redirect_to property_path(@other_property)
+        end
+
+        it 'sets a flash[:notice] message' do
+          post :favorite, id: @other_property, type: 'unfavorite'
+          expect(flash[:notice]).to eql('You unfavorited Apartment at Doiranis')
         end
       end
     end

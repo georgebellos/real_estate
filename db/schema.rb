@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124172644) do
+ActiveRecord::Schema.define(:version => 20130214132059) do
+
+  create_table "favorite_properties", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "property_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "images", :force => true do |t|
     t.string   "attachment"

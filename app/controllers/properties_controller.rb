@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy, :favorite]
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -49,6 +49,20 @@ class PropertiesController < ApplicationController
     @property.destroy
     flash[:success] = 'Property has been destroyed'
     redirect_to properties_path
+  end
+
+  def favorite
+    @property = Property.find(params[:id])
+    if params[:type] == 'favorite'
+      current_user.favorites << @property
+      redirect_to property_path,
+        notice: "You favorited #{ @property.category } at #{ @property.street }"
+    else
+      params[:type] == 'unfavorite'
+      current_user.favorites.delete(@property)
+      redirect_to property_path(@property),
+        notice: "You unfavorited #{ @property.category } at #{ @property.street }"
+    end
   end
 
   private
