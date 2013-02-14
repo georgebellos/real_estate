@@ -11,7 +11,6 @@ feature 'Unsigned users can not create listings' do
   end
 end
 
-
 feature 'Signed in users can create Listings', :vcr do
   background do
     @user = create :user
@@ -102,5 +101,33 @@ feature 'Deleting Property listings' do
     visit property_path(@property)
     click_link 'Delete Property'
     expect(page).to have_content('Property has been destroyed')
+  end
+end
+
+feature 'Favorite property listings' do
+  background do
+    @user = create :user
+    @property = create :property, user: @user
+    @other_property = create :property
+  end
+
+  scenario 'Mark a property listing as favorite' do
+    page.set_rack_session(user_id: @user.id)
+    visit property_path(@other_property)
+    click_link 'Marks as favorite'
+    expect(page).to have_content('You favorited Apartment at Doiranis')
+  end
+
+  scenario 'Mark a property listing as unfavorite' do
+    page.set_rack_session(user_id: @user.id)
+    visit property_path(@other_property)
+    click_link 'Marks as favorite'
+    click_link 'Marks as unfavorite'
+    expect(page).to have_content('You unfavorited Apartment at Doiranis')
+  end
+
+  scenario 'A user can not mark as favorite his own listings' do
+    visit property_path(@property)
+    expect(page).not_to have_content('Mark as favorite')
   end
 end
