@@ -53,9 +53,11 @@ class PropertiesController < ApplicationController
 
   def favorite
     @property = Property.find(params[:id])
-    if params[:type] == 'favorite'
+    if current_user.properties.include?(@property)
+      redirect_to property_path(@property)
+    elsif params[:type] == 'favorite'
       current_user.favorites << @property
-      redirect_to property_path,
+      redirect_to property_path(@property),
         notice: "You favorited #{ @property.category } at #{ @property.street }"
     else
       params[:type] == 'unfavorite'

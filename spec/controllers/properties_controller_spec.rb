@@ -236,6 +236,12 @@ describe PropertiesController do
         @property = create(:property, user: @user)
         @other_property = create(:property)
       end
+
+      it 'redirects to show template when a user favorites his own listings' do
+       post :favorite, id: @property, type: 'favorite'
+       expect(response).to redirect_to property_path(@property)
+      end
+
       context 'when a user favorites a property' do
         it 'increases the number of favorites listings by 1' do
           expect {
