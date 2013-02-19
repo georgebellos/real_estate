@@ -1,0 +1,23 @@
+/*footer*/
+#push {
+  height: 120px;
+}
+
+#footer {
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /*Negative indent footer by it's height*/
+  margin: 0 auto -40px;
+}
+
+#copyright {
+  font-size: 13px;
+  padding: 10px;
+}
