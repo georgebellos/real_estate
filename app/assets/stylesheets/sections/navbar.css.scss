@@ -1,0 +1,18 @@
+@import "globals/colors";
+
+#logo {
+  color: $theme-color;
+  display: block;
+  font-weight: bold;
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
+
+header {
+  filter: none !important;
+  .navbar, .navbar-inner, .nav, .navbar-inverse {
+    background: none repeat scroll 0% 0% transparent !important;
+  }
+}
