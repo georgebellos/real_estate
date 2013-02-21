@@ -1,13 +1,5 @@
 @import "globals/all";
 
-.content {
-  @extend .container;
-}
-
-.content .main {
-  @include makeColumn(12);
-}
-
-body {
-  height: 100%;
+html {
+  overflow-y: scroll;
 }
