@@ -1,10 +1,15 @@
 <%= title "Sign in" %>
-<div class="span5 offset4">
-  <h1>Login </h1>
-  <%= simple_form_for(:user, url: signin_path) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :email %>
-    <%= f.input :password %>
-    <%= f.button :submit, value: "Login" ,class: "btn btn-large btn-primary" %>
-  <% end %>
+<div class="row">
+  <div class="span6 offset3">
+    <div id="form-login">
+      <h3>Log in into your account </h3>
+      <hr class='small'></hr>
+      <%= simple_form_for(:user, url: signin_path) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :email, label: false, placeholder: "Email" %>
+        <%= f.input :password, label: false, placeholder: "Password" %>
+        <%= f.button :submit, value: "Login" ,class: "btn btn-large btn-success" %>
+    <% end %>
+    </div>
+  </div>
 </div>

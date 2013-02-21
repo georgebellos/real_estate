@@ -8,7 +8,8 @@ In order to create property listings and favorites} do
     visit root_path
     click_link 'Sign Up'
     fill_in 'Email', with: 'foobar@mail.com'
-    all(:field,'Password').each{|field| field.set('foobar') }
+    fill_in 'Password', with: 'foobar'
+    fill_in 'Password Confirmation', with: 'foobar'
     expect { click_button 'Create Account'}.to change(User, :count)
     expect(page).to have_content('You have signed up successfully')
   end
