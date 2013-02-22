@@ -21,13 +21,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sun, 03 Feb 2013 08:01:19 GMT
+      - Fri, 01 Mar 2013 09:51:49 GMT
       Expires:
-      - Mon, 04 Feb 2013 08:01:19 GMT
+      - Sat, 02 Mar 2013 09:51:49 GMT
       Cache-Control:
       - public, max-age=86400
-      Access-Control-Allow-Origin:
-      - ! '*'
       Server:
       - mafe
       X-Xss-Protection:
@@ -76,5 +74,5 @@ http_interactions:
         \        },\n         \"types\" : [ \"street_address\" ]\n      }\n   ],\n
         \  \"status\" : \"OK\"\n}\n"
     http_version: 
-  recorded_at: Sun, 03 Feb 2013 08:01:20 GMT
+  recorded_at: Fri, 22 Mar 2013 09:51:47 GMT
 recorded_with: VCR 2.4.0
