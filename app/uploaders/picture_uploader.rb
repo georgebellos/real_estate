@@ -33,10 +33,8 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  #process resize_to_fill: [500, 500]
-
   version :normal do
-    process resize_to_fill: [500, 500]
+    process resize_to_fill: [720, 450]
   end
 
   # Create different versions of your uploaded files:
