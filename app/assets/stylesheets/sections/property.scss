@@ -48,3 +48,18 @@
     list-style-type: none;
   }
 }
+
+// actions and admin sidebar
+#actions-box, #admin-box {
+  @extend %boxed;
+  ul li:first-child > a {
+    background: $theme-color;
+    font-weight: bold;
+    // disable hover effect on titles
+    &:hover {
+      opacity:1.0;
+      box-shadow:none;
+      background: $theme-color;
+    }
+  }
+}

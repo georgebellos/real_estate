@@ -3,3 +3,13 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+%boxed {
+  @include box-shadow(0px 1px 6px #bbb);
+  @include border-radius(3px 3px);
+  @include background( linear-gradient(white, #f4f4f4));
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  margin: 10px auto 30px auto;
+  padding: 10px;
+}
