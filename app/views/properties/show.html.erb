@@ -1,56 +1,140 @@
 <%= title(@property.category)%>
 <div class="row">
-  <div class="span7">
-    <h3><%= @property.status %> <%=@property.category %> <%= @property.street %></h3>
-    <p>
-      <% @property.images.each do |image| %>
-        <%= image_tag image.attachment.normal.url, class: "img-polaroid" %>
-      <% end %>
-    </p>
-  </div>
-  <div class="span4 offset1">
-  <h3> Property Key Features </h3>
-    <ul>
-      <li><i class="icon-ok"></i> Category: <%= @property.category %></li>
-      <li><i class="icon-ok"></i> Floor Size: <%= @property.floor_size %></li>
-      <li><i class="icon-ok"></i> Bedrooms: <%= @property.bedroom %></li>
-      <li><i class="icon-ok"></i> Bathrooms: <%= @property.bathroom %></li>
-      <li><i class="icon-ok"></i> Parking: <%= @property.parking %></li>
-      <li><i class="icon-ok"></i> Construction Year: <%= @property.year %></li>
-      <li><i class="icon-ok"></i> Location: <%= @property.street %><%= @property.street_number %></li>
-    </ul>
-    <h3> Location </h3>
-    <%= gmaps4rails(@json) %>
-  </div>
-</div>
-<div class="row">
-  <div class="span7">
-    <h3> About Property </h3>
-    <p>
-    <%= @property.summary %></br>
-    Price: <%= @property.price %>
-    </p>
-  </div>
-  <div class="span4 offset1">
-    <h3> Actions </h3>
-    <% if current_user?(@property.user) %>
-      <%= link_to 'Edit Property', edit_property_path, class: "btn btn-success" %>
-      <%= link_to 'Delete Property', property_path, method: :delete,
-                   confirm: 'Are you sure you want to delete this property',
-                   class: "btn btn-danger" %>
-    <% elsif !current_user || !current_user.favorites.include?(@property) %>
-    <%= link_to "Marks as favorite", favorite_property_path(@property, type: "favorite"),
-                                     method: "post", class: "btn btn-info" %>
-    <% end %>
+  <div class="span9">
+    <div class="listing">
+      <div class="row">
+        <div class="span8">
+          <article>
+            <header>
+              <h3><%= @property.title %> at
+                  <%= @property.street %> <small><%= @property.floor_size %> m²</small>
+                  <span id="price" class="label label-success">
+                  <%= @property.price %> $
+                  </span>
+              </h3>
+            </header>
+            <hr class="small"></hr>
+            <div class="property-images">
+              <% @property.images.each do |image| %>
+                <%= image_tag image.attachment.normal.url, class: "img-polaroid" %>
+              <% end %>
+            </div>
+            <hr class="small"></hr>
+            <ul class="nav nav-tabs">
+              <li class="active"> <a href="#description" data-toggle="tab">Description</a> </li>
+              <li class="inactive" id="googlemap"><a href="#gmap" data-toggle="tab">Map</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="description">
+                <div class="row">
+                  <div class="span8">
+                    <h3>Summary</h3>
+                      <p>
+                        <%= @property.summary %></br>
+                      </p>
+                    <h3> Key Features </h3>
+                    <div class="row">
+                      <div class="span3">
+                        <ul class="unstyled">
+                          <li><i class="icon-ok"></i>
+                          Category: <%= @property.category %>
+                          </li>
+                          <li><i class="icon-ok"></i>
+                          Bathrooms: <%= @property.price %>
+                          </li>
+                          <li><i class="icon-ok"></i>
+                          Floor Size: <%= @property.floor_size %> m²
+                          </li>
+                        </ul>
+                      </div>
 
-  <% if current_user && current_user.favorites.include?(@property) %>
-    <%= link_to "Marks as unfavorite", favorite_property_path(@property, type: "unfavorite"),
-                                       method: "post", class: "btn btn-warning" %>
-  <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="span7">
-    <h3> Contact Info: <%= @property.contact_info %> </h3>
+                      <div class="span3">
+                        <ul class="unstyled">
+                          <li><i class="icon-ok"></i>
+                          Bedrooms: <%= @property.bedroom %>
+                          </li>
+                          <li><i class="icon-ok"></i>
+                          Bathrooms: <%= @property.bathroom %>
+                          </li>
+                          <li><i class="icon-ok"></i>
+                          Parking: <%= @property.parking %>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="span2">
+                        <ul class="unstyled">
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="gmap">
+                <div class="row">
+                  <div class="span8">
+                    <%= gmaps({
+                      "map_options" => { "auto_zoom" => false, "zoom" => 18,
+                                         "auto_adjust" => true },
+                      "markers"     => { "data" => @json }}) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="small"></hr>
+        <div class="row">
+          <div class="span9">
+            <h3> Similar Properties</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <!-- admin action -->
+  <div class="span3">
+    <div class="row">
+      <% if current_user?(@property.user) %>
+        <div class="span3">
+          <div id="admin-box">
+            <ul class="nav nav-tabs nav-stacked">
+              <li class="active"><a href="#">Admin</a><li>
+              <li><%= link_to '<i class=icon-edit></i> Edit Property'.html_safe,
+                      edit_property_path, class: "" %>
+              </li>
+              <li><%= link_to '<i class=icon-trash></i> Delete Property'.html_safe,
+                      property_path, method: :delete,
+                      confirm: 'Are you sure you want to delete this property' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- property actions -->
+    <div class="row">
+      <div class="span3">
+        <div id="actions-box">
+          <ul class="nav nav-tabs nav-stacked">
+            <li class="active"><a href="#">Actions</a></li>
+            <% if !current_user || !current_user.favorites.include?(@property) %>
+            <li class=<%= "disabled" if current_user && current_user.properties.include?(@property) %> >
+            <%= link_to "<i class=icon-star></i> Marks as favorite".html_safe,
+                favorite_property_path(@property, type: "favorite"),
+                method: "post" %></li>
+            <% end %>
+            <% if current_user && current_user.favorites.include?(@property) %>
+            <li><%= link_to "<i class=icon-star-empty></i> Marks as unfavorite".html_safe,
+                    favorite_property_path(@property, type: "unfavorite"),
+                    method: "post" %></li>
+            <% end %>
+            <li><%= link_to "<i class=icon-search></i> View similar properties".html_safe, '#' %></li>
+            <li><%= link_to "<i class=icon-tasks></i> Compare it".html_safe, '#' %></li>
+            <li><a href="#" onclick="window.print(); return false;"><i class=icon-print></i> Print Listing</a></li>
+            <li><%= link_to "<i class=icon-envelope></i> Email this listing".html_safe, '#' %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
