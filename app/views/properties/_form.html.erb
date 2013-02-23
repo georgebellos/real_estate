@@ -1,15 +1,16 @@
-<%= simple_form_for(@property, :html => { multipart: true, class: "form-horizontal" }) do |f| %>
-  <%= f.error_notification message: 'Something went wrong' %>
+<%= simple_form_for(@property, :html => { multipart: true,
+                                          class: "form-horizontal" }) do |f| %>
+  <%= f.error_notification message: "Something went wrong" %>
 <div class="row leftpad">
   <div class="span4">
     <fieldset>
       <legend>Type</legend>
       <%= f.input :status, collection: ['Rent', 'Buy'] %>
-      <%= f.input :category, collection: ['Apartment', 'Condo', 'Land', 'Duplex', 'Triplex', 'House'] %>
+      <%= f.input :category, collection: ['Apartment', 'Condo', 'Land',
+                                          'Duplex', 'Triplex', 'House'] %>
       <%= f.input :price %>
     </fieldset>
   </div>
-
   <div class="span3 offset2">
     <fieldset>
       <legend>Address</legend>
@@ -33,7 +34,7 @@
   <div class="span4 offset2">
     <fieldset>
       <legend>Summary</legend>
-      <%= f.input :summary, input_html: { rows: '11' } %>
+      <%= f.input :summary, input_html: { rows: "11" } %>
     </fieldset>
   </div>
 </div>
@@ -42,17 +43,17 @@
     <fieldset class="pictures">
       <legend><h3>Pictures</h3></legend>
       <%= f.simple_fields_for :images do |img_form| %>
-        <%= img_form.input :attachment, label: 'Pictures' %>
+        <%= img_form.input :attachment, label: "Pictures" %>
     <% end %>
     </fieldset>
   </div>
 </div>
-<hr class='small'></hr>
+<hr class="small"></hr>
 <div class="row">
   <div class="span4 offset4">
-    <%= f.button :submit, value: "#{ controller.action_name.camelcase } Property",
-      class: "btn-large btn-success" %>
-  <% end %>
+    <%= f.button :submit,
+                  value: "#{ controller.action_name.camelcase } Property",
+                  class: "btn-large btn-success" %>
+    <% end %>
   </div>
-</div>
 </div>
