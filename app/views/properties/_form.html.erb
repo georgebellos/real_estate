@@ -33,13 +33,13 @@
   <div class="span4 offset2">
     <fieldset>
       <legend>Summary</legend>
-      <%= f.input :summary, input_html: { rows: '4' } %>
+      <%= f.input :summary, input_html: { rows: '11' } %>
     </fieldset>
   </div>
 </div>
 <div class="row">
   <div class="span12">
-    <fieldset>
+    <fieldset class="pictures">
       <legend><h3>Pictures</h3></legend>
       <%= f.simple_fields_for :images do |img_form| %>
         <%= img_form.input :attachment, label: 'Pictures' %>
