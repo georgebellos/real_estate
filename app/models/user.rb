@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :properties
+  has_many :properties, dependent: :destroy
   has_many :favorite_properties
   has_many :favorites, through: :favorite_properties, source: :property
 
