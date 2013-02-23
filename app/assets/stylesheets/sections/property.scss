@@ -52,6 +52,7 @@
 // actions and admin sidebar
 #actions-box, #admin-box {
   @extend %boxed;
+  padding: 10px;
   ul li:first-child > a {
     background: $theme-color;
     font-weight: bold;
