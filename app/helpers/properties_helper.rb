@@ -1,7 +1,7 @@
 module PropertiesHelper
   def thumbnail(property)
     image = property.images.first
-    image ? image.attachment.url(:normal) : Image.new.attachment.url
+    image ? image.attachment.url(:medium) : Image.new.attachment.url
   end
 
   def property_search_results(properties)
@@ -11,6 +11,14 @@ module PropertiesHelper
     else
       content_tag(:div, "No property listings were found with this search criteria",
                   class: 'alert alert-block')
+    end
+  end
+
+  def summary(property)
+    if controller.action_name == "buy" || controller.action_name == "rent"
+      property.category
+    else
+      property.title
     end
   end
 end
