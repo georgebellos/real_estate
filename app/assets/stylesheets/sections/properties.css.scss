@@ -1,25 +1,21 @@
 @import "compass";
+@import "globals/mixins";
 
-.proper {
-  /*@include box-shadow(0px 1px 6px #bbb);*/
-  /*@include border-radius(3px 3px);*/
-  /*@include background( linear-gradient(white, #f4f4f4));*/
-  /*border-top: 1px solid #ddd;*/
-  /*border-bottom: 1px solid rgba(0, 0, 0, 0.18);*/
-  margin: 10px auto 30px auto;
-  /*text-align: center;*/
-  /*padding: 10px;*/
+.results {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  margin: 15px auto 15px auto;
 }
-
-/*.proper .span3 {*/
-  /*padding-left: 5px;*/
-/*}*/
 
 .listings {
-}
-
-.well {
-  input, textarea, .uneditable-input {
-    width: 70%;
+  .thumbnail {
+    @extend %boxed;
+    margin: 5px auto 5px auto;
+    padding: 10px;
+  }
+  .info {
+    padding-left: 5px;
+  }
+  #price {
+    float: right;
   }
 }
