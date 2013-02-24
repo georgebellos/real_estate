@@ -31,7 +31,7 @@ feature 'Search', :elasticsearch do
   end
 
   scenario 'Filter properties by type' do
-    find(:xpath, "//form/input[@value='Triplex']").set(true)
+    find(:xpath, "//div/input[@value='Triplex']").set(true)
     click_button 'Filter'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
