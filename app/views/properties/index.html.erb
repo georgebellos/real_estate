@@ -83,7 +83,7 @@
                                placeholder: 'to') %>
           <p>
           <%= submit_tag "Filter", name: nil, class: "btn btn-medium btn-success" %>
-          <a href="#" class="btn btn-medium btn-danger">Reset</a>
+          <%= link_to 'Reset', properties_path, class: "btn btn-medium btn-danger" %>
           </p>
         </div>
     <% end %>
