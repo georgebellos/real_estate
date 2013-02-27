@@ -9,5 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= depends_on global/all
+ *= require layout
+ *= require_tree ./sections
+ *= require_tree ./shared
+ *= require_tree ./components
+ *= require_tree ./plugins
  */

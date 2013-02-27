@@ -1,0 +1,66 @@
+@import "compass";
+@import "globals/colors";
+@import "globals/mixins";
+
+// property listing
+.listing {
+  @include box-shadow(0px 1px 6px #bbb);
+  @include border-radius(3px 3px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  margin: 10px auto 30px auto;
+  padding: 30px;
+  background: white;
+  #price {
+    padding: 13px;
+    float: right;
+  }
+  .property-images {
+    max-width: 98%;
+  }
+  // google maps
+  .map_container {
+    padding: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc #ccc #999 #ccc;
+    -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  }
+
+  .gmaps4rails_map {
+    height: 350px;
+  }
+
+  #map img {
+    max-width: auto;
+  }
+
+  #map label {
+    width: auto; display:inline;
+  }
+
+  .map_container img{ max-width: none; }
+  .gmaps4rails_map img{ max-width: none; }
+
+  // key features
+  ul {
+    list-style-type: none;
+  }
+}
+
+// actions and admin sidebar
+#actions-box, #admin-box {
+  @extend %boxed;
+  padding: 10px;
+  ul li:first-child > a {
+    background: $theme-color;
+    font-weight: bold;
+    // disable hover effect on titles
+    &:hover {
+      opacity:1.0;
+      box-shadow:none;
+      background: $theme-color;
+    }
+  }
+}

@@ -7,9 +7,11 @@ feature 'Search', :elasticsearch do
     Property.tire.index.create
     @user = create :user
     create :property, status: 'Buy', category: 'Triplex', street: 'Doiranis',
-                               price: 500, bedroom: 4, floor_size: 350, user: @user
-    create :property, status: 'Rent', category: 'Apartment', street: 'Kefalinias',
-                               price: 1000, bedroom: 8, floor_size: 1000, user: @user
+                               price: 500, bedroom: 4, floor_size: 350,
+                               user: @user
+    create :property, status: 'Rent', category: 'Apartment',
+           street: 'Kefalinias', price: 1000, bedroom: 8, floor_size: 1000,
+           user: @user
     Property.tire.index.refresh
     visit properties_path
   end
@@ -29,7 +31,7 @@ feature 'Search', :elasticsearch do
   end
 
   scenario 'Filter properties by type' do
-    find(:xpath, "//fieldset/input[@value='Triplex']").set(true)
+    find(:xpath, "//div/input[@value='Triplex']").set(true)
     click_button 'Filter'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')

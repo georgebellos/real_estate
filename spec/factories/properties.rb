@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :property do
     status 'Rent'
+    category 'Apartment'
     price '200'
     floor_size 100
     bathroom 2
@@ -11,7 +12,6 @@ FactoryGirl.define do
     street_number 39
     city 'Patra'
     summary 'Lorem ipsum'
-    category 'Apartment'
     user
 
     after(:build) { |place, evaluator| place.stub(geocode: [1,1]) }

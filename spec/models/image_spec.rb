@@ -44,8 +44,14 @@ describe Image do
     end
 
     describe 'normal' do
-      it 'scales down an image bigger than 500 by 500 pixel to be exactly 500 by 500 pixels' do
-        expect((create :image).attachment.normal).to have_dimensions(500,500)
+      it 'scales down an image bigger than 720 by 450 pixel to be exactly 720 by 450 pixels' do
+        expect((create :image).attachment.normal).to have_dimensions(720,450)
+      end
+    end
+
+    describe 'medium' do
+      it 'scales down an image to be exactly 200 by 130 pixels' do
+        expect((create :image).attachment.medium).to have_dimensions(200,130)
       end
     end
   end

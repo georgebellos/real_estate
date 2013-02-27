@@ -8,7 +8,8 @@ In order to create property listings and favorites} do
     visit root_path
     click_link 'Sign Up'
     fill_in 'Email', with: 'foobar@mail.com'
-    all(:field,'Password').each{|field| field.set('foobar') }
+    fill_in 'Password', with: 'foobar'
+    fill_in 'Password Confirmation', with: 'foobar'
     expect { click_button 'Create Account'}.to change(User, :count)
     expect(page).to have_content('You have signed up successfully')
   end
@@ -28,7 +29,7 @@ feature 'User Sign in' do
 
   scenario 'with valid credentials' do
     visit root_path
-    click_link 'Sign In'
+    click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar'
     click_button 'Login'
@@ -37,7 +38,7 @@ feature 'User Sign in' do
 
   scenario 'with invalid credentials' do
     visit root_path
-    click_link 'Sign In'
+    click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'wrong password'
     click_button 'Login'
@@ -52,7 +53,7 @@ feature 'Signed in user' do
 
   scenario 'Sign out' do
     visit root_path
-    click_link 'Sign In'
+    click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar'
     click_button 'Login'
@@ -62,7 +63,7 @@ feature 'Signed in user' do
 
   scenario 'Sign up' do
     visit root_path
-    click_link 'Sign In'
+    click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar'
     click_button 'Login'

@@ -1,20 +1,59 @@
-<%= simple_form_for(@property, :html => { multipart: true, class: "form-horizontal" }) do |f| %>
-  <%= f.error_notification message: 'Something went wrong' %>
-  <%= f.input :status, collection: ['Rent', 'Buy'] %>
-  <%= f.input :category, collection: ['Apartment', 'Condo', 'Land', 'Duplex', 'Triplex', 'House'] %>
-  <%= f.input :floor_size %>
-  <%= f.input :bedroom %>
-  <%= f.input :bathroom %>
-  <%= f.input :parking %>
-  <%= f.input :price %>
-  <%= f.input :street %>
-  <%= f.input :street_number, label: "Number" %>
-  <%= f.input :city %>
-  <%= f.input :year %>
-  <%= f.input :summary, input_html: { rows: '4' } %>
-  <%= f.simple_fields_for :images do |img_form| %>
-    <%= img_form.input :attachment, label: 'Picture' %>
-  <% end %>
-  <%= f.button :submit, value: "#{ controller.action_name.camelcase } Property",
-                        class: "pull-right btn-large btn-primary" %>
-<% end %>
+<%= simple_form_for(@property, :html => { multipart: true,
+                                          class: "form-horizontal" }) do |f| %>
+  <%= f.error_notification message: "Something went wrong" %>
+<div class="row leftpad">
+  <div class="span4">
+    <fieldset>
+      <legend>Type</legend>
+      <%= f.input :status, collection: ['Rent', 'Buy'] %>
+      <%= f.input :category, collection: ['Apartment', 'Condo', 'Land',
+                                          'Duplex', 'Triplex', 'House'] %>
+      <%= f.input :price %>
+    </fieldset>
+  </div>
+  <div class="span3 offset2">
+    <fieldset>
+      <legend>Address</legend>
+      <%= f.input :city %>
+      <%= f.input :street %>
+      <%= f.input :street_number, label: "Number" %>
+    </fieldset>
+  </div>
+</div>
+<div class="row leftpad">
+  <div class="span4">
+    <fieldset>
+      <legend>Features</legend>
+      <%= f.input :floor_size %>
+      <%= f.input :bedroom %>
+      <%= f.input :bathroom %>
+      <%= f.input :year %>
+      <%= f.input :parking %>
+    </fieldset>
+  </div>
+  <div class="span4 offset2">
+    <fieldset>
+      <legend>Summary</legend>
+      <%= f.input :summary, input_html: { rows: "11" } %>
+    </fieldset>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <fieldset class="pictures">
+      <legend><h3>Pictures</h3></legend>
+      <%= f.simple_fields_for :images do |img_form| %>
+        <%= img_form.input :attachment, label: "Pictures" %>
+    <% end %>
+    </fieldset>
+  </div>
+</div>
+<hr class="small"></hr>
+<div class="row">
+  <div class="span4 offset4">
+    <%= f.button :submit,
+                  value: "#{ controller.action_name.camelcase } Property",
+                  class: "btn-large btn-success" %>
+    <% end %>
+  </div>
+</div>

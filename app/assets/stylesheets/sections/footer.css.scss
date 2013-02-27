@@ -1,0 +1,24 @@
+/*footer*/
+#push {
+  height: 120px;
+}
+
+footer {
+  .navbar .nav > li > a {
+    padding: 10px;
+  }
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /*Negative indent footer by it's height*/
+  margin: 0 auto -40px;
+}
+
+#copyright {
+  font-size: 13px;
+  padding: 15px;
+}

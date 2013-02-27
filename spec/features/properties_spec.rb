@@ -59,7 +59,7 @@ feature 'Viewing Property listings' do
   scenario 'Viewing a property listing found in "/properties"' do
     visit properties_path
     within('ul.thumbnails > li:first-child') do
-      click_link('Info')
+      find("img[@alt='Medium_property']").click
     end
     expect(page).to have_content('Rent Apartment')
   end

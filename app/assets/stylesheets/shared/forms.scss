@@ -1,0 +1,86 @@
+@import "compass";
+@import "globals/mixins";
+
+input {
+  height: auto !important;
+}
+
+#form-login, #form-signup {
+  @extend %boxed;
+  margin: 70px auto 30px auto;
+  text-align: center;
+  padding: 10px;
+  h3 {
+    margin-bottom: 10px;
+    color: #676767;
+  }
+  input {
+    padding: 10px;
+    margin-top: 20px;
+    width: 70%;
+  }
+  .btn {
+    width: 40%;
+  }
+  span.help-inline {
+    display: block;
+  }
+}
+
+#form-property {
+  @extend %boxed;
+  legend, .pictures {
+    text-align: left;
+  }
+  input {
+    padding: 8px;
+  }
+
+  input.btn {
+    width: 80%;
+  }
+  // override bootstrap margins
+  .form-horizontal .controls {
+    margin-left: 120px;
+  }
+  .form-horizontal .control-label {
+    width: 90px;
+  }
+  .leftpad {
+    padding-left: 55px;
+  }
+  h3 {
+    margin-bottom: 10px;
+    color: #676767;
+    text-align: center;
+  }
+  .pictures div {
+    padding-left: 60px;
+    /*text-align: center;*/
+  }
+}
+
+.search_form {
+  .well {
+     textarea, .uneditable-input {
+      width: 70%;
+    }
+  }
+  #search {
+    float: none;
+    input, textarea, .uneditable-input {
+      width: 95%;
+    }
+  }
+  #filter {
+    label {
+      display: inline;
+      padding-left: 4px;
+    }
+    input[id^="search_"] {
+      float: none;
+      margin-left: 0px;
+      width: 60px;
+    }
+  }
+}
