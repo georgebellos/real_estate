@@ -60,7 +60,8 @@ class Property < ActiveRecord::Base
         end
       end
 
-      sort { by :price, :asc }
+      params[:sort] ||= 'asc'
+      sort { by :price, params[:sort] }
     end
   end
 

@@ -81,8 +81,26 @@ feature 'Sort Search Results', :elasticsearch do
   scenario 'Sort search results by price in ascending order by default' do
     fill_in 'search[query]', with: 'Buy'
     click_button 'Filter'
-    within(:xpath, '//div/div/div/ul/li[1]') do
-      expect(find(:xpath, './/div/div/h5/span').text).to eql("500 $")
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
+    end
+  end
+
+  scenario 'Sort search results by price in descending order' do
+    fill_in 'search[query]', with: 'Buy'
+    click_button 'Filter'
+    click_link 'Highest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('1000 $')
+    end
+  end
+
+  scenario 'Sort search results by price in ascending order' do
+    fill_in 'search[query]', with: 'Buy'
+    click_button 'Filter'
+    click_link 'Lowest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
     end
   end
 end
