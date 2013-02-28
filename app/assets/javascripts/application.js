@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-alert
 //= require bootstrap-tab
+//= require bootstrap-dropdown
 //= require_tree .

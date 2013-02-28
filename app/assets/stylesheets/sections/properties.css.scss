@@ -3,8 +3,12 @@
 
 .results {
   border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-  margin: 15px auto 15px auto;
+  margin: 40px auto;
+  h4 {
+  line-height: 15px;
+  }
 }
+
 
 .listings {
   .thumbnail {

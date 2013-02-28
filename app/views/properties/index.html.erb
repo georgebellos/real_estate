@@ -1,41 +1,59 @@
 <%= title("Listings")%>
 
-<div class="results">
-  <h3 class="text-right">
-    Showing <%= @properties.count %> of <%= @properties.total_count %> results
-  </h3>
+<div class="results row">
+  <div class="span4">
+    <h4>
+      Showing <%= @properties.count %> of <%= @properties.total_count %> results
+    </h4>
+  </div>
+  <% if params[:search].present? %>
+  <div class="pull-right">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        Sort By
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Price: Highest first', params.merge(:sort => 'desc') %>
+        <li><%= link_to 'Price: Lowest first', params.merge(:sort => 'asc') %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
 </div>
 <div class="row">
   <div class="span9">
     <div class="listings">
       <div class="row">
         <div class="span9">
-          <ul class="thumbnails">
-          <% @properties.each do |property| %>
-            <li class="span3">
-            <%= link_to property_path(property) do %>
-              <div class="thumbnail">
+          <section>
+            <ul class="thumbnails">
+              <% @properties.each do |property| %>
+                <li class="span3">
+              <%= link_to property_path(property) do %>
+                <div class="thumbnail">
                 <%= image_tag thumbnail(property) %>
               <% end %>
-              <div class="info">
-                <h5><%= summary(property) %>
-                <small> <%= property.floor_size %> m²</small>
-                  <span id="price" class="label label-success">
-                    <%= property.price %> $
-                  </span>
-                </h5>
-                <p>
-                <%= property.city %> <%= property.street %> -
-                <%= property.bedroom %> Rooms
-                </p>
-                <%= link_to "Marks as favorite",
-                  favorite_property_path(property, type: "favorite"),
-                  method: "post" %>
+                <div class="info">
+                  <h5><%= summary(property) %>
+                  <small> <%= property.floor_size %> m²</small>
+                    <span id="price" class="label label-success">
+                      <%= property.price %> $
+                    </span>
+                  </h5>
+                  <p>
+                  <%= property.city %> <%= property.street %> -
+                  <%= property.bedroom %> Rooms
+                  </p>
+                  <%= link_to "Marks as favorite",
+                    favorite_property_path(property, type: "favorite"),
+                    method: "post" %>
+                </div>
               </div>
-            </div>
-          </li>
-            <% end %>
-        </ul>
+            </li>
+              <% end %>
+          </ul>
+        <section>
         <%= paginate @properties %>
         </div>
       </div>

@@ -60,4 +60,47 @@ feature 'Search', :elasticsearch do
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
   end
+
+end
+
+feature 'Sort Search Results', :elasticsearch do
+  background do
+    Property.tire.index.delete
+    Property.tire.index.create
+    @user = create :user
+    create :property, status: 'Buy', category: 'Apartment',
+           street: 'Kefalinias', price: 1000, bedroom: 8, floor_size: 1000,
+           user: @user
+    create :property, status: 'Buy', category: 'Triplex', street: 'Doiranis',
+                               price: 500, bedroom: 4, floor_size: 350,
+                               user: @user
+    Property.tire.index.refresh
+    visit properties_path
+  end
+
+  scenario 'Sort search results by price in ascending order by default' do
+    fill_in 'search[query]', with: 'Buy'
+    click_button 'Filter'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
+    end
+  end
+
+  scenario 'Sort search results by price in descending order' do
+    fill_in 'search[query]', with: 'Buy'
+    click_button 'Filter'
+    click_link 'Highest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('1000 $')
+    end
+  end
+
+  scenario 'Sort search results by price in ascending order' do
+    fill_in 'search[query]', with: 'Buy'
+    click_button 'Filter'
+    click_link 'Lowest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
+    end
+  end
 end

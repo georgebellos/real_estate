@@ -60,9 +60,8 @@ class Property < ActiveRecord::Base
         end
       end
 
-      #facet 'categories' do
-      #terms :category
-      #end
+      params[:sort] ||= 'asc'
+      sort { by :price, params[:sort] }
     end
   end
 
