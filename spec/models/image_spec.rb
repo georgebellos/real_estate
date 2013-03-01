@@ -38,8 +38,8 @@ describe Image do
     end
 
     describe 'small' do
-      it 'scales down an image to be exactly 200 by 200 pixels' do
-        expect((create :image).attachment.small).to have_dimensions(200,200)
+      it 'scales down an image to be exactly 50 by 50 pixels' do
+        expect((create :image).attachment.small).to have_dimensions(50,50)
       end
     end
 
