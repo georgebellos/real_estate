@@ -32,7 +32,7 @@
                 <li class="span3">
               <%= link_to property_path(property) do %>
                 <div class="thumbnail">
-                <%= image_tag thumbnail(property) %>
+                <%= image_tag thumbnail(property, :medium) %>
               <% end %>
                 <div class="info">
                   <h5><%= summary(property) %>
