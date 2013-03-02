@@ -122,6 +122,7 @@ feature 'Favorite property listings' do
     page.set_rack_session(user_id: @user.id)
     visit property_path(@other_property)
     click_link 'Marks as favorite'
+    visit property_path(@other_property)
     click_link 'Marks as unfavorite'
     expect(page).to have_content('You unfavorited Apartment at Doiranis')
   end

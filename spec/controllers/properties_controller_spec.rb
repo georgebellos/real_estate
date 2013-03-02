@@ -249,9 +249,9 @@ describe PropertiesController do
           }.to change(@user.favorites, :count).by(1)
         end
 
-        it 'redirects back to the show template' do
+        it 'redirects back to the user account' do
           post :favorite, id: @other_property, type: 'favorite'
-          expect(response).to redirect_to property_path(@other_property)
+          expect(response).to redirect_to user_path(@user)
         end
 
         it 'sets a flash[:notice] message' do
@@ -269,9 +269,9 @@ describe PropertiesController do
           }.to change(@user.favorites, :count).by(-1)
         end
 
-        it 'redirects back to the show template' do
+        it 'redirects back to the user account' do
           post :favorite, id: @other_property, type: 'unfavorite'
-          expect(response).to redirect_to property_path(@other_property)
+          expect(response).to redirect_to user_path(@user)
         end
 
         it 'sets a flash[:notice] message' do

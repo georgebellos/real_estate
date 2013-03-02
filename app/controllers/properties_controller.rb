@@ -30,6 +30,21 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def filter
+    @search = Property.filter(params[:search])
+    render :index
+  end
+
+  def rent
+    @properties = Property.rent.page(params[:page]).per(12)
+    render :index
+  end
+
+  def buy
+    @properties = Property.buy.page(params[:page]).per(12)
+    render :index
+  end
+
   def edit
     @property = Property.find(params[:id])
   end
@@ -57,12 +72,12 @@ class PropertiesController < ApplicationController
       redirect_to property_path(@property)
     elsif params[:type] == 'favorite'
       current_user.favorites << @property
-      redirect_to property_path(@property),
+      redirect_to user_path(current_user),
         notice: "You favorited #{ @property.category } at #{ @property.street }"
     else
       params[:type] == 'unfavorite'
       current_user.favorites.delete(@property)
-      redirect_to property_path(@property),
+      redirect_to user_path(current_user),
         notice: "You unfavorited #{ @property.category } at #{ @property.street }"
     end
   end
