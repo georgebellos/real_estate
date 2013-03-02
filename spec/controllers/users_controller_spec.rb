@@ -44,4 +44,27 @@ describe UsersController do
       end
     end
   end
+
+  describe "Get #show" do
+    before do
+      @user = create :user
+      session[:user_id] = @user.id
+    end
+
+    it 'assigns the requested user to @user' do
+      get :show, id: @user
+      expect(assigns :user).to be_a(User)
+    end
+
+    it 'renders the :show template' do
+      get :show, id: @user
+      expect(response).to render_template :show
+    end
+
+    it 'redirects to root path for non correct users' do
+      @other_user = create :user
+      get :show, id: @other_user
+      expect(response).to redirect_to root_url
+    end
+  end
 end
