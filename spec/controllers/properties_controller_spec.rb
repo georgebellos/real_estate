@@ -237,9 +237,16 @@ describe PropertiesController do
         @other_property = create(:property)
       end
 
-      it 'redirects to show template when a user favorites his own listings' do
-       post :favorite, id: @property, type: 'favorite'
-       expect(response).to redirect_to property_path(@property)
+      context 'when a user favorites his own listings' do
+        it 'redirects to show template' do
+          post :favorite, id: @property, type: 'favorite'
+          expect(response).to redirect_to property_path(@property)
+        end
+
+        it 'set a flash[:alert] message' do
+          post :favorite, id: @property, type: 'favorite'
+          expect(flash[:alert]).to eql 'You can not favorite a listing you have created'
+        end
       end
 
       context 'when a user favorites a property' do
@@ -249,7 +256,7 @@ describe PropertiesController do
           }.to change(@user.favorites, :count).by(1)
         end
 
-        it 'redirects back to the user account' do
+        it 'redirects to the user account' do
           post :favorite, id: @other_property, type: 'favorite'
           expect(response).to redirect_to user_path(@user)
         end
@@ -257,6 +264,20 @@ describe PropertiesController do
         it 'sets a flash[:notice] message' do
           post :favorite, id: @other_property, type: 'favorite'
           expect(flash[:notice]).to eql('You favorited Apartment at Doiranis')
+        end
+      end
+
+      context 'when a user favorites an already favorited property' do
+        before { post :favorite, id: @other_property, type: 'favorite' }
+
+        it 'redirects to the user account' do
+          post :favorite, id: @other_property, type: 'favorite'
+          expect(response).to redirect_to user_path(@user)
+        end
+
+        it 'sets a flash[:alert] message' do
+          post :favorite, id: @other_property, type: 'favorite'
+          expect(flash[:alert]).to eql('You have already favorited this property')
         end
       end
 
