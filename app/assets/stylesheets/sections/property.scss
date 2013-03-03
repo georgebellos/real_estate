@@ -68,6 +68,9 @@
 .favlist {
   @extend %boxed;
   padding: 10px;
+  ul li:first-child > a {
+    font-weight: bold;
+  }
   li {
     list-style-type: none;
   }
