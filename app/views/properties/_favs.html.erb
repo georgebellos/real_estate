@@ -1,0 +1,24 @@
+<% if signed_in? %>
+  <div class="favlist">
+    <div>
+      <ul class="nav nav-tabs nav-stacked">
+        <li class="active"><a href="#">Favorites
+          <label class="badge badge-important pull-right">
+            <%= current_user.favorites.size %>
+          </label>
+        </a><li>
+        <% current_user.favorites.take(4).each do |property| %>
+        <li>
+          <%= link_to property_path(property) do %>
+          <%= image_tag thumbnail(property, :small) %>
+          <%= property.category %> <%= property.price %> $
+        </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to "All favorites", user_path(current_user),
+                class: "btn btn-small btn-info" %>
+    <%= link_to "Clear Favorites", "#", class: "btn btn-small btn-danger" %>
+  </div>
+<% end %>

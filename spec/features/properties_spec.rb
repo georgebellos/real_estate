@@ -122,6 +122,7 @@ feature 'Favorite property listings' do
     page.set_rack_session(user_id: @user.id)
     visit property_path(@other_property)
     click_link 'Marks as favorite'
+    visit property_path(@other_property)
     click_link 'Marks as unfavorite'
     expect(page).to have_content('You unfavorited Apartment at Doiranis')
   end
@@ -129,5 +130,12 @@ feature 'Favorite property listings' do
   scenario 'A user can not mark as favorite his own listings' do
     visit property_path(@property)
     expect(page).not_to have_content('Mark as favorite')
+  end
+
+  scenario 'A user can see what listings has favorite' do
+    page.set_rack_session(user_id: @user.id)
+    visit property_path(@other_property)
+    click_link 'Marks as favorite'
+    expect(page).to have_content('Rent Apartment')
   end
 end

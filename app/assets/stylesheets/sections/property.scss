@@ -54,13 +54,24 @@
   @extend %boxed;
   padding: 10px;
   ul li:first-child > a {
-    background: $theme-color;
+    background: white;
     font-weight: bold;
     // disable hover effect on titles
     &:hover {
       opacity:1.0;
       box-shadow:none;
-      background: $theme-color;
+      background: white;
     }
+  }
+}
+
+.favlist {
+  @extend %boxed;
+  padding: 10px;
+  ul li:first-child > a {
+    font-weight: bold;
+  }
+  li {
+    list-style-type: none;
   }
 }

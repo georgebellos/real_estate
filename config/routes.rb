@@ -3,7 +3,7 @@ Katikia::Application.routes.draw do
   get '/about' => 'pages#about'
   get '/contact' => 'pages#contact'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 
   resources :properties do
     collection do

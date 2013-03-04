@@ -1,7 +1,7 @@
 module PropertiesHelper
-  def thumbnail(property)
+  def thumbnail(property, size)
     image = property.images.first
-    image ? image.attachment.url(:medium) : Image.new.attachment.url
+    image ? image.attachment.url(size) : Image.new.attachment.url
   end
 
   def property_search_results(properties)
@@ -22,4 +22,3 @@ module PropertiesHelper
     end
   end
 end
-
