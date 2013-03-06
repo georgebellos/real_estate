@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy, :favorite]
+  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy ]
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -66,17 +66,6 @@ class PropertiesController < ApplicationController
     redirect_to properties_path
   end
 
-  def favorite
-    @property = Property.find(params[:id])
-    if current_user.properties.include?(@property)
-      redirect_to property_path(@property),
-        alert: 'You can not favorite a listing you have created'
-    elsif params[:type] == 'favorite'
-      make_favorite(@property)
-    elsif params[:type] == 'unfavorite'
-      remove_favorite(@property)
-    end
-  end
 
   private
   def signed_in
@@ -87,20 +76,4 @@ class PropertiesController < ApplicationController
     redirect_to root_path if current_user.properties.find_by_id(params[:id]).nil?
   end
 
-  def make_favorite(property)
-    if current_user.favorites.include?(@property)
-      redirect_to user_path(current_user),
-      alert: 'You have already favorited this property'
-    else
-      current_user.favorites << @property
-      redirect_to user_path(current_user),
-      notice: "You favorited #{ @property.category } at #{ @property.street }"
-    end
-  end
-
-  def remove_favorite(property)
-    current_user.favorites.delete(@property)
-    redirect_to user_path(current_user),
-      notice: "You unfavorited #{ @property.category } at #{ @property.street }"
-  end
 end

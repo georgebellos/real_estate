@@ -17,8 +17,8 @@
         <% end %>
       </ul>
     </div>
-    <%= link_to "All favorites", user_path(current_user),
+    <%= link_to "All favorites", favorites_properties_path,
                 class: "btn btn-small btn-info" %>
-    <%= link_to "Clear Favorites", "#", class: "btn btn-small btn-danger" %>
+    <%= link_to "Clear Favorites", favorites_properties_path, method: "delete", class: "btn btn-small btn-danger" %>
   </div>
 <% end %>

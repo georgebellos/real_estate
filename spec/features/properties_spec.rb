@@ -65,6 +65,18 @@ feature 'Viewing Property listings' do
   end
 end
 
+feature 'Viewing a property listing' do
+  background do
+    @property = create :property_with_images
+  end
+
+  scenario 'Viewing a property listing' do
+    visit property_path(@property)
+    expect(page).to have_content('Rent Apartment')
+    expect(page).to have_selector('.img-polaroid')
+  end
+end
+
 feature 'Editing Property listings', :vcr do
   background do
     @user = create :user
@@ -104,38 +116,3 @@ feature 'Deleting Property listings' do
   end
 end
 
-feature 'Favorite property listings' do
-  background do
-    @user = create :user
-    @property = create :property, user: @user
-    @other_property = create :property
-  end
-
-  scenario 'Mark a property listing as favorite' do
-    page.set_rack_session(user_id: @user.id)
-    visit property_path(@other_property)
-    click_link 'Marks as favorite'
-    expect(page).to have_content('You favorited Apartment at Doiranis')
-  end
-
-  scenario 'Mark a property listing as unfavorite' do
-    page.set_rack_session(user_id: @user.id)
-    visit property_path(@other_property)
-    click_link 'Marks as favorite'
-    visit property_path(@other_property)
-    click_link 'Marks as unfavorite'
-    expect(page).to have_content('You unfavorited Apartment at Doiranis')
-  end
-
-  scenario 'A user can not mark as favorite his own listings' do
-    visit property_path(@property)
-    expect(page).not_to have_content('Mark as favorite')
-  end
-
-  scenario 'A user can see what listings has favorite' do
-    page.set_rack_session(user_id: @user.id)
-    visit property_path(@other_property)
-    click_link 'Marks as favorite'
-    expect(page).to have_content('Rent Apartment')
-  end
-end

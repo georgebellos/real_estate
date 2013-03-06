@@ -120,13 +120,13 @@
             <% if !current_user || !current_user.favorites.include?(@property) %>
             <li class=<%= "disabled" if current_user && current_user.properties.include?(@property) %> >
             <%= link_to "<i class=icon-star></i> Marks as favorite".html_safe,
-                favorite_property_path(@property, type: "favorite"),
+                favorites_properties_path(id: @property),
                 method: "post" %></li>
             <% end %>
             <% if current_user && current_user.favorites.include?(@property) %>
-            <li><%= link_to "<i class=icon-star-empty></i> Marks as unfavorite".html_safe,
-                    favorite_property_path(@property, type: "unfavorite"),
-                    method: "post" %></li>
+            <li><%= link_to "<i class=icon-star-empty></i> Remove from favorites".html_safe,
+                    favorites_properties_path(id: @property),
+                    method: "put" %></li>
             <% end %>
             <li><%= link_to "<i class=icon-search></i> View similar properties".html_safe, '#' %></li>
             <li><%= link_to "<i class=icon-tasks></i> Compare it".html_safe, '#' %></li>

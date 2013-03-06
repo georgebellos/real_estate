@@ -46,7 +46,7 @@
                   <%= property.bedroom %> Rooms
                   </p>
                   <%= link_to "Marks as favorite",
-                    favorite_property_path(property, type: "favorite"),
+                    favorites_properties_path(id: property),
                     method: "post" %>
                 </div>
               </div>

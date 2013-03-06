@@ -1,29 +1,3 @@
 <%= title("Your Account") %>
-<%= @user.name %>
-<h3> You have favorited the followings listings </h3>
 <hr class="small"></hr>
-<table class="table table-hover table-striped">
-  <thead>
-    <th> Image </th>
-    <th> Description </th>
-    <th> Address </th>
-    <th> Price </th>
-    <th> Days on Market </th>
-  </head>
-  <tbody>
-  <% @user.favorites.each do |property| %>
-    <tr>
-      <td> <%= image_tag thumbnail(property, :small) %> </td>
-      <td> <%= property.title %></td>
-      <td> <%= property.street %> </td>
-      <td> <%= property.price %> </td>
-      <td> <%= (Date.today - property.created_at.to_date).to_i %>
-      <td> <%= link_to 'View', property_path(property) %></td>
-      <td> <%= link_to 'Remove from favorites',
-                       favorite_property_path(property, type: 'unfavorite'),
-                       method: 'post', confirm: 'Are you sure you want to remove this property from your favorites' %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<%= link_to 'Favorites', favorites_properties_path %>
