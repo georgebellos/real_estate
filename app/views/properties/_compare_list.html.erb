@@ -1,0 +1,24 @@
+<% if !session[:compare_list].nil? %>
+  <div class="favlist">
+    <div>
+      <ul class="nav nav-tabs nav-stacked">
+        <li class="active"><a href="#">Compare List
+          <label class="badge badge-important pull-right">
+            <%= session[:compare_list].size %> of 3
+          </label>
+        </a><li>
+        <% session[:compare_list].map{|id| Property.find_by_id(id) }.each do |property| %>
+        <li>
+          <%= link_to property_path(property) do %>
+          <%= image_tag thumbnail(property, :small) %>
+          <%= property.category %> <%= property.price %> $
+        </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to "Show list", compare_properties_path,
+                class: "btn btn-small btn-info" %>
+    <%= link_to "Clear list", compare_properties_path, method: "delete", class: "btn btn-small btn-danger" %>
+  </div>
+<% end %>
