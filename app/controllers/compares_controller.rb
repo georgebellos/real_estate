@@ -23,4 +23,9 @@ class ComparesController < ApplicationController
        @properties = session[:compare_list].map{|id| Property.find_by_id(id) }
      end
   end
+
+  def update
+    session[:compare_list].delete((params[:id]).to_i) unless session[:compare_list].nil?
+    redirect_to compare_properties_path
+  end
 end

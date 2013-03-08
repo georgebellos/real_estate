@@ -20,6 +20,7 @@ Katikia::Application.routes.draw do
       controller :compares do
         get 'compare' => :index
         post 'compare' => :create
+        put 'compare' => :update
       end
     end
   end

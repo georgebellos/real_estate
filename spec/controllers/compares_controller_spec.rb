@@ -69,4 +69,21 @@ describe ComparesController do
       end
     end
   end
+
+  describe 'Put #update' do
+    before do
+      @property = create :property
+      post :create, id: @property
+    end
+
+    it 'redirects to compare properties page' do
+      put :update, id: @property.id
+      expect(response).to redirect_to compare_properties_path
+    end
+
+    it 'removes one property from compare list' do
+      put :update, id: @property
+      expect(session[:compare_list].size).to eql(0)
+    end
+  end
 end
