@@ -16,6 +16,11 @@ Katikia::Application.routes.draw do
         delete 'favorites' => :destroy
         put 'favorites' => :update
       end
+
+      controller :compares do
+        get 'compare' => :index
+        post 'compare' => :create
+      end
     end
   end
 

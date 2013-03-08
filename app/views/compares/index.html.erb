@@ -1,0 +1,77 @@
+<%= title("Compare Properties") %>
+
+<h3>compare properties</h3>
+<hr class="small"></hr>
+<table class="table table-hover table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 200px"> </th>
+      <% @properties.each do |property| %>
+        <th>
+        <div class="title">
+          <%= link_to property_path(property) do %>
+            <%= property.title %>
+          <%= image_tag thumbnail(property, :small) %>
+        <% end %>
+          <%= property.street %>
+        </div>
+      </th>
+    <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Property Type</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.status %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.price %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Floor Size</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.floor_size %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Bedrooms</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.bedroom %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Bathrooms</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.bathroom %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Parking</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.parking %> </td>
+    <% end %>
+    </tr>
+    <tr>
+      <td>Year build</td>
+      <% @properties.each do |property| %>
+      <td><%=  property.year %> </td>
+    <% end %>
+    </tr>
+  </tbody>
+    <tr>
+      <td>Remove from list</td>
+      <% @properties.each do |property| %>
+  <td><%= link_to "Remove from list", compare_properties_path(id: property.id),
+                  class: "btn btn-danger btn-mini", method: "put"  %> </td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "Reset compare list", compare_properties_path, class: "btn btn-danger", method: :delete %>
+
