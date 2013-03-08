@@ -86,4 +86,17 @@ describe ComparesController do
       expect(session[:compare_list].size).to eql(0)
     end
   end
+
+  describe 'GET #destroy' do
+    before { post :create, id: (create :property) }
+    it 'redirects to properties page' do
+      delete :destroy
+      expect(response).to redirect_to properties_path
+    end
+
+    it 'resets the compare list' do
+      delete :destroy
+      expect(session[:compare_list]).to be_empty
+    end
+  end
 end

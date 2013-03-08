@@ -28,4 +28,9 @@ class ComparesController < ApplicationController
     session[:compare_list].delete((params[:id]).to_i) unless session[:compare_list].nil?
     redirect_to compare_properties_path
   end
+
+  def destroy
+    session[:compare_list] = []
+    redirect_to properties_path
+  end
 end
