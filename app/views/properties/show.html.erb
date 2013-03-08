@@ -129,7 +129,7 @@
                     method: "put" %></li>
             <% end %>
             <li><%= link_to "<i class=icon-search></i> View similar properties".html_safe, '#' %></li>
-            <li><%= link_to "<i class=icon-tasks></i> Compare it".html_safe, '#' %></li>
+            <li><%= link_to "<i class=icon-tasks></i> Compare it".html_safe, compare_properties_path(id: @property.id), method: "post" %></li>
             <li><a href="#" onclick="window.print(); return false;"><i class=icon-print></i> Print Listing</a></li>
             <li><%= link_to "<i class=icon-envelope></i> Email this listing".html_safe, '#' %></li>
           </ul>
@@ -140,6 +140,11 @@
     <div class = "row">
       <div class="span3">
         <%= render "favs" %>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="span3">
+        <%= render "compare_list" %>
       </div>
     </div>
   </div>
