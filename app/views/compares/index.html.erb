@@ -1,7 +1,13 @@
 <%= title("Compare Properties") %>
 
-<h3>compare properties</h3>
-<hr class="small"></hr>
+<div class="results row">
+  <div class="span7">
+    <h4>compare properties</h4>
+  </div>
+  <div class="pull-right">
+    <%= link_to "Reset compare list", compare_properties_path, class: "btn btn-mini btn-danger", method: :delete %>
+  </div>
+</div>
 <table class="table table-hover table-bordered table-striped">
   <thead>
     <tr>
@@ -10,10 +16,15 @@
         <th>
         <div class="title">
           <%= link_to property_path(property) do %>
-            <%= property.title %>
-          <%= image_tag thumbnail(property, :small) %>
+            <%= property.title %></br>
+            <%= property.street %> <%= property.street_number %>
+              <div class="">
+                <%= image_tag thumbnail(property, :medium) %>
+              </div>
         <% end %>
-          <%= property.street %>
+        </div>
+        <div class="subtitle">
+          Price: <%= property.price %> $
         </div>
       </th>
     <% end %>
@@ -26,13 +37,7 @@
       <td><%=  property.status %> </td>
     <% end %>
     </tr>
-    <tr>
-      <td>Price</td>
-      <% @properties.each do |property| %>
-      <td><%=  property.price %> </td>
-    <% end %>
-    </tr>
-    <tr>
+   <tr>
       <td>Floor Size</td>
       <% @properties.each do |property| %>
       <td><%=  property.floor_size %> </td>
@@ -72,6 +77,3 @@
     </tr>
   </tbody>
 </table>
-
-<%= link_to "Reset compare list", compare_properties_path, class: "btn btn-danger", method: :delete %>
-
