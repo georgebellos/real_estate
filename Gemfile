@@ -5,6 +5,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
+gem 'devise', '~> 2.2.3'
 
 gem 'carrierwave', '~> 0.7.1'
 gem 'mini_magick', '~> 3.4'
