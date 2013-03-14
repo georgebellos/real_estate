@@ -4,7 +4,7 @@
       <ul class="nav nav-tabs nav-stacked">
         <li class="active"><a href="#">Favorites
           <label class="badge badge-important pull-right">
-            <%= current_user.favorites.size %>
+            <%= current_user.favorites.take(4).size %> of <%= current_user.favorites.size %>
           </label>
         </a><li>
         <% current_user.favorites.take(4).each do |property| %>
@@ -19,6 +19,7 @@
     </div>
     <%= link_to "All favorites", favorites_properties_path,
                 class: "btn btn-small btn-info" %>
-    <%= link_to "Clear Favorites", favorites_properties_path, method: "delete", class: "btn btn-small btn-danger" %>
+    <%= link_to "Clear Favorites", favorites_properties_path, method: "delete",
+                class: "btn btn-small btn-danger" %>
   </div>
 <% end %>
