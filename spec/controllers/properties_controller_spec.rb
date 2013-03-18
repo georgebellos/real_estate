@@ -6,19 +6,14 @@ describe PropertiesController do
     describe 'Get #new' do
       it 'requires login' do
         get :new
-        expect(response).to redirect_to signin_path
-      end
-
-      it 'sets a flash[:notice] message' do
-        post :create, property: attributes_for(:property)
-        expect(flash[:notice]).to eql('Please sign in')
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe 'Post #create' do
       it 'requires login' do
         post :create, property: attributes_for(:property)
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
@@ -26,7 +21,7 @@ describe PropertiesController do
       it 'requires login' do
         property = create :property
         get :edit, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
@@ -34,7 +29,7 @@ describe PropertiesController do
       it 'requires login' do
         property = create(:property)
         put :update, id: property, property: attributes_for(:property)
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
@@ -42,7 +37,7 @@ describe PropertiesController do
       it 'requires login' do
         property = create(:property)
         delete :destroy, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -50,7 +45,7 @@ describe PropertiesController do
   describe 'User access' do
     before do
       @user = create(:user)
-      session[:user_id] = @user.id
+      sign_in @user
     end
 
     describe 'GET #new' do

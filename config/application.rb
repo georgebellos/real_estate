@@ -69,5 +69,8 @@ module Katikia
       g.test_framework :rspec, view_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    # dont load models or access db when precompiling assets
+    config.assets.initialize_on_precompile = false
   end
 end
