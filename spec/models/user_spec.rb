@@ -21,14 +21,6 @@ describe User do
       expect(build(:user, email: 'test@email.com')).not_to be_valid
     end
 
-    it 'is invalid without a password' do
-      expect(build(:user, password: nil)).not_to be_valid
-    end
-
-    it 'is invalid without a password confirmation' do
-      expect(build(:user, password_confirmation: nil)).not_to be_valid
-    end
-
     it 'is invalid when password does not match password confirmation' do
       expect(build(:user, password_confirmation: "not_foobar")).not_to be_valid
     end

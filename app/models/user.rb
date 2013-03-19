@@ -7,6 +7,4 @@ class User < ActiveRecord::Base
   has_many :properties, dependent: :destroy
   has_many :favorite_properties
   has_many :favorites, through: :favorite_properties, source: :property
-
-  validates :password_confirmation, presence: true
 end
