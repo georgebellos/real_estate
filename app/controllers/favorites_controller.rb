@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_filter :signed_in, only: [:create, :index, :destroy, :update]
+  before_filter :authenticate_user!
 
   def create
     @property = Property.find(params[:id])

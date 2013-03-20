@@ -6,28 +6,28 @@ describe FavoritesController do
       it 'requires login' do
         property = create(:property)
         post :create, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
     describe 'Get :index' do
       it 'requires login' do
         property = create(:property)
         post :create, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
     describe 'Delete :destroy' do
       it 'requires login' do
         property = create(:property)
         post :create, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
     describe 'Put :update' do
       it 'requires login' do
         property = create(:property)
         post :create, id: property
-        expect(response).to redirect_to signin_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -35,7 +35,7 @@ describe FavoritesController do
   describe 'User accesss' do
     before do
       @user = create(:user)
-      session[:user_id] = @user.id
+      sign_in @user
     end
 
     describe 'Post #create' do

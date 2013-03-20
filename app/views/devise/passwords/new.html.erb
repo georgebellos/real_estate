@@ -1,0 +1,18 @@
+<%= title("Forgot Password") %>
+<div class="row">
+  <div class="span7 offset2">
+    <div id="form-signup">
+      <h3>Email to send reset password instructions</h3>
+      <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+        <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, label: false, placeholder: "Email", :required => true, :autofocus => true %>
+      </div>
+
+      <div>
+        <%= f.button :submit, "Reset password", class: "btn, btn-large btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

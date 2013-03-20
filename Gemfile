@@ -5,6 +5,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
+gem 'devise', '~> 2.2.3'
 
 gem 'carrierwave', '~> 0.7.1'
 gem 'mini_magick', '~> 3.4'
@@ -27,7 +28,8 @@ end
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
 
 group :test do
-  gem 'capybara', '~> 2.0.0'
+  gem "capybara", "~> 2.1.0.beta1"
+  gem "selenium-webdriver", "~> 2.31.0"
   gem 'factory_girl_rails', '~> 4.1.0'
   gem 'database_cleaner'
   gem 'faker'

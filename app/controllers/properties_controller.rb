@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_filter :signed_in, only: [:new, :create, :edit, :update, :destroy ]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -68,12 +68,8 @@ class PropertiesController < ApplicationController
 
 
   private
-  def signed_in
-    redirect_to signin_path, notice: 'Please sign in' unless signed_in?
-  end
 
   def correct_user
     redirect_to root_path if current_user.properties.find_by_id(params[:id]).nil?
   end
-
 end

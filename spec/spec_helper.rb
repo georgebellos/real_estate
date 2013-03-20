@@ -58,6 +58,9 @@ prefork = lambda do
     #     --seed 1234
     config.order = "random"
 
+    #devise test helpers
+    config.include Devise::TestHelpers, :type => :controller
+
     config.before(:suite) do
       DatabaseCleaner.clean_with(:truncation)
     end
@@ -112,6 +115,7 @@ prefork = lambda do
       end
     end
   end
+
 end
 
 each_run = lambda do

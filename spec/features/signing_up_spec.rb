@@ -8,19 +8,21 @@ In order to create property listings and favorites} do
     visit root_path
     click_link 'Sign Up'
     fill_in 'Email', with: 'foobar@mail.com'
-    fill_in 'Password', with: 'foobar'
-    fill_in 'Password Confirmation', with: 'foobar'
-    expect { click_button 'Create Account'}.to change(User, :count)
-    expect(page).to have_content('You have signed up successfully')
+    fill_in 'Password', with: 'foobar81'
+    fill_in 'Password Confirmation', with: 'foobar81'
+    expect { click_button 'Create Account' }.to change(User, :count)
+    #click_button 'Create Account'
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
   scenario 'Unsuccessfull Sign Up with a form' do
     visit root_path
     click_link 'Sign Up'
     fill_in 'Email', with: 'invalid_email.com'
-    all(:field,'Password').each{|field| field.set('foobar') }
+    fill_in 'Password', with: 'foobar81'
+    fill_in 'Password Confirmation', with: 'foobar81'
     expect{ click_button 'Create Account' }.not_to change(User, :count)
-    expect(page).to have_content('Something went wrong')
+    expect(page).to have_content('Please review the problems below')
   end
 end
 
@@ -31,9 +33,9 @@ feature 'User Sign in' do
     visit root_path
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
-    fill_in 'Password', with: 'foobar'
+    fill_in 'Password', with: 'foobar81'
     click_button 'Login'
-    expect(page).to have_content('You are now signed in')
+    expect(page).to have_content('Signed in successfully.')
   end
 
   scenario 'with invalid credentials' do
@@ -42,7 +44,7 @@ feature 'User Sign in' do
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'wrong password'
     click_button 'Login'
-    expect(page).to have_content('Wrong email or password')
+    expect(page).to have_content('Invalid email or password. ')
   end
 end
 
@@ -55,20 +57,19 @@ feature 'Signed in user' do
     visit root_path
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
-    fill_in 'Password', with: 'foobar'
+    fill_in 'Password', with: 'foobar81'
     click_button 'Login'
     click_link 'Sign Out'
-    expect(page).to have_content('You are now signed out ')
+    expect(page).to have_content('Signed out successfully.')
   end
 
   scenario 'Sign up' do
     visit root_path
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
-    fill_in 'Password', with: 'foobar'
+    fill_in 'Password', with: 'foobar81'
     click_button 'Login'
     expect(page).not_to have_content('Sign in')
-    visit signin_path
     expect(page).to have_content('Sign Out')
   end
 end
