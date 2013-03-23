@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def twitter
+  def all
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
       flash[:notice] = "Signed in!"
@@ -10,4 +10,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.user_attributes"] = user.attributes
     end
   end
+
+  alias_method :twitter, :all
+  alias_method :facebook, :all
+  alias_method :google_oauth2, :all
 end

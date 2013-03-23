@@ -213,7 +213,10 @@ Devise.setup do |config|
   # ==> OmniAuth
   config.omniauth :twitter, ENV["TWITTER_CONSUMERER_KEY"], ENV["TWITTER_CONSUMERER_SECRET"]
 
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], :client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
