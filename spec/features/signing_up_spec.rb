@@ -10,8 +10,7 @@ In order to create property listings and favorites} do
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar81'
     fill_in 'Password Confirmation', with: 'foobar81'
-    expect { click_button 'Create Account' }.to change(User, :count)
-    #click_button 'Create Account'
+    expect { click_link_or_button 'Register your account' }.to change(User, :count)
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
@@ -21,7 +20,7 @@ In order to create property listings and favorites} do
     fill_in 'Email', with: 'invalid_email.com'
     fill_in 'Password', with: 'foobar81'
     fill_in 'Password Confirmation', with: 'foobar81'
-    expect{ click_button 'Create Account' }.not_to change(User, :count)
+    expect{ click_link_or_button 'Register your account' }.not_to change(User, :count)
     expect(page).to have_content('Please review the problems below')
   end
 end
@@ -34,7 +33,7 @@ feature 'User Sign in' do
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar81'
-    click_button 'Login'
+    click_button 'Log in to your account'
     expect(page).to have_content('Signed in successfully.')
   end
 
@@ -43,7 +42,7 @@ feature 'User Sign in' do
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'wrong password'
-    click_button 'Login'
+    click_button 'Log in to your account'
     expect(page).to have_content('Invalid email or password. ')
   end
 end
@@ -58,7 +57,7 @@ feature 'Signed in user' do
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar81'
-    click_button 'Login'
+    click_button 'Log in to your account'
     click_link 'Sign Out'
     expect(page).to have_content('Signed out successfully.')
   end
@@ -68,7 +67,7 @@ feature 'Signed in user' do
     click_link 'Login'
     fill_in 'Email', with: 'foobar@mail.com'
     fill_in 'Password', with: 'foobar81'
-    click_button 'Login'
+    click_button 'Log in to your account'
     expect(page).not_to have_content('Sign in')
     expect(page).to have_content('Sign Out')
   end

@@ -18,8 +18,10 @@
                     hint: "leave it blank if you don't want to change it", required: false %>
         <%= f.input :password_confirmation, label: false,
                     placeholder: "Password Confirmation", required: false %>
-        <%= f.input :current_password, label: false, placeholder: "Current Password",
-                    hint: "we need your current password to confirm your changes", required: true %>
+        <% if f.object.encrypted_password.present? %>
+                      <%= f.input :current_password, label: false, placeholder: "Current Password",
+                        hint: "we need your current password to confirm your changes", required: true %>
+                    <% end %>
       </div>
         <div>
           <%= f.button :submit, "Save Changes", class: "btn btn-large btn-success" %>

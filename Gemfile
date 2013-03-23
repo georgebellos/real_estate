@@ -10,8 +10,8 @@ gem 'devise', '~> 2.2.3'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem "omniauth-google-oauth2"
-gem "omniauth-github"
+gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 gem 'carrierwave', '~> 0.7.1'
 gem 'mini_magick', '~> 3.4'
@@ -34,8 +34,8 @@ end
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
 
 group :test do
-  gem "capybara", "~> 2.1.0.beta1"
-  gem "selenium-webdriver", "~> 2.31.0"
+  gem 'capybara', '~> 2.1.0.beta1'
+  gem 'selenium-webdriver', '~> 2.31.0'
   gem 'factory_girl_rails', '~> 4.1.0'
   gem 'database_cleaner'
   gem 'faker'

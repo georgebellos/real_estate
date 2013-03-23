@@ -1,0 +1,18 @@
+<div class="social">
+  <div class="social-button">
+    <%= link_to "#{social_action } with Twitter", user_omniauth_authorize_path(:twitter), class: "btn", id: "twitter-button" %>
+  </div>
+
+  <div class="social-button">
+    <%= link_to "#{ social_action } with Facebook", user_omniauth_authorize_path(:facebook), class: "btn", id: "facebook-button" %>
+  </div>
+
+  <div class="social-button">
+    <%= link_to "#{ social_action } with Google", user_omniauth_authorize_path(:google_oauth2), class: "btn", id: "google-button" %>
+  </div>
+
+  <% if controller_name == "registrations" %>
+    Already have an acccount? <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <% end %>
+
+</div>
