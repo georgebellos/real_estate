@@ -4,9 +4,9 @@
   <%= link_to "#{ social_action } with Facebook",
     user_omniauth_authorize_path(:facebook), class: "btn", id: "facebook-button" %>
   <%= link_to "#{ social_action } with Google",
-    user_omniauth_authorize_path(:google_oauth2), class: "btn", id: "google-button" %>
+    user_omniauth_authorize_path(:google_oauth2), class: "btn", id: "google-button" %><br />
 
   <% if controller_name == "registrations" %>
-    Already have an acccount? <%= link_to "Log in", new_session_path(resource_name) %><br />
+    Already have an acccount? <%= link_to "Log in", new_session_path(resource_name) %>
   <% end %>
 </div>

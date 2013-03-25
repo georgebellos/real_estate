@@ -114,3 +114,23 @@ input {
     }
   }
 }
+
+#form-account {
+  @extend %boxed;
+  text-align: center;
+  h3 {
+    margin-bottom: 10px;
+    color: #676767;
+  }
+  input {
+    padding: 10px;
+    margin-top: 20px;
+    width: 60%;
+  }
+  .btn {
+    width: 50%;
+  }
+  span.help-inline {
+    display: block;
+  }
+}
