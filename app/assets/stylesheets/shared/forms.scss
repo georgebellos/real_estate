@@ -7,24 +7,54 @@ input {
 
 #form-login, #form-signup {
   @extend %boxed;
-  margin: 20px auto 30px auto;
-  text-align: center;
-  padding: 10px;
-  h3 {
-    margin-bottom: 10px;
-    color: #676767;
-  }
-  input {
+  margin: 60px auto 30px auto;
+  padding: 40px 0px;
+  #user_email, #user_password, #user_name, #user_password_confirmation {
     padding: 10px;
-    margin-top: 20px;
     width: 70%;
   }
+  .input {
+    border-radius: 1px 1px 1px 1px;
+  }
   .btn {
-    width: 40%;
+    border-radius: 1px 1px 1px 1px;
+    border: 0px none;
+    box-shadow: none;
+    text-shadow: none;
   }
-  span.help-inline {
-    display: block;
+  #twitter-button {
+    @extend %flat_button;
+    background-color: rgb(40, 185, 221);
   }
+
+  #facebook-button {
+    @extend %flat_button;
+    background-color: rgb(15, 102, 170);
+  }
+
+  #google-button {
+    @extend %flat_button;
+    background-color: rgb(50, 50, 50);
+  }
+}
+
+.signup-title {
+  margin-bottom: 40px;
+}
+
+.social {
+  margin-top: 20px;
+  max-width: 305px;
+  min-height: 310px;
+}
+
+.social-form{
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.email-form {
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
 #form-property {
@@ -62,7 +92,7 @@ input {
 
 .search_form {
   .well {
-     textarea, .uneditable-input {
+    textarea, .uneditable-input {
       width: 70%;
     }
   }

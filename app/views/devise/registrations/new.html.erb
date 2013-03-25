@@ -1,5 +1,5 @@
 <%= title("Sign Up") %>
-<div class="row" id="signup">
+<div class="row" id="form-signup">
 
   <div class="span7 offset2 signup-title">
     <h1>Register your account</h1>
@@ -18,7 +18,8 @@
         <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :name, label: false, placeholder: 'Name', :autofocus => true%>
+        <%= f.input :name, label: false, placeholder: 'Name (optional)',
+                    :autofocus => true%>
         <%= f.input :email, label: false, placeholder: 'Email' %>
         <% if f.object.password_required? %>
           <%= f.input :password, label: false, placeholder: 'Password'%>
@@ -29,7 +30,7 @@
 
       <div>
         <%= f.button :submit, value: "Register your account",
-                     class: " btn btn-large btn-success" %>
+                     class: "btn btn-large btn-success" %>
       </div>
     <% end %>
     </div>
