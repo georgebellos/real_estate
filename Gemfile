@@ -14,6 +14,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 
 gem 'carrierwave', '~> 0.7.1'
+gem 'fog', '~> 1.10.0'
 gem 'mini_magick', '~> 3.4'
 gem 'geocoder', '~> 1.1.6'
 gem 'gmaps4rails', '~> 1.5.6'
