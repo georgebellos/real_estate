@@ -58,7 +58,7 @@ prefork = lambda do
     #     --seed 1234
     config.order = "random"
 
-    #devise test helpers
+    # devise test helpers
     config.include Devise::TestHelpers, :type => :controller
 
     config.before(:suite) do

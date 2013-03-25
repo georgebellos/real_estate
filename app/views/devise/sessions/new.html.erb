@@ -1,9 +1,18 @@
 <%= title "Sign in" %>
-<div class="row">
-  <div class="span6 offset3">
-    <div id="form-login">
-      <h3>Log in into your account </h3>
-      <hr class='small'></hr>
+<div class="row" id="form-login">
+
+  <div class="span6 offset2 signup-title">
+    <h1>Log in into your account </h1>
+  </div>
+
+  <div class="span4 offset2 social-form">
+  <p class="lead"> Login with a service </p>
+    <%= render "devise/shared/social" %>
+  </div>
+
+  <div class="span5">
+    <div class="email-form">
+  <p class="lead"> Login with your email </p>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
         <%= f.input :email, label: false, placeholder: "Email", autofocus: true %>
@@ -11,11 +20,9 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
       <div>
-        <%= f.button :submit, value: "Login" ,class: "btn btn-large btn-success" %>
+        <%= f.button :submit, value: "Log in to your account" ,class: "btn btn-large btn-success" %>
       </div>
     <% end %>
-
-      <hr class='small'></hr>
       <%= render "devise/shared/links" %>
     </div>
   </div>

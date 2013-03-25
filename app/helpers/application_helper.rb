@@ -25,4 +25,8 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
+  def social_action
+    controller_name != "registrations" ?  "Log in" : "Sign up"
+  end
 end
