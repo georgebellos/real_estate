@@ -26,8 +26,7 @@ feature 'Signed in users can create Listings', :vcr do
 
   scenario 'Creating a property listing without an image' do
     fill_in_property_form
-    expect{ click_button 'New Property' }.to change(Property, :count)
-    expect(page).to have_content('You have created a new property')
+    expect{ click_button 'New Property' }.not_to change(Property, :count)
   end
 
   scenario 'Creating a property listing without valid attributes fails' do
