@@ -64,5 +64,4 @@ group :development do
 end
 
 gem 'foreman'
-gem 'thin'
 gem 'puma'
