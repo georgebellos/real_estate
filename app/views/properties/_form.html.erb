@@ -44,6 +44,7 @@
       <legend><h3>Pictures</h3></legend>
       <%= f.simple_fields_for :images do |img_form| %>
         <%= img_form.input :attachment, label: "Pictures" %>
+        <%= img_form.hidden_field :attachment_cache %>
     <% end %>
     </fieldset>
   </div>
