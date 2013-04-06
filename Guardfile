@@ -28,3 +28,12 @@ notification :tmux,
   :default_message_format => '%s  %s',
   :line_separator => '  ', # since we are single line we need a separator
   :color_location => 'status-right-bg' # to customize which tmux element will change color
+
+guard 'livereload' do
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
+end

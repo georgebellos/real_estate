@@ -61,6 +61,7 @@ group :development do
   gem 'meta_request', '0.2.0'
   gem 'better_errors', '~> 0.3.2'
   gem 'binding_of_caller', '~> 0.6.8'
+  gem 'guard-livereload'
 end
 
 gem 'foreman'
