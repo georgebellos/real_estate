@@ -11,7 +11,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   # background processing via sidekiq
-  #include ::CarrierWave::Backgrounder::Delay
+  include ::CarrierWave::Backgrounder::Delay
 
   # Choose what kind of storage to use for this uploader:
   #storage :fog
