@@ -63,6 +63,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.6.8'
   gem 'guard-livereload'
   gem 'quiet_assets'
+  gem 'sextant'
 end
 
 gem 'foreman'
