@@ -64,6 +64,7 @@ group :development do
   gem 'guard-livereload'
   gem 'quiet_assets'
   gem 'sextant'
+  gem 'guard-spring'
 end
 
 gem 'foreman'

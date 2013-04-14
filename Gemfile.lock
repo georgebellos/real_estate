@@ -134,6 +134,9 @@ GEM
     guard-rspec (2.3.0)
       guard (>= 1.1)
       rspec (~> 2.11)
+    guard-spring (0.0.3)
+      guard
+      spring
     hashie (1.2.0)
     hashr (0.0.22)
     hike (1.2.1)
@@ -299,6 +302,7 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.3.3)
+    spring (0.0.8)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -359,6 +363,7 @@ DEPENDENCIES
   guard
   guard-livereload
   guard-rspec
+  guard-spring
   jquery-rails
   kaminari (~> 0.14.1)
   launchy
