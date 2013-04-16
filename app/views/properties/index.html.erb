@@ -1,7 +1,14 @@
 <%= title("Listings")%>
 
-<div class="results row">
-  <div class="span4">
+<div class="row">
+
+  <aside class="span3 search_form">
+    <%= render "search_form" %>
+    <%= render "compare_list" %>
+    <%= render "favs" %>
+  </aside>
+
+  <div class="span9">
     <h4>
       Showing <%= @properties.count %> of <%= @properties.total_count %> results
     </h4>
@@ -20,58 +27,43 @@
     </div>
   </div>
   <% end %>
-</div>
 
-<div class="row">
-  <div class="span9">
-    <div class="listings">
-      <div class="row">
-        <div class="span9">
-          <section>
-            <ul class="thumbnails">
-              <% @properties.each do |property| %>
-                <li class="span3">
-              <%= link_to property_path(property) do %>
-                <div class="thumbnail">
-                <%= image_tag thumbnail(property, :medium) %>
-              <% end %>
-                <div class="info">
-                  <h5><%= summary(property) %>
-                  <small> <%= property.floor_size %> m²</small>
-                    <span id="price" class="label label-success">
-                      <%= property.price %> $
-                    </span>
-                  </h5>
-                  <p>
-                  <%= property.city %> <%= property.street %> -
-                  <%= property.bedroom %> Rooms
-                  </p>
-                  <%= link_to "Marks as favorite",
-                    favorites_properties_path(id: property),
-                    method: "post" %>
+  <div class="row">
+    <div class="span9">
+      <div class="listings">
+        <div class="row">
+          <div class="span9">
+            <section>
+              <ul class="thumbnails">
+                <% @properties.each do |property| %>
+                  <li class="span3">
+                <%= link_to property_path(property) do %>
+                  <div class="thumbnail">
+                  <%= image_tag thumbnail(property, :medium) %>
+                <% end %>
+                  <div class="info">
+                    <h5><%= summary(property) %>
+                    <small> <%= property.floor_size %> m²</small>
+                      <span id="price" class="label label-success">
+                        <%= property.price %> $
+                      </span>
+                    </h5>
+                    <p>
+                    <%= property.city %> <%= property.street %> -
+                    <%= property.bedroom %> Rooms
+                    </p>
+                    <%= link_to "Marks as favorite",
+                      favorites_properties_path(id: property),
+                      method: "post" %>
+                  </div>
                 </div>
-              </div>
-            </li>
-              <% end %>
-          </ul>
-        <section>
-        <%= paginate @properties %>
+              </li>
+                <% end %>
+            </ul>
+          <section>
+          <%= paginate @properties %>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="span3 search_form">
-    <%= render "search_form" %>
-
-    <div class="row">
-      <div class="span3">
-        <%= render "favs" %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="span3">
-        <%= render "compare_list" %>
       </div>
     </div>
   </div>
