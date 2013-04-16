@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="span3">
+  <%= property_search_results(@properties) if params[:search].present? %>
+    <div class="well">
+    <%= form_tag properties_path, method: :get, name: :search do %>
+      <div id="search">
+        <%= text_field_tag "search[query]",
+          (params[:search][:query] if params[:search]) %>
+      </div>
+      <%= submit_tag "Quick Search", name: nil, class: "btn btn-small" %>
+      <hr></hr>
+      <div id="filter">
+        <h4>Filter By category</h4>
+        <% %w{ Apartment Condo Land Duplex Triplex House }.each do |type| %>
+          <%= check_box_tag "search[types][]", type,
+              (params[:search][:types].try(:include?,type) if params[:search]),
+              id: type, class: "inline" %>
+          <%= label_tag "property[types][]", type, class: "" %></br>
+          <% end %>
+          <hr></hr>
+        <h5>Price</h5>
+        <%= search_field_tag("search[price_from]",
+                              (params[:search][:price_from] if params[:search]),
+                              placeholder: 'from') %> -
+        <%= search_field_tag("search[price_to]",
+                              (params[:search][:price_to] if params[:search]),
+                              placeholder: 'to') %>
+        <h5> Bedrooms </h5>
+        <%= search_field_tag("search[bedrooms_from]",
+                              (params[:search][:bedrooms_from] if params[:search]),
+                              placeholder: 'from') %> -
+        <%= search_field_tag("search[bedrooms_to]",
+                              (params[:search][:bedrooms_to] if params[:search]),
+                              placeholder: 'to') %>
+        <h5> Floor Size </h5>
+        <%= search_field_tag("search[floor_size_from]",
+                              (params[:search][:floor_size_from] if params[:search]),
+                              placeholder: 'from') %> -
+        <%= search_field_tag("search[floor_size_to]",
+                              (params[:search][:floor_size_to] if params[:search]),
+                              placeholder: 'to') %>
+        <p>
+        <%= submit_tag "Filter", name: nil, class: "btn btn-medium btn-success" %>
+        <%= link_to 'Reset', properties_path, class: "btn btn-medium btn-danger" %>
+        </p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
