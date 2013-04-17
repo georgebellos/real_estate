@@ -1,46 +1,47 @@
 <%= title("Listings")%>
 
-<div class="row">
+<div class="main row">
 
   <aside class="span3 search_form">
-    <%= render "search_form" %>
-    <%= render "compare_list" %>
-    <%= render "favs" %>
+    <%= render 'search_form' %>
+    <%= render 'compare_list' %>
+    <%= render 'favs' %>
   </aside>
 
   <div class="span9">
-    <h4>
-      Showing <%= @properties.count %> of <%= @properties.total_count %> results
-    </h4>
-  </div>
-  <% if params[:search].present? %>
-  <div class="pull-right">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        Sort By
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to 'Price: Highest first', params.merge(:sort => 'desc') %>
-        <li><%= link_to 'Price: Lowest first', params.merge(:sort => 'asc') %>
-      </ul>
-    </div>
-  </div>
-  <% end %>
+    <div class="listings">
 
-  <div class="row">
-    <div class="span9">
-      <div class="listings">
-        <div class="row">
-          <div class="span9">
-            <section>
-              <ul class="thumbnails">
-                <% @properties.each do |property| %>
-                  <li class="span3">
+      <div class="results-panel">
+        <div class="results">
+            showing <%= @properties.count %> of <%= @properties.total_count %> results
+        </div>
+        <% if params[:search].present? %>
+
+        <div class="results-options">
+          <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              Sort By
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Price: Highest first', params.merge(:sort => 'desc') %>
+              <li><%= link_to 'Price: Lowest first', params.merge(:sort => 'asc') %>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="span9">
+          <section>
+            <ul class="thumbnails">
+              <% @properties.each do |property| %>
+              <li class="span3">
                 <%= link_to property_path(property) do %>
-                  <div class="thumbnail">
+                <div class="thumbnail">
                   <%= image_tag thumbnail(property, :medium) %>
-                <% end %>
+              <% end %>
                   <div class="info">
                     <h5><%= summary(property) %>
                     <small> <%= property.floor_size %> m²</small>
@@ -49,8 +50,8 @@
                       </span>
                     </h5>
                     <p>
-                    <%= property.city %> <%= property.street %> -
-                    <%= property.bedroom %> Rooms
+                      <%= property.city %> <%= property.street %> -
+                      <%= property.bedroom %> Rooms
                     </p>
                     <%= link_to "Marks as favorite",
                       favorites_properties_path(id: property),
@@ -58,13 +59,19 @@
                   </div>
                 </div>
               </li>
-                <% end %>
+              <% end %>
             </ul>
-          <section>
-          <%= paginate @properties %>
-          </div>
+          </section>
         </div>
       </div>
+
+      <div class="pagination-panel">
+        <div class="results">
+          Showing <%= @properties.count %> of <%= @properties.total_count %> results
+        </div>
+        <%= paginate @properties %>
+      </div>
+
     </div>
   </div>
 </div>

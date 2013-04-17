@@ -1,18 +1,12 @@
 @import "compass";
 @import "globals/mixins";
-
-.results {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-  margin: 40px auto;
-  h4 {
-  line-height: 15px;
-  }
-}
+@import "globals/colors";
 
 
 .listings {
   .thumbnail {
     @extend %boxed;
+    @include box-shadow(0px 1px 3px rgba(42, 43, 43, 0.1));
     margin: 5px auto 5px auto;
     padding: 10px;
   }
@@ -22,4 +16,35 @@
   #price {
     float: right;
   }
+}
+
+.main {
+  margin-top: 25px;
+}
+
+.results-panel, .pagination-panel {
+  height: 35px;
+  padding: 5px 5px 5px 15px;
+  margin-bottom: 10px;
+  @include border-radius(2px,2px);
+  border: 1px solid $border-color;
+  background-color: $panel-color;
+}
+
+.results {
+  float: left;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  color: rgb(112, 116, 124);
+}
+
+.results-options {
+  margin-top: 2px;
+  float: right;
+}
+
+.pagination-options {
+  float: right;
+  padding-top: 3px;
+  margin: 0px;
 }
