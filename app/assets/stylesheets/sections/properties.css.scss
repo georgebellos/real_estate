@@ -48,3 +48,8 @@
   padding-top: 3px;
   margin: 0px;
 }
+
+.listing-thumb:hover {
+  border: 1px solid rgb(185, 188, 194);
+  @include box-shadow(0px 1px 5px rgba(185, 188, 194, 0.8))
+}
