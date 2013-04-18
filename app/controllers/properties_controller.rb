@@ -20,9 +20,11 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @json = @property.to_gmaps4rails
+    @compares_quicklist = Property.includes(:images).find(session[:compare_list] || [])
   end
 
   def index
+    @compares_quicklist = Property.includes(:images).find(session[:compare_list] || [])
     if params[:search].present?
       @properties = Property.search(params)
     else
@@ -32,11 +34,13 @@ class PropertiesController < ApplicationController
 
   def rent
     @properties = Property.rent.page(params[:page]).per(12)
+    @compares_quicklist = Property.includes(:images).find(session[:compare_list] || [])
     render :index
   end
 
   def buy
     @properties = Property.buy.page(params[:page]).per(12)
+    @compares_quicklist = Property.includes(:images).find(session[:compare_list] || [])
     render :index
   end
 

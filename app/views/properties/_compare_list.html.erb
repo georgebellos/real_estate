@@ -7,7 +7,7 @@
             <%= session[:compare_list].size %> of 3
           </label>
         </a><li>
-        <% session[:compare_list].map{|id| Property.find_by_id(id) }.each do |property| %>
+          <% @compares_quicklist.each do |property| %>
         <li>
           <%= link_to property_path(property) do %>
           <%= image_tag thumbnail(property, :small) %>
