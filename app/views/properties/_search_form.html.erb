@@ -1,50 +1,94 @@
-<div class="row">
-  <div class="span3">
-  <%= property_search_results(@properties) if params[:search].present? %>
-    <div class="well">
-    <%= form_tag properties_path, method: :get, name: :search do %>
-      <div id="search">
-        <%= text_field_tag "search[query]",
-          (params[:search][:query] if params[:search]) %>
-      </div>
-      <%= submit_tag "Quick Search", name: nil, class: "btn btn-small" %>
-      <hr></hr>
-      <div id="filter">
-        <h4>Filter By category</h4>
-        <% %w{ Apartment Condo Land Duplex Triplex House }.each do |type| %>
-          <%= check_box_tag "search[types][]", type,
-              (params[:search][:types].try(:include?,type) if params[:search]),
-              id: type, class: "inline" %>
-          <%= label_tag "property[types][]", type, class: "" %></br>
-          <% end %>
-          <hr></hr>
-        <h5>Price</h5>
-        <%= search_field_tag("search[price_from]",
-                              (params[:search][:price_from] if params[:search]),
-                              placeholder: 'from') %> -
-        <%= search_field_tag("search[price_to]",
-                              (params[:search][:price_to] if params[:search]),
-                              placeholder: 'to') %>
-        <h5> Bedrooms </h5>
-        <%= search_field_tag("search[bedrooms_from]",
-                              (params[:search][:bedrooms_from] if params[:search]),
-                              placeholder: 'from') %> -
-        <%= search_field_tag("search[bedrooms_to]",
-                              (params[:search][:bedrooms_to] if params[:search]),
-                              placeholder: 'to') %>
-        <h5> Floor Size </h5>
-        <%= search_field_tag("search[floor_size_from]",
-                              (params[:search][:floor_size_from] if params[:search]),
-                              placeholder: 'from') %> -
-        <%= search_field_tag("search[floor_size_to]",
-                              (params[:search][:floor_size_to] if params[:search]),
-                              placeholder: 'to') %>
-        <p>
-        <%= submit_tag "Filter", name: nil, class: "btn btn-medium btn-success" %>
-        <%= link_to 'Reset', properties_path, class: "btn btn-medium btn-danger" %>
-        </p>
-      </div>
+<%= form_tag properties_path, method: :get, name: :search do %>
+
+<div class="sidebar-widjet">
+  <div class="widjet-head" id="search-query-head">
+    <span>Your Search</span>
+  </div>
+
+  <div class="widjet-entries" id="search-query-entries">
+    <%= text_field_tag "search[query]",
+      (params[:search][:query] if params[:search]), placeholder: 'Rent Apartment Doiranis'%>
+  <%= submit_tag "Quick Search", name: nil, class: "btn search-button" %>
+  </div>
+</div>
+
+<%= property_search_results(@properties) if params[:search].present? %>
+
+<div class="sidebar-widjet">
+
+  <div class="widjet-head" id="search-filter-head">
+    <span>Filter Your Results</span>
+  </div>
+
+  <div class="widjet-head" data-toggle="collapse" data-target="#categories">
+    <span>By category</span>
+    <b class="caret-category"></b>
+  </div>
+
+  <div class="categories-list collapse in" id="categories">
+    <div class="widjet-entries">
+      <ul>
+    <% %w{ Apartment Condo Land Duplex Triplex House }.each do |type| %>
+      <li>
+        <label class="checkbox">
+        <%= check_box_tag "search[types][]", type,
+            (params[:search][:types].try(:include?,type) if params[:search]),
+            id: type, class: "inline" %>
+          <span><%= type %></span>
+        </label>
+      </li>
       <% end %>
+    </ul>
+    </div>
+  </div>
+
+  <div class="widjet-head" data-toggle="collapse" data-target="#bedrooms">
+    <span>By Bedrooms</span>
+    <b class="caret-category"></b>
+  </div>
+
+  <div class="bedrooms-list collapse in" id="bedrooms">
+    <div class="widjet-entries">
+  <%= search_field_tag("search[bedrooms_from]",
+                        (params[:search][:bedrooms_from] if params[:search]),
+                        placeholder: 'from') %> -
+  <%= search_field_tag("search[bedrooms_to]",
+                        (params[:search][:bedrooms_to] if params[:search]),
+                        placeholder: 'to') %>
+    </div>
+  </div>
+
+
+  <div class="widjet-head" data-toggle="collapse" data-target="#prices">
+    <span>By Price</span>
+    <b class="caret-category"></b>
+  </div>
+
+  <div class="price-list collapse in" id="prices">
+    <div class="widjet-entries">
+    <%= search_field_tag("search[price_from]",
+                          (params[:search][:price_from] if params[:search]),
+                          placeholder: 'from') %> -
+    <%= search_field_tag("search[price_to]",
+                          (params[:search][:price_to] if params[:search]),
+                          placeholder: 'to') %>
+    </div>
+  </div>
+
+  <div class="widjet-head" data-toggle="collapse" data-target="#floor-sizes">
+    <span>By floor size</span>
+    <b class="caret-category"></b>
+  </div>
+
+  <div class="floor-size-list collapse in" id="floor-sizes">
+    <div class="widjet-entries">
+    <%= search_field_tag("search[floor_size_from]",
+                          (params[:search][:floor_size_from] if params[:search]),
+                          placeholder: 'from') %> -
+    <%= search_field_tag("search[floor_size_to]",
+                          (params[:search][:floor_size_to] if params[:search]),
+                          placeholder: 'to') %>
     </div>
   </div>
 </div>
+<% end %>

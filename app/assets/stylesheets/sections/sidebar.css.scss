@@ -1,0 +1,72 @@
+@import "compass";
+@import "globals/colors";
+
+.sidebar-widjet {
+  border: 1px solid $border-color;
+  @include border-radius(2px 2px);
+  margin-bottom: 20px;
+}
+
+.widjet-head {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid $border-color;
+  padding: 11px 0px 11px 20px;
+  background-color: $panel-color;
+  span{
+    font-size: 1.1em;
+    line-height: 22px;
+    text-transform: capitalize;
+  }
+}
+
+.widjet-entries {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid $border-color;
+  padding: 20px 10px 10px 20px;
+}
+
+.caret-category {
+  border-top: 4px solid rgb(42, 43, 43);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  float: right;
+  margin: 11px 20px 0px 0px;
+  opacity: 0.4;
+}
+
+.collapsed .caret-category, .caret-category.closed {
+  @include rotate(90deg);
+}
+
+#search-query-entries  {
+  border-bottom: none; // overlaps with border from the widjet
+  padding: 10px;
+  input {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 90%;
+    @include box-sizing(border-box);
+  }
+}
+
+#search-query-head span, #search-filter-head span {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.categories-list {
+  ul {
+    margin: 0px;
+    list-style: none outside none;
+  }
+  li span {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+.bedrooms-list, .price-list, .floor-size-list {
+  input {
+    width: 35%;
+  }
+}

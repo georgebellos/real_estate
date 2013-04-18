@@ -31,8 +31,8 @@ feature 'Search', :elasticsearch do
   end
 
   scenario 'Filter properties by type' do
-    find(:xpath, "//div/input[@value='Triplex']").set(true)
-    click_button 'Filter'
+    find(:xpath, "//input[@value='Triplex']").set(true)
+    click_button 'Quick Search'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
   end
@@ -40,7 +40,7 @@ feature 'Search', :elasticsearch do
   scenario 'Filter properties by price' do
     fill_in 'search[price_from]', with: 0
     fill_in 'search[price_to]', with: 600
-    click_button 'Filter'
+    click_button 'Quick Search'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
   end
@@ -48,7 +48,7 @@ feature 'Search', :elasticsearch do
   scenario 'Filter properties by bedrooms' do
     fill_in 'search[bedrooms_from]', with: 0
     fill_in 'search[bedrooms_to]', with: 5
-    click_button 'Filter'
+    click_button 'Quick Search'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
   end
@@ -56,7 +56,7 @@ feature 'Search', :elasticsearch do
   scenario 'Filter properties by floor size' do
     fill_in 'search[floor_size_from]', with: 0
     fill_in 'search[floor_size_to]', with: 400
-    click_button 'Filter'
+    click_button 'Quick Search'
     expect(page).to have_content('Doiranis')
     expect(page).not_to have_content('Kefalinias')
   end
@@ -80,7 +80,7 @@ feature 'Sort Search Results', :elasticsearch do
 
   scenario 'Sort search results by price in ascending order by default' do
     fill_in 'search[query]', with: 'Buy'
-    click_button 'Filter'
+    click_button 'Quick Search'
     within(:xpath, '//section/ul/li[1]') do
       expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
     end
@@ -88,7 +88,7 @@ feature 'Sort Search Results', :elasticsearch do
 
   scenario 'Sort search results by price in descending order' do
     fill_in 'search[query]', with: 'Buy'
-    click_button 'Filter'
+    click_button 'Quick Search'
     click_link 'Highest first'
     within(:xpath, '//section/ul/li[1]') do
       expect(find(:xpath, './/div/div/h5/span').text).to eql('1000 $')
@@ -97,7 +97,7 @@ feature 'Sort Search Results', :elasticsearch do
 
   scenario 'Sort search results by price in ascending order' do
     fill_in 'search[query]', with: 'Buy'
-    click_button 'Filter'
+    click_button 'Quick Search'
     click_link 'Lowest first'
     within(:xpath, '//section/ul/li[1]') do
       expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
