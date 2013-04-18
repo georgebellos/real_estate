@@ -30,11 +30,6 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def filter
-    @search = Property.filter(params[:search])
-    render :index
-  end
-
   def rent
     @properties = Property.rent.page(params[:page]).per(12)
     render :index
