@@ -70,3 +70,30 @@
     width: 35%;
   }
 }
+
+#compares {
+  padding: 0px;
+}
+
+.stacked {
+  margin: 0px;
+  li {
+    list-style: none;
+    border-bottom: 1px solid rgb(223, 223, 223);
+    a {
+      padding: 5px;
+      display: block;
+      img {
+        padding: 5px;
+      }
+      &:hover, &:active {
+        text-decoration: none;
+        background-color: rgb(238, 238, 238);
+      }
+    }
+  }
+}
+
+#compare-list-actions {
+  padding: 10px;
+}

@@ -1,24 +1,32 @@
-<% if !session[:compare_list].nil? %>
-  <div class="favlist">
-    <div>
-      <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">Compare List
-          <label class="badge badge-important pull-right">
-            <%= session[:compare_list].size %> of 3
-          </label>
-        </a><li>
-          <% @compares_quicklist.each do |property| %>
-        <li>
-          <%= link_to property_path(property) do %>
-          <%= image_tag thumbnail(property, :small) %>
-          <%= property.category %> <%= property.price %> $
-        </li>
-          <% end %>
-        <% end %>
-      </ul>
+<% unless session[:compare_list].nil? %>
+  <div class="sidebar-widjet">
+    <div class="accordion-toggle widjet-head" data-toggle="collapse" data-target="#comparisons" >
+      <span>Compare List</span>
+      <label class="badge badge-important ">
+        <%= session[:compare_list].size %> of 3
+      </label>
+      <b class="caret-category"></b>
     </div>
-    <%= link_to "Show list", compare_properties_path,
-                class: "btn btn-small btn-info" %>
-    <%= link_to "Clear list", compare_properties_path, method: "delete", class: "btn btn-small btn-danger" %>
+
+    <div class="compare-list collapse in" id="comparisons">
+      <div class="widjet-entries" id="compares">
+        <ul class="stacked">
+          <% @compares_quicklist.each do |property| %>
+            <li>
+          <%= link_to property_path(property) do %>
+            <%= image_tag thumbnail(property, :small) %>
+          <%= property.category %> <%= property.price %> $
+          </li>
+        <% end %>
+        <% end %>
+        </ul>
+          <div id="compare-list-actions">
+          <%= link_to "Show compare list", compare_properties_path,
+                      class: "btn btn-small btn-info" %>
+          <%= link_to "Clear list", compare_properties_path, method: "delete",
+                      class: "btn btn-small btn-danger" %>
+          </div>
+      </div>
+    </div>
   </div>
 <% end %>
