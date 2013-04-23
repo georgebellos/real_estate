@@ -17,4 +17,5 @@
 //= require bootstrap-dropdown
 //= require bootstrap-collapse
 //= require bootstrap-transition
+//= require bootstrap-carousel
 //= require_tree .
