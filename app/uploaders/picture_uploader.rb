@@ -37,7 +37,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   version :medium, from_version: :normal do
-    process resize_to_fill: [200, 130]
+    process resize_to_fill: [218, 145]
   end
 
   version :small, from_version: :normal do
