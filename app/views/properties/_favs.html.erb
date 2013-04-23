@@ -7,7 +7,7 @@
             <%= current_user.favorites.take(4).size %> of <%= current_user.favorites.size %>
           </label>
         </a><li>
-        <% current_user.favorites.take(4).each do |property| %>
+          <% @favs_quicklist.each do |property| %>
         <li>
           <%= link_to property_path(property) do %>
           <%= image_tag thumbnail(property, :small) %>
