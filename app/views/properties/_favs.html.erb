@@ -1,25 +1,34 @@
 <% if signed_in? %>
-  <div class="favlist">
-    <div>
-      <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">Favorites
-          <label class="badge badge-important pull-right">
-            <%= current_user.favorites.take(4).size %> of <%= current_user.favorites.size %>
-          </label>
-        </a><li>
+  <div class="sidebar-widjet">
+
+    <div class="accordion-toggle widjet-head" data-toggle="collapse" data-target="#favs" >
+      <span>Favorites List</span>
+      <label class="badge badge-important ">
+        <%= @favs_quicklist.size %> of <%= current_user.favorites.size %>
+      </label>
+      <b class="caret-category"></b>
+    </div>
+
+    <div class="favorite-list collapse in" id="favs" >
+      <div class="widjet-entries" id="favorites">
+        <ul class="stacked">
           <% @favs_quicklist.each do |property| %>
-        <li>
+          <li>
           <%= link_to property_path(property) do %>
-          <%= image_tag thumbnail(property, :small) %>
+            <%= image_tag thumbnail(property, :small) %>
           <%= property.category %> <%= property.price %> $
-        </li>
+          </li>
           <% end %>
         <% end %>
-      </ul>
+        </ul>
+
+        <div id="compare-list-actions">
+          <%= link_to "Show All Favorites", favorites_properties_path,
+            class: "btn btn-small btn-info" %>
+          <%= link_to "Clear list", favorites_properties_path, method: "delete",
+            class: "btn btn-small btn-danger" %>
+        </div>
+      </div>
     </div>
-    <%= link_to "All favorites", favorites_properties_path,
-                class: "btn btn-small btn-info" %>
-    <%= link_to "Clear Favorites", favorites_properties_path, method: "delete",
-                class: "btn btn-small btn-danger" %>
   </div>
 <% end %>
