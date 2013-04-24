@@ -82,7 +82,7 @@ feature 'Sort Search Results', :elasticsearch do
     fill_in 'search[query]', with: 'Buy'
     click_button 'Quick Search'
     within(:xpath, '//section/ul/li[1]') do
-      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
+      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('500 $')
     end
   end
 
@@ -91,7 +91,7 @@ feature 'Sort Search Results', :elasticsearch do
     click_button 'Quick Search'
     click_link 'Highest first'
     within(:xpath, '//section/ul/li[1]') do
-      expect(find(:xpath, './/div/div/h5/span').text).to eql('1000 $')
+      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('1000 $')
     end
   end
 
@@ -100,7 +100,7 @@ feature 'Sort Search Results', :elasticsearch do
     click_button 'Quick Search'
     click_link 'Lowest first'
     within(:xpath, '//section/ul/li[1]') do
-      expect(find(:xpath, './/div/div/h5/span').text).to eql('500 $')
+      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('500 $')
     end
   end
 end
