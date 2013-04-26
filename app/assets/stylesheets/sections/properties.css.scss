@@ -8,25 +8,79 @@
     @extend %boxed;
     @include box-shadow(0px 1px 3px rgba(42, 43, 43, 0.1));
     margin: 5px auto 5px auto;
-    padding: 0px;
+    padding: 1px;
+    position: relative;
   }
+
+  img {
+    @include border-radius(1px, 1px);
+  }
+
   .info {
-    padding-left: 5px;
+    padding: 5px;
   }
-  #price {
+
+  .property-title {
+    padding-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(42, 43, 43);
+    height: 37px;
+    line-height: 25px;
+  }
+
+  .price-tag {
+    font-size: 0.9em;
+    text-align: right;
+    background-color: rgba(42, 43, 43, 0.9);
+    opacity: 0.7;
+    color: rgb(255, 255, 255);
     float: right;
+    position: absolute;
+    top: 157px;
+    right: 7px;
+    padding: 5px;
+    margin-bottom: 0.2em;
+    @include border-radius(2px, 2px);
+  }
+
+  .rooms {
+    font-size: 1.0em;
+    color: rgb(42, 43, 43);
+    height: 35px;
+    line-height: 20px;
+    padding: 0px 5px;
+    margin-bottom: 0.5em;
+  }
+
+  .location {
+    font-size: 1.1em;
+    color: $theme-color;
+    line-height: 18px;
+    height: 20px;
+    padding: 0px 5px;
+    margin-bottom: 0.5em;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
-.main {
-  margin-top: 25px;
+.listing-thumb:hover {
+  border: 1px solid rgb(185, 188, 194);
+  @include box-shadow(0px 1px 5px rgba(185, 188, 194, 0.8));
+  a {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .results-panel, .pagination-panel {
   height: 35px;
   padding: 5px 5px 5px 15px;
   margin-bottom: 10px;
-  @include border-radius(2px,2px);
+  @include border-radius(2px, 2px);
   border: 1px solid $border-color;
   background-color: $panel-color;
 }
@@ -47,9 +101,4 @@
   float: right;
   padding-top: 3px;
   margin: 0px;
-}
-
-.listing-thumb:hover {
-  border: 1px solid rgb(185, 188, 194);
-  @include box-shadow(0px 1px 5px rgba(185, 188, 194, 0.8))
 }
