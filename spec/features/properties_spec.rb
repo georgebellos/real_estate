@@ -113,3 +113,24 @@ feature 'Deleting Property listings' do
   end
 end
 
+feature 'Properties index multiple views' do
+  background do
+    @user = create :user
+    create :property, status: 'Buy', category: 'Apartment',
+           street: 'Kefalinias', price: 1000, bedroom: 8, floor_size: 1000,
+           user: @user
+  end
+
+  scenario 'List view properties index' do
+    visit properties_path
+    click_link 'List'
+    expect(page).to have_content("Buy")
+  end
+
+  scenario 'Thumbnails view properties index' do
+    visit properties_path
+    click_link 'List'
+    click_link 'Thumbnails'
+    expect(page).to have_content("Buy")
+  end
+end

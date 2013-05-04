@@ -1,3 +1,4 @@
+
 <%= title("Listings")%>
 
 <div class="main row">
@@ -29,7 +30,17 @@
             </ul>
           </div>
         </div>
-        <% end %>
+      <% end %>
+
+        <div class="viewer-toggle-nav results-options">
+          <ul>
+          <span>View as:</span>
+            <li><%= link_to_unless params[:view] == 'grid' || cookies[:view] == 'grid' || cookies[:view].blank?,
+              "<i class=icon-th icon-3x></i> Thumbnails".html_safe, params.merge(view: 'grid') %></li>
+            <li><%= link_to_unless params[:view] == 'list' || cookies[:view] == 'list',
+              "<i class=icon-list icon-3x></i> List".html_safe, params.merge(view: 'list') %></li>
+          </ul>
+        </div>
       </div>
 
       <div class="row">
