@@ -32,7 +32,13 @@
         <% end %>
       </div>
 
-      <%= render 'properties_thumbs' %>
+      <div class="row">
+        <div class="span9">
+          <section>
+            <%= render @partial %>
+          </section>
+        </div>
+      </div>
 
       <div class="pagination-panel">
         <div class="results">

@@ -1,0 +1,31 @@
+<ul class="thumbnails">
+  <% @properties.each do |property| %>
+  <li class="span3">
+  <%= link_to property_path(property) do %>
+    <div class="thumbnail listing-thumb">
+      <%= image_tag thumbnail(property, :medium) %>
+
+      <div class="price-tag">
+        <%= property.price %> $
+      </div>
+
+      <div class="info">
+        <div class="property-title">
+          <%= summary(property) %>
+        </div>
+
+        <div class="rooms">
+          <%= property.floor_size %> m² -
+          <%= property.bedroom %> Rooms
+        </div>
+
+        <div class="location">
+          <%= property.city %> <%= property.street %>
+        </div>
+      <% end %>
+      </div>
+
+    </div>
+  </li>
+<% end %>
+</ul>

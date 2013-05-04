@@ -1,0 +1,39 @@
+<ul class="list thumbnails ">
+  <% @properties.each do |property| %>
+  <li class="span9">
+    <div class="properties-list">
+      <%= link_to property_path(property) do %>
+      <div class="properties-list-container">
+        <%= image_tag thumbnail(property, :medium) %>
+      <% end %>
+
+        <div class="price-tag">
+          <%= property.price %> $
+        </div>
+
+        <div class="property-actions">
+          <div class="more-info">
+            <%= link_to "More info", property_path(property), class: "btn btn-medium" %>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="property-title">
+            <%= summary(property) %>
+          </div>
+
+          <div class="rooms">
+            <%= property.floor_size %> m² -
+            <%= property.bedroom %> Rooms
+          </div>
+
+          <div class="location">
+            <%= property.city %> <%= property.street %> <%= property.street_number %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

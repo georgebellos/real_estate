@@ -32,6 +32,11 @@ class PropertiesController < ApplicationController
     else
       @properties = Property.page(params[:page]).per(12)
     end
+    @partial = if ['list', 'grid'].include?(params[:view])
+                   cookies[:view ] = params[:view]
+                 else
+                   cookies[:view] || 'grid'
+                 end
   end
 
   def rent
@@ -76,3 +81,4 @@ class PropertiesController < ApplicationController
     redirect_to root_path if current_user.properties.find_by_id(params[:id]).nil?
   end
 end
+

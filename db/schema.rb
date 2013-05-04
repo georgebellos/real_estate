@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320174340) do
+ActiveRecord::Schema.define(:version => 20130406141233) do
 
   create_table "favorite_properties", :force => true do |t|
     t.integer  "user_id"

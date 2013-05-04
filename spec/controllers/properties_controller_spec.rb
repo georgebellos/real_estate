@@ -124,6 +124,35 @@ describe PropertiesController do
         get :index
         expect(response).to render_template :index
       end
+
+      context 'multiple views' do
+        specify 'grid view' do
+          get :index, view: 'grid'
+          expect(assigns :partial).to eql 'grid'
+          expect(response.cookies['view']).to eql 'grid'
+        end
+
+        specify 'list view' do
+          get :index, view: 'list'
+          expect(assigns :partial).to eql 'list'
+          expect(response.cookies['view']).to eql 'list'
+        end
+
+        it 'sets a cookie with the default view' do
+          get :index
+          expect(assigns :partial).to eql 'grid'
+        end
+
+        it 'sets a cookie with the last view' do
+          get :index, view: 'grid'
+          expect(response.cookies['view']).to eql 'grid'
+        end
+
+        it 'renders the index template with unknown view parameters' do
+          get :index, view: 'unknown_view'
+          expect(response).to render_template :index
+        end
+      end
     end
 
     describe 'Get #edit' do
