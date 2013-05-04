@@ -1,0 +1,85 @@
+@import "compass";
+@import "globals/mixins";
+@import "globals/colors";
+
+.properties-list {
+  .properties-list-container {
+    @include border-radius(3px, 3px);
+    border: 1px solid #ddd;
+    margin: 5px auto 5px auto;
+    position: relative;
+    height: 196px;
+  }
+
+  img {
+    float: left;
+    padding: 5px;
+  }
+
+  .info {
+    float: left;
+    margin: 5px 0px 0px 30px;
+    /*padding-left: 50px;*/
+  }
+
+  .property-title {
+    padding-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(42, 43, 43);
+    height: 47px;
+    line-height: 25px;
+  }
+
+  .price-tag {
+    font-size: 1.1em;
+    text-align: right;
+    background-color: rgba(42, 43, 43, 0.9);
+    opacity: 0.8;
+    color: rgb(255, 255, 255);
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    padding: 10px;
+    margin-bottom: 0.2em;
+    @include border-radius(2px, 2px);
+  }
+
+  .rooms {
+    font-size: 1.0em;
+    color: rgb(42, 43, 43);
+    height: 65px;
+    line-height: 20px;
+    padding: 0px 5px;
+    margin-bottom: 0.5em;
+  }
+
+  .location {
+    font-size: 1.1em;
+    color: $theme-color;
+    line-height: 18px;
+    height: 20px;
+    padding: 0px 5px;
+    margin-bottom: 0.5em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .property-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    min-width: 300px;
+
+    .more-info {
+      float: right;
+    }
+  }
+}
+
+.list li {
+  margin-bottom: 10px;
+}

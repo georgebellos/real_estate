@@ -2,7 +2,6 @@
 @import "globals/mixins";
 @import "globals/colors";
 
-
 .listings {
   .thumbnail {
     @extend %boxed;
@@ -97,6 +96,19 @@
   float: right;
 }
 
+.viewer-toggle-nav {
+  margin: 7px;
+  margin-right: 30px;
+  float: right;
+  span {
+    padding: 10px;
+  }
+  li {
+    padding-right: 10px;
+    display: inline-block;
+    /*font-size: 120%;*/
+  }
+}
 .pagination-options {
   float: right;
   padding-top: 3px;
