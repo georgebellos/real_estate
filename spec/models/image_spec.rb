@@ -54,5 +54,11 @@ describe Image do
         expect((create :image).attachment.medium).to have_dimensions(218, 145)
       end
     end
+
+    describe 'list_thumb' do
+      it 'scales down an image to be exactly 280 by 186 pixels' do
+        expect((create :image).attachment.large).to have_dimensions(280, 186)
+      end
+    end
   end
 end
