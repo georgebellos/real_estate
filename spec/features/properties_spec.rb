@@ -37,10 +37,10 @@ feature 'Signed in users can create Listings', :vcr do
   end
 end
 
-feature 'Viewing Property listings' do
+feature 'Viewing Property listings', :vcr do
   background do
     @property = create :property_with_images
-    13.times { create :property }
+    19.times { create :property }
   end
 
   scenario 'Viewing a property listing' do
@@ -132,5 +132,32 @@ feature 'Properties index multiple views' do
     click_link 'List'
     click_link 'Thumbnails'
     expect(page).to have_content("Buy")
+  end
+end
+
+feature 'Sort Properties by price', :vcr do
+  background do
+    @user = create :user
+    create :property, status: 'Buy', category: 'Apartment',
+           street: 'Kefalinias', price: 1000, bedroom: 8, floor_size: 1000,
+           user: @user
+    create :property, status: 'Buy', category: 'Triplex', street: 'Doiranis',
+                               price: 500, bedroom: 4, floor_size: 350,
+                               user: @user
+    visit properties_path
+  end
+
+  scenario 'Sort properties by price in descending order' do
+    click_link 'Highest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('1000 $')
+    end
+  end
+
+  scenario 'Sort properties by price in ascending order' do
+    click_link 'Lowest first'
+    within(:xpath, '//section/ul/li[1]') do
+      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('500 $')
+    end
   end
 end

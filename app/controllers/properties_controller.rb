@@ -27,11 +27,15 @@ class PropertiesController < ApplicationController
   def index
     @favs_quicklist = current_user.favorites.includes(:images).limit(4) if current_user
     @compares_quicklist = Property.includes(:images).find(session[:compare_list] || [])
-    if params[:search].present?
-      @properties = Property.search(params)
-    else
-      @properties = Property.page(params[:page]).per(12)
-    end
+
+    @properties = if params[:search].present?
+                    Property.search(params)
+                  elsif params[:sort].present?
+                    Property.order('price ' + sort_order).includes(:images).page(params[:page]).per(18)
+                  else
+                    Property.includes(:images).page(params[:page]).per(18)
+                  end
+
     @partial = if ['list', 'grid'].include?(params[:view])
                    cookies[:view ] = params[:view]
                  else
@@ -74,11 +78,13 @@ class PropertiesController < ApplicationController
     redirect_to properties_path
   end
 
-
   private
 
   def correct_user
     redirect_to root_path if current_user.properties.find_by_id(params[:id]).nil?
   end
-end
 
+  def sort_order
+    %w[asc desc].include?(params[:sort]) ? params[:sort] : "asc"
+  end
+end

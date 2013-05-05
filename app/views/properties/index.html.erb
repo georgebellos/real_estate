@@ -1,4 +1,3 @@
-
 <%= title("Listings")%>
 
 <div class="main row">
@@ -16,12 +15,17 @@
         <div class="results">
             showing <%= @properties.count %> of <%= @properties.total_count %> results
         </div>
-        <% if params[:search].present? %>
 
         <div class="results-options">
           <div class="btn-group">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              Sort By
+              <% if params[:sort] == 'asc' %>
+                Price: Lowest First
+              <% elsif params[:sort] == 'desc' %>
+                Price: Highest First
+              <% else %>
+                Sort By
+              <% end %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -30,7 +34,6 @@
             </ul>
           </div>
         </div>
-      <% end %>
 
         <div class="viewer-toggle-nav results-options">
           <ul>
