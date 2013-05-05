@@ -78,14 +78,6 @@ feature 'Sort Search Results', :elasticsearch do
     visit properties_path
   end
 
-  scenario 'Sort search results by price in ascending order by default' do
-    fill_in 'search[query]', with: 'Buy'
-    click_button 'Quick Search'
-    within(:xpath, '//section/ul/li[1]') do
-      expect(find(:xpath, './/div[@class="price-tag"]').text).to eql('500 $')
-    end
-  end
-
   scenario 'Sort search results by price in descending order' do
     fill_in 'search[query]', with: 'Buy'
     click_button 'Quick Search'
