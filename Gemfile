@@ -29,7 +29,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'compass-rails', '~> 1.0.3'
-  gem 'font-awesome-sass-rails'
+  gem 'font-awesome-rails', '~> 3.1.1.0'
 end
 
 gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
