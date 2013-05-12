@@ -36,4 +36,12 @@ Katikia::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # bullet notifications
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.rails_logger = true
+    Bullet.bullet_logger = true
+  end
 end

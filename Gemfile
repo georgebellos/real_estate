@@ -65,6 +65,7 @@ group :development do
   gem 'quiet_assets'
   gem 'sextant'
   gem 'guard-spring'
+  gem 'bullet', '~> 4.6.0'
 end
 
 gem 'foreman'
