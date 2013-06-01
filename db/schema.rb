@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406141233) do
+ActiveRecord::Schema.define(:version => 20130601083135) do
 
   create_table "favorite_properties", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20130406141233) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "favorite_properties", ["property_id"], :name => "index_favorite_properties_on_property_id"
+  add_index "favorite_properties", ["user_id"], :name => "index_favorite_properties_on_user_id"
 
   create_table "images", :force => true do |t|
     t.string   "attachment"
