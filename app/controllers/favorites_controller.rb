@@ -39,8 +39,3 @@ class FavoritesController < ApplicationController
         notice: "You favorited #{ @property.category } at #{ @property.street }"
     end
   end
-
-  def signed_in
-    redirect_to signin_path, notice: 'Please sign in' unless signed_in?
-  end
-end
