@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601083135) do
+ActiveRecord::Schema.define(:version => 20130601084607) do
 
   create_table "favorite_properties", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20130601083135) do
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
