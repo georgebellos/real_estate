@@ -8,7 +8,7 @@ describe Image do
   end
 
   it 'is invalid without an attachment' do
-    expect(build :image, attachment: nil).not_to be_valid
+    expect(build :image, attachment: nil).to have(1).errors_on(:attachment)
   end
 
   %w{ jpeg jpg gif png }.each do |type|
