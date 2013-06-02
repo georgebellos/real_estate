@@ -139,12 +139,12 @@
     <!-- favorites properties -->
     <div class = "row">
       <div class="span3">
-        <%= render "favs" %>
+        <%= render 'favs', properties: @favs_quicklist %>
       </div>
     </div>
     <div class = "row">
       <div class="span3">
-        <%= render "compare_list" %>
+        <%= render 'compare_list', properties: @compares_quicklist %>
       </div>
     </div>
   </div>

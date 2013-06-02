@@ -11,7 +11,7 @@
     <div class="compare-list collapse in" id="comparisons">
       <div class="widjet-entries" id="compares">
         <ul class="stacked">
-          <% @compares_quicklist.each do |property| %>
+          <% properties.each do |property| %>
             <li>
           <%= link_to property_path(property) do %>
             <%= image_tag thumbnail(property, :small) %>

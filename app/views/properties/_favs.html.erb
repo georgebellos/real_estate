@@ -4,7 +4,7 @@
     <div class="accordion-toggle widjet-head" data-toggle="collapse" data-target="#favs" >
       <span>Favorites List</span>
       <label class="badge badge-important ">
-        <%= @favs_quicklist.size %> of <%= current_user.favorites.size %>
+        <%= properties.size %> of <%= current_user.favorites.size %>
       </label>
       <b class="caret-category"></b>
     </div>
@@ -12,7 +12,7 @@
     <div class="favorite-list collapse in" id="favs" >
       <div class="widjet-entries" id="favorites">
         <ul class="stacked">
-          <% @favs_quicklist.each do |property| %>
+          <% properties.each do |property| %>
           <li>
           <%= link_to property_path(property) do %>
             <%= image_tag thumbnail(property, :small) %>
