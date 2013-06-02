@@ -1,4 +1,5 @@
 require 'file_size_validator'
+
 class Image < ActiveRecord::Base
   belongs_to :property
   attr_accessible :attachment, :attachment_cache

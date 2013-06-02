@@ -39,3 +39,4 @@ class FavoritesController < ApplicationController
         notice: "You favorited #{ @property.category } at #{ @property.street }"
     end
   end
+end
