@@ -2,7 +2,7 @@ development: &defaults
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: katikia
+  username: postgres
   password:
 
 development:

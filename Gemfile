@@ -60,13 +60,15 @@ group :development do
   gem 'rails-footnotes', '~> 3.7.0'
   gem 'meta_request', '0.2.0'
   gem 'better_errors', '~> 0.3.2'
-  gem 'binding_of_caller', '~> 0.6.8'
+  #gem 'binding_of_caller', '~> 0.6.8'
   gem 'guard-livereload'
   gem 'quiet_assets'
   gem 'sextant'
   gem 'guard-spring'
   gem 'bullet', '~> 4.6.0'
 end
+
+gem 'coveralls', require: false
 
 gem 'foreman'
 gem 'puma'
