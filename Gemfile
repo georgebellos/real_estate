@@ -70,5 +70,5 @@ end
 
 gem 'coveralls', require: false
 
-gem 'foreman'
+gem 'foreman', '~> 0.63.0'
 gem 'puma'
