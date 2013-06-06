@@ -68,5 +68,7 @@ group :development do
   gem 'bullet', '~> 4.6.0'
 end
 
+gem 'coveralls', require: false
+
 gem 'foreman'
 gem 'puma'

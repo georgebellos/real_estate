@@ -3,6 +3,9 @@ require 'simplecov'
 require_relative 'mock_tire'
 require 'webmock'
 
+require 'coveralls'
+Coveralls.wear!
+
 SimpleCov.start 'rails'
 Tire.disable!
 
