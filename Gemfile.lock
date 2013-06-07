@@ -153,7 +153,7 @@ GEM
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
-    jquery-rails (2.1.4)
+    jquery-rails (3.0.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
@@ -348,7 +348,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby
+  bcrypt-ruby (~> 3.0.1)
   better_errors (~> 0.3.2)
   bootstrap-sass (~> 2.3.1.0)
   bullet (~> 4.6.0)
@@ -374,7 +374,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   guard-spring
-  jquery-rails
+  jquery-rails (~> 3.0.0)
   kaminari (~> 0.14.1)
   launchy
   meta_request (= 0.2.0)
