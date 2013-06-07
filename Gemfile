@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
-gem 'simple_form'
+gem 'simple_form', '~> 2.1.0'
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby'

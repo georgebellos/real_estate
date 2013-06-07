@@ -303,7 +303,7 @@ GEM
       multi_json (~> 1)
       redis (~> 3)
       redis-namespace
-    simple_form (2.0.4)
+    simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     simplecov (0.7.1)
@@ -400,7 +400,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.31.0)
   sextant
   sidekiq (~> 2.6.5)
-  simple_form
+  simple_form (~> 2.1.0)
   simplecov
   tire (~> 0.5.4)
   uglifier (>= 1.0.3)
