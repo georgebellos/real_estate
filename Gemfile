@@ -13,7 +13,7 @@ gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-google-oauth2', '~> 0.1.17'
 
 gem 'carrierwave', '~> 0.8.0'
-gem 'fog', '~> 1.10.0'
+gem 'fog', '~> 1.11.1'
 gem 'mini_magick', '~> 3.4'
 gem 'geocoder', '~> 1.1.6'
 gem 'gmaps4rails', '~> 1.5.6'
