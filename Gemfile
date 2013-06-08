@@ -6,7 +6,7 @@ gem 'simple_form', '~> 2.1.0'
 gem 'jquery-rails', '~> 3.0.0'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
-gem 'devise', '~> 2.2.3'
+gem 'devise', '~> 2.2.4'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
