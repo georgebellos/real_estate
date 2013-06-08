@@ -12,7 +12,7 @@ gem 'omniauth-twitter', '~> 0.0.16'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-google-oauth2', '~> 0.1.17'
 
-gem 'carrierwave', '~> 0.7.1'
+gem 'carrierwave', '~> 0.8.0'
 gem 'fog', '~> 1.10.0'
 gem 'mini_magick', '~> 3.4'
 gem 'geocoder', '~> 1.1.6'
