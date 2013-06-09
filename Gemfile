@@ -31,20 +31,18 @@ group :assets do
   gem 'font-awesome-rails', '~> 3.1.1.3'
 end
 
-gem 'rspec-rails', '~> 2.12.0', group: [:development, :test]
+gem 'rspec-rails', '~> 2.13.2', group: [:development, :test]
 
 group :test do
-  gem 'capybara', '~> 2.1.0.beta1'
-  gem 'selenium-webdriver', '~> 2.31.0'
-  gem 'factory_girl_rails', '~> 4.1.0'
-  gem 'database_cleaner'
-  gem 'faker'
-  gem 'launchy'
-  gem 'foobar'
-  gem 'simplecov', require: false
-  gem 'vcr', '~> 2.4.0'
-  gem 'webmock', '~> 1.9.0'
-  gem 'rack_session_access', '~>0.0.3'
+  gem 'capybara', '~> 2.1.0'
+  gem 'selenium-webdriver', '~> 2.33.0'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem "database_cleaner", "~> 1.0.1"
+  gem "launchy", "~> 2.3.0"
+  gem "simplecov", "~> 0.7.1", require: false
+  gem 'vcr', '~> 2.5.0'
+  gem 'webmock', '~> 1.11.0'
+  gem 'rack_session_access', '~>0.1.1'
 end
 
 group :development do
