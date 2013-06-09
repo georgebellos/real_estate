@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jonleighton/spring.git
+  revision: 661a416d27e554bf1c839a2cd35b8a87e6317175
+  specs:
+    spring (0.0.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -307,7 +313,6 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.5)
-    spring (0.0.8)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -396,6 +401,7 @@ DEPENDENCIES
   sidekiq (~> 2.12.1)
   simple_form (~> 2.1.0)
   simplecov (~> 0.7.1)
+  spring!
   tire (~> 0.5.8)
   uglifier (>= 2.1.1)
   vcr (~> 2.5.0)
