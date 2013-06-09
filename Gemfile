@@ -46,21 +46,20 @@ group :test do
 end
 
 group :development do
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'growl'
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
-  gem 'rb-inotify', :require => false
-  gem 'pry-rails'
-  gem 'fuubar'
-  gem 'rails-footnotes', '~> 3.7.0'
-  gem 'meta_request', '0.2.0'
-  gem 'better_errors', '~> 0.3.2'
-  gem 'guard-livereload'
-  gem 'quiet_assets'
-  gem 'sextant'
-  gem 'guard-spring'
+  gem 'guard', '~> 1.8.0'
+  gem 'guard-rspec', '~> 3.0.1'
+  gem 'growl', '~> 1.0.3'
+  gem 'rb-fsevent', '~> 0.9.3', :require => false
+  gem 'rb-fchange', '~> 0.0.6', :require => false
+  gem 'rb-inotify', '~> 0.9.0', :require => false
+  gem 'pry-rails', '~> 0.3.0'
+  gem 'rails-footnotes', '~> 3.7.9'
+  gem 'meta_request', '~> 0.2.6'
+  gem 'better_errors', '~> 0.9.0'
+  gem 'guard-livereload', '~> 1.4.0'
+  gem 'quiet_assets', '~> 1.0.2'
+  gem 'sextant', '~> 0.2.3'
+  gem 'guard-spring', '~> 0.0.3'
   gem 'bullet', '~> 4.6.0'
 end
 
