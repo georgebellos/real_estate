@@ -1,3 +1,15 @@
 <%= title("Home") %>
 <%= description("Rent, Buy properties in Greece") %>
-<h1>Real Estate</h1>
+
+<div class="row">
+  <div class="span12">
+
+    <section class="listings">
+      <div class="latest_properties">
+        <h2> Latest properties </h2>
+      </div>
+      <%= render 'properties/grid', properties: @properties %>
+    </section>
+
+  </div>
+</div>
