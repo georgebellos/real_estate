@@ -325,7 +325,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timers (1.1.0)
-    tire (0.5.8)
+    tire (0.6.0)
       activemodel (>= 3.0)
       activesupport
       ansi
@@ -406,7 +406,7 @@ DEPENDENCIES
   simple_form (~> 2.1.0)
   simplecov (~> 0.7.1)
   spring!
-  tire (~> 0.5.8)
+  tire (~> 0.6.0)
   uglifier (>= 2.1.1)
   vcr (~> 2.5.0)
   webmock (~> 1.11.0)

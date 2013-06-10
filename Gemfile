@@ -18,7 +18,7 @@ gem 'mini_magick', '~> 3.6'
 gem 'geocoder', '~> 1.1.8'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'kaminari', '~> 0.14.1'
-gem 'tire', '~> 0.5.8'
+gem 'tire', '~> 0.6.0'
 gem 'sidekiq', '~> 2.12.1'
 gem 'carrierwave_backgrounder', '~> 0.2.1'
 
