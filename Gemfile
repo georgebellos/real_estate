@@ -62,6 +62,7 @@ group :development do
   gem 'guard-spring', '~> 0.0.3'
   gem 'spring', github: 'jonleighton/spring'
   gem 'bullet', '~> 4.6.0'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 gem 'coveralls', require: false
