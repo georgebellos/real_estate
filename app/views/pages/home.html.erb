@@ -1,15 +1,18 @@
 <%= title("Home") %>
 <%= description("Rent, Buy properties in Greece") %>
 
-<div class="row">
-  <div class="span12">
+<div class="landing-page-search">
+  <%= form_tag properties_path, method: :get, name: :search do %>
 
-    <section class="listings">
-      <div class="latest_properties">
-        <h2> Latest properties </h2>
-      </div>
-      <%= render 'properties/grid', properties: @properties %>
-    </section>
+    <%= text_field_tag "search[query]",
+      (params[:search][:query] if params[:search]), placeholder: 'Rent Apartment Doiranis'%>
+    <%= submit_tag "Quick Search", name: nil, class: "btn search-button" %>
+    <% end %>
+</div>
 
+<div class="listings">
+  <div class="latest_properties">
+    <h2> Latest properties </h2>
   </div>
+  <%= render 'properties/grid', properties: @properties %>
 </div>

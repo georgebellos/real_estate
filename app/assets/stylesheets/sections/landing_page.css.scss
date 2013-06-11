@@ -13,3 +13,20 @@
     padding:0 12px;
   }
 }
+
+.landing-page-search {
+  margin-top: 80px;
+  margin-left: 108px;
+
+  input {
+     height: 30px;
+   }
+
+   #search_query {
+     width: 70%;
+   }
+   .search-button {
+     margin: 0px 0px 10px 13px;
+     height: 40px;
+   }
+}
