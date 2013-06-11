@@ -60,5 +60,11 @@ describe Image do
         expect((create :image).attachment.large).to have_dimensions(280, 186)
       end
     end
+
+    describe 'featured' do
+      it 'scales down an image to be exactly 768 by 466 pixels' do
+        expect((create :image).attachment.featured).to have_dimensions(768, 466)
+      end
+    end
   end
 end
