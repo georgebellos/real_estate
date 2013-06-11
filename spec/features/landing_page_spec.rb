@@ -58,3 +58,17 @@ feature 'Search Entries',  %q{
     expect(page).to have_content('Found 1 property listings with this search criteria')
   end
 end
+
+feature 'Featured Properties', %q{
+  As an unregistered user
+  When i go to the landing page
+  I want to see the last 3 properties entries in a carusel
+} do
+  background do
+    3.times { create :property }
+  end
+  scenario 'Featured Properties' do
+    visit root_path
+    expect(page).to have_selector(".carousel-caption", count: 3)
+  end
+end

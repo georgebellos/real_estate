@@ -3,16 +3,78 @@
 
 <div class="landing-page-search">
   <%= form_tag properties_path, method: :get, name: :search do %>
-
     <%= text_field_tag "search[query]",
-      (params[:search][:query] if params[:search]), placeholder: 'Rent Apartment Doiranis'%>
+      (params[:search][:query] if params[:search]), autofocus: true,
+      placeholder: 'Rent Apartment Doiranis'%>
     <%= submit_tag "Quick Search", name: nil, class: "btn search-button" %>
-    <% end %>
+  <% end %>
 </div>
 
-<div class="listings">
-  <div class="latest_properties">
-    <h2> Latest properties </h2>
+<hr></hr>
+
+<div class="row">
+
+  <% unless @properties.empty? %>
+    <div class="featured-properties listings span9">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+
+        <div class="item active">
+          <%= link_to property_path(@properties.first) do %>
+            <%= image_tag thumbnail(@properties.first, :featured) %>
+          <div class="carousel-caption">
+            <h4>
+              <%= @properties.first.title %>
+            </h4>
+            <p>
+            <%= @properties.first.city %> <%= @properties.first.street %>
+            </p>
+            <p class="featured-price-tag">
+            <%= @properties.first.price %> $
+            </p>
+          </div>
+        <% end %>
+        </div>
+
+        <% @properties.last(2).each do |property| %>
+          <div class="item">
+          <%= link_to property_path(property) do %>
+            <%= image_tag thumbnail(property, :featured) %>
+          <div class="carousel-caption">
+            <h4>
+              <%= property.title %>
+            </h4>
+            <p>
+            <%= property.city %>  <%= property.street %>
+            </p>
+            <p class="featured-price-tag">
+            <%= property.price %> $
+            </p>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
   </div>
-  <%= render 'properties/grid', properties: @properties %>
+<% end %>
 </div>
+
+<div class="row">
+  <div class="span12 listings">
+    <div class="latest_properties">
+      <h2> Latest properties </h2>
+    </div>
+    <%= render 'properties/grid', properties: @properties %>
+  </div>
+</div>
+
+<hr class="small"></hr>

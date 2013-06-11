@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/jonleighton/spring.git
-  revision: 661a416d27e554bf1c839a2cd35b8a87e6317175
+  revision: 4469312f807e6378f326e6347b2d127e0eaa4080
   specs:
-    spring (0.0.8)
+    spring (0.0.9)
 
 GEM
   remote: https://rubygems.org/
