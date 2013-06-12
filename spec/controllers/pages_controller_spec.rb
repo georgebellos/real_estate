@@ -16,15 +16,9 @@ describe PagesController do
 
   describe "Get 'about'" do
     it "renders the :about template" do
-      get :about
-      expect(response).to render_template :about
+      get :info
+      expect(response).to render_template :info
     end
   end
 
-  describe "Get 'contact'" do
-    it "renders the :contact template" do
-      get :contact
-      expect(response).to render_template :contact
-    end
-  end
 end

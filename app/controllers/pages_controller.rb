@@ -3,9 +3,7 @@ class PagesController < ApplicationController
     @properties = Property.recently_created(8)
   end
 
-  def about
+  def info
   end
 
-  def contact
-  end
 end
