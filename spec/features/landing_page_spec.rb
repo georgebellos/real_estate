@@ -11,7 +11,7 @@ feature 'Latest entries', %q{
 
   scenario '8 latest properties entries' do
     visit root_path
-    expect(page).to have_selector('.thumbnail', count: 8)
+    expect(page).to have_selector('.listing-thumb', count: 8)
   end
 end
 

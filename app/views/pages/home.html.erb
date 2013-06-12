@@ -98,3 +98,36 @@
 </div>
 
 <hr class="small"></hr>
+<div class="landing-page-info">
+  <div class="row">
+    <div class="span12">
+      <ul class="thumbnails">
+
+        <li class="span4">
+        <%= link_to new_property_path do %>
+          <div class="thumbnail thumbnail-info" id="nearby-properties">
+          <div class="caption"> Find nearby places</div>
+        </div>
+      <% end %>
+        </li>
+
+        <li class="span4">
+        <%= link_to  do %>
+          <div class="thumbnail thumbnail-info" id="list-place">
+          <div class="caption"> List a property for free </div>
+        </div>
+      <% end %>
+        </li>
+
+        <li class="span4">
+        <%= link_to do %>
+          <div class="thumbnail thumbnail-info" id="agent-info">
+          <div class="caption"> Register as an agent </div>
+        </div>
+      <% end %>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
