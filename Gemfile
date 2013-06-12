@@ -13,13 +13,13 @@ gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-google-oauth2', '~> 0.1.17'
 
 gem 'carrierwave', '~> 0.8.0'
-gem 'fog', '~> 1.11.1'
+gem 'fog', '~> 1.12.1'
 gem 'mini_magick', '~> 3.6'
 gem 'geocoder', '~> 1.1.8'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'kaminari', '~> 0.14.1'
 gem 'tire', '~> 0.6.0'
-gem 'sidekiq', '~> 2.12.1'
+gem 'sidekiq', '~> 2.12.3'
 gem 'carrierwave_backgrounder', '~> 0.2.1'
 
 group :assets do
