@@ -18,7 +18,7 @@ gem 'mini_magick', '~> 3.6'
 gem 'geocoder', '~> 1.1.8'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'kaminari', '~> 0.14.1'
-gem 'tire', '~> 0.5.8'
+gem 'tire', '~> 0.6.0'
 gem 'sidekiq', '~> 2.12.1'
 gem 'carrierwave_backgrounder', '~> 0.2.1'
 
@@ -60,8 +60,9 @@ group :development do
   gem 'quiet_assets', '~> 1.0.2'
   gem 'sextant', '~> 0.2.3'
   gem 'guard-spring', '~> 0.0.3'
-  gem 'spring', github: 'jonleighton/spring'
+  #gem 'spring', github: 'jonleighton/spring'
   gem 'bullet', '~> 4.6.0'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 gem 'coveralls', require: false

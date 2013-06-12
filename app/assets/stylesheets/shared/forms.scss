@@ -1,9 +1,6 @@
 @import "compass";
 @import "globals/mixins";
 
-input {
-  height: auto !important;
-}
 
 #form-login, #form-signup {
   @extend %boxed;

@@ -1,24 +1,48 @@
 /*footer*/
 #push {
-  height: 120px;
+  height: 140px;
 }
 
 footer {
-  .navbar .nav > li > a {
-    padding: 10px;
+  background: none repeat scroll 0% 0% rgb(92, 92, 92);
+  color: rgb(194, 194, 194);
+
+
+  ul {
+    margin: 0px;
+  }
+
+  li {
+    list-style: none;
+    line-height: 25px;
+  }
+
+  a {
+    color: rgb(194, 194, 194);
+  }
+
+
+  .top-footer{
+    padding: 20px 0px 30px 0px;
+  }
+
+  h4 {
+    border-bottom: 1px solid rgb(112, 112, 112);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: white;
+  }
+
+  #contact li {
+    line-height: 30px;
+  }
+
+  #footer-bottom {
+    background-color: black;
+  }
+
+  #copyright {
+    font-size: 13px;
   }
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /*Negative indent footer by it's height*/
-  margin: 0 auto -40px;
-}
-
-#copyright {
-  font-size: 13px;
-  padding: 15px;
-}

@@ -1,13 +1,64 @@
-<footer class="navbar navbar-fixed-bottom" id="footer" >
-  <div class='navbar-inner' >
-    <div class='container'>
-      <ul class='nav pull-right'>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Contact", contact_path %></li>
-      </ul>
-      <center id="copyright">
-        Real Estate Greece 2012 | Created by <a href="http://georgebellos.com">George Bellos</a>
-      </center>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="top-footer">
+          <!-- Copyright info and links -->
+          <div class="row">
+            <div class="span3">
+              <h4>Faq</h4>
+              <ul class="unstyled">
+                <li><%= link_to 'Buying a Property', '#' %></li>
+                <li><%= link_to 'Renting a Property', '#' %></li>
+                <li><%= link_to 'Selling a Property', '#' %></li>
+              </ul>
+            </div>
+
+            <div class="span3">
+              <h4>About Us</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nullam a nisi mi, et posuere eros. Vivamus et risus
+            </div>
+
+            <div class="span3" id="contact">
+              <h4>Contact</h4>
+              <ul>
+
+                <li><i class="icon-twitter "></i>
+                <%= link_to 'Twitter', 'http://twitter.com/georgebellos' %>
+                </li>
+
+                <li><i class="icon-envelope"></i>
+                <%= link_to 'realestate@georgebellos.com', '#' %>
+                </li>
+
+                <li> <i class="icon-user"></i> Tel. 111-222-3333 </li>
+
+                <li><i class="icon-map-marker"></i> 31 Somewhere Street Greece </li>
+
+                <li> <i class="icon-time"></i> Office Hours: 8am - 6pm</li>
+
+              </ul>
+            </div>
+
+            <div class="span3">
+              <h4>Latest News</h4>
+              <ul>
+                <li><%= link_to 'Lorem ipsum dolor sit amet ultricies aliquam purus', '#' %></li>
+                <li><%= link_to 'Consectetur adipiscing elit. Nullam', '#' %></li>
+                <li><%= link_to 'Quisque quis tellus et augue feugiat semper at nec libero', '#' %></li>
+              </ul>
+            </div>
+
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div id="footer-bottom">
+    <center id="copyright">
+      Real Estate Greece 2012 | Created by <a href="http://georgebellos.com">George Bellos</a>
+    </center>
   </div>
 </footer>

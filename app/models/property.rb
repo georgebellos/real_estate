@@ -68,4 +68,8 @@ class Property < ActiveRecord::Base
   def title
     "#{ status } #{ category }"
   end
+
+  def self.recently_created(size = 8)
+    includes(:images).order("created_at ASC").limit(size)
+  end
 end
