@@ -7,8 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <%= render "layouts/header" %>
-  <div id="wrap">
+    <%= render "layouts/header" %>
     <div class="container">
       <div class="content">
         <div class="row">
@@ -20,9 +19,8 @@
       </div>
     </div>
     <div id="push"></div>
-  </div>
-  <%= render "layouts/footer" %>
-  <%= javascript_include_tag "application" %>
-  <%= yield :scripts %>
+    <%= render "layouts/footer" %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :scripts %>
   </body>
 </html>
