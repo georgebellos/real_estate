@@ -3,6 +3,14 @@
   height: 140px;
 }
 
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /*Negative indent footer by it's height*/
+  margin: 0 auto -40px;
+}
+
 footer {
   background: none repeat scroll 0% 0% rgb(92, 92, 92);
   color: rgb(194, 194, 194);
