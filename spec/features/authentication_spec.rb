@@ -2,6 +2,8 @@ require 'spec_helper'
 include OmniAuthSpecHelpers
 
 feature 'User sign up via services' do
+  before { OmniAuth.config.logger = Rails.logger }
+
   scenario 'Successfull sign up via Twitter' do
     set_omniauth
     visit root_path
