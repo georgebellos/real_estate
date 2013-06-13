@@ -32,6 +32,9 @@ prefork = lambda do
   Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f }
 
   RSpec.configure do |config|
+
+    config.fail_fast = true
+
     config.treat_symbols_as_metadata_keys_with_true_values = true
     # ## Mock Framework
     #
