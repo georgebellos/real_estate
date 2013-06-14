@@ -46,6 +46,11 @@ group :test do
   gem 'rack_session_access', '~>0.1.1'
 end
 
+group :development, :test do
+  gem 'konacha', '~> 3.0.0'
+  gem 'konacha-chai-matchers'
+end
+
 group :development do
   gem 'guard', '~> 1.8.0'
   gem 'guard-rspec', '~> 3.0.1'

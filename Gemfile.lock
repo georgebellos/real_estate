@@ -162,6 +162,13 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    konacha (3.0.0)
+      actionpack (>= 3.1, < 5)
+      capybara
+      colorize
+      railties (>= 3.1, < 5)
+      sprockets
+    konacha-chai-matchers (0.1.2)
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (1.1.6)
@@ -382,6 +389,8 @@ DEPENDENCIES
   guard-spring (~> 0.0.3)
   jquery-rails (~> 3.0.0)
   kaminari (~> 0.14.1)
+  konacha (~> 3.0.0)
+  konacha-chai-matchers
   launchy (~> 2.3.0)
   meta_request (~> 0.2.6)
   mini_magick (~> 3.6)
