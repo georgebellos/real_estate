@@ -35,11 +35,12 @@ gem 'rspec-rails', '~> 2.13.2', group: [:development, :test]
 
 group :test do
   gem 'capybara', '~> 2.1.0'
+  gem 'poltergeist', '~> 1.3.0'
   gem 'selenium-webdriver', '~> 2.33.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem "database_cleaner", "~> 1.0.1"
-  gem "launchy", "~> 2.3.0"
-  gem "simplecov", "~> 0.7.1", require: false
+  gem 'database_cleaner', '~> 1.0.1'
+  gem 'launchy', '~> 2.3.0'
+  gem 'simplecov', '~> 0.7.1', require: false
   gem 'vcr', '~> 2.5.0'
   gem 'webmock', '~> 1.11.0'
   gem 'rack_session_access', '~>0.1.1'
@@ -60,7 +61,6 @@ group :development do
   gem 'quiet_assets', '~> 1.0.2'
   gem 'sextant', '~> 0.2.3'
   gem 'guard-spring', '~> 0.0.3'
-  #gem 'spring', github: 'jonleighton/spring'
   gem 'bullet', '~> 4.6.0'
   gem 'binding_of_caller', '~> 0.7.2'
 end
