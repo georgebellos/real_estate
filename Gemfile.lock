@@ -316,7 +316,7 @@ GEM
     sextant (0.2.3)
       activesupport (>= 3.2)
       rails (>= 3.2)
-    sidekiq (2.12.3)
+    sidekiq (2.12.4)
       celluloid (>= 0.14.1)
       connection_pool (>= 1.0.0)
       json
@@ -421,7 +421,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.6)
   selenium-webdriver (~> 2.33.0)
   sextant (~> 0.2.3)
-  sidekiq (~> 2.12.3)
+  sidekiq (~> 2.12.4)
   simple_form (~> 2.1.0)
   simplecov (~> 0.7.1)
   tire (~> 0.6.0)
