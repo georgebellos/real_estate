@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property = current_user.properties.build(params[:property]) if signed_in?
+    @property = current_user.properties.build(params[:property])
     if @property.save
       redirect_to @property
       flash[:success] = 'You have created a new property'
