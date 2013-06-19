@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'pg', '~> 0.15.1'
 gem 'simple_form', '~> 2.1.0'
-gem 'jquery-rails', '~> 3.0.0'
+gem 'jquery-rails', '~> 3.0.1'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'devise', '~> 2.2.4'
 gem 'omniauth', '~> 1.1.4'
-gem 'omniauth-twitter', '~> 0.0.16'
+gem 'omniauth-twitter', '~> 0.0.17'
 gem 'omniauth-facebook', '~> 1.4.1'
-gem 'omniauth-google-oauth2', '~> 0.1.17'
+gem 'omniauth-google-oauth2', '~> 0.1.19'
 
 gem 'carrierwave', '~> 0.8.0'
 gem 'fog', '~> 1.12.1'
@@ -74,4 +74,4 @@ end
 gem 'coveralls', require: false
 
 gem 'foreman', '~> 0.63.0'
-gem 'puma', '~> 2.0.1'
+gem 'puma', '~> 2.1.0'

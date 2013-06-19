@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
       User-Agent:
       - Ruby
   response:
@@ -21,13 +21,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 29 May 2013 07:00:02 GMT
+      - Wed, 19 Jun 2013 07:51:49 GMT
       Expires:
-      - Thu, 30 May 2013 07:00:02 GMT
+      - Thu, 20 Jun 2013 07:51:49 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
-      - ! '*'
+      - '*'
       Server:
       - mafe
       X-Xss-Protection:
@@ -37,44 +37,96 @@ http_interactions:
       Transfer-Encoding:
       - chunked
     body:
-      encoding: US-ASCII
-      string: ! "{\n   \"results\" : [\n      {\n         \"address_components\" :
-        [\n            {\n               \"long_name\" : \"39\",\n               \"short_name\"
-        : \"39\",\n               \"types\" : [ \"street_number\" ]\n            },\n
-        \           {\n               \"long_name\" : \"Doiranis\",\n               \"short_name\"
-        : \"Doiranis\",\n               \"types\" : [ \"route\" ]\n            },\n
-        \           {\n               \"long_name\" : \"Patra\",\n               \"short_name\"
-        : \"Patra\",\n               \"types\" : [ \"locality\", \"political\" ]\n
-        \           },\n            {\n               \"long_name\" : \"Patra\",\n
-        \              \"short_name\" : \"Patra\",\n               \"types\" : [ \"political\"
-        ]\n            },\n            {\n               \"long_name\" : \"Patra\",\n
-        \              \"short_name\" : \"Patra\",\n               \"types\" : [ \"political\"
-        ]\n            },\n            {\n               \"long_name\" : \"Achaea\",\n
-        \              \"short_name\" : \"Achaea\",\n               \"types\" : [
-        \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
-        \              \"long_name\" : \"West Greece\",\n               \"short_name\"
-        : \"West Greece\",\n               \"types\" : [ \"administrative_area_level_2\",
-        \"political\" ]\n            },\n            {\n               \"long_name\"
-        : \"Peloponnisos Dytiki Ellada ke Ionio\",\n               \"short_name\"
-        : \"Peloponnisos Dytiki Ellada ke Ionio\",\n               \"types\" : [ \"administrative_area_level_1\",
-        \"political\" ]\n            },\n            {\n               \"long_name\"
-        : \"Greece\",\n               \"short_name\" : \"GR\",\n               \"types\"
-        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
-        : \"264 41\",\n               \"short_name\" : \"264 41\",\n               \"types\"
-        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
-        : \"Doiranis 39, Patra 264 41, Greece\",\n         \"geometry\" : {\n            \"bounds\"
-        : {\n               \"northeast\" : {\n                  \"lat\" : 38.25862630,\n
-        \                 \"lng\" : 21.74530420\n               },\n               \"southwest\"
-        : {\n                  \"lat\" : 38.25862110,\n                  \"lng\" :
-        21.74528690\n               }\n            },\n            \"location\" :
-        {\n               \"lat\" : 38.25862110,\n               \"lng\" : 21.74530420\n
-        \           },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
-        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
-        : 38.25997268029150,\n                  \"lng\" : 21.74664453029150\n               },\n
-        \              \"southwest\" : {\n                  \"lat\" : 38.25727471970850,\n
-        \                 \"lng\" : 21.74394656970850\n               }\n            }\n
-        \        },\n         \"types\" : [ \"street_address\" ]\n      }\n   ],\n
-        \  \"status\" : \"OK\"\n}\n"
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "39",
+                       "short_name" : "39",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Doiranis",
+                       "short_name" : "Doiranis",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Patra",
+                       "short_name" : "Patra",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Patra",
+                       "short_name" : "Patra",
+                       "types" : [ "political" ]
+                    },
+                    {
+                       "long_name" : "Patra",
+                       "short_name" : "Patra",
+                       "types" : [ "political" ]
+                    },
+                    {
+                       "long_name" : "Achaea",
+                       "short_name" : "Achaea",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "West Greece",
+                       "short_name" : "West Greece",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Peloponnisos Dytiki Ellada ke Ionio",
+                       "short_name" : "Peloponnisos Dytiki Ellada ke Ionio",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "Greece",
+                       "short_name" : "GR",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "264 41",
+                       "short_name" : "264 41",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Doiranis 39, Patra 264 41, Greece",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 38.25862630,
+                          "lng" : 21.74530420
+                       },
+                       "southwest" : {
+                          "lat" : 38.25862110,
+                          "lng" : 21.74528690
+                       }
+                    },
+                    "location" : {
+                       "lat" : 38.25862110,
+                       "lng" : 21.74530420
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 38.25997268029150,
+                          "lng" : 21.74664453029150
+                       },
+                       "southwest" : {
+                          "lat" : 38.25727471970850,
+                          "lng" : 21.74394656970850
+                       }
+                    }
+                 },
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
     http_version: 
-  recorded_at: Wed, 29 May 2013 07:00:02 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Wed, 19 Jun 2013 07:51:49 GMT
+recorded_with: VCR 2.5.0
