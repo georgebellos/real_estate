@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'pg', '~> 0.15.1'
 gem 'simple_form', '~> 2.1.0'
 gem 'jquery-rails', '~> 3.0.1'
+gem 'turbolinks', '~> 1.2.0'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'devise', '~> 2.2.4'
@@ -26,7 +27,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 2.1.1'
-  gem 'bootstrap-sass', '~> 2.3.1.3'
+  gem 'bootstrap-sass', '~> 2.3.2.0'
   gem 'compass-rails', '~> 1.0.3'
   gem 'font-awesome-rails', '~> 3.1.1.3'
 end
@@ -74,4 +75,4 @@ end
 gem 'coveralls', require: false
 
 gem 'foreman', '~> 0.63.0'
-gem 'puma', '~> 2.1.0'
+gem 'puma', '~> 2.1.1'
