@@ -91,6 +91,7 @@
       </div>
     </div>
   </article>
+
   <!-- admin action -->
   <div class="span3">
     <div class="row">
@@ -111,23 +112,24 @@
         </div>
       <% end %>
     </div>
+
     <!-- property actions -->
     <div class="row">
       <div class="span3">
         <div id="actions-box">
           <ul class="nav nav-tabs nav-stacked">
             <li class="active"><a href="#">Actions</a></li>
-            <% if !current_user || !current_user.favorites.include?(@property) %>
-            <li class=<%= "disabled" if current_user && current_user.properties.include?(@property) %> >
-            <%= link_to "<i class=icon-star></i> Marks as favorite".html_safe,
+
+            <li><%= link_to_if !current_user || @property.favoritable_by?(current_user),
+              "<i class=icon-star></i> Marks as favorite".html_safe,
+              favorites_properties_path(id: @property),
+              method: "post" %></li>
+
+            <li><%= link_to_if current_user && current_user.favorites.include?(@property),
+              "<i class=icon-star-empty></i> Remove from favorites".html_safe,
                 favorites_properties_path(id: @property),
-                method: "post" %></li>
-            <% end %>
-            <% if current_user && current_user.favorites.include?(@property) %>
-            <li><%= link_to "<i class=icon-star-empty></i> Remove from favorites".html_safe,
-                    favorites_properties_path(id: @property),
-                    method: "put" %></li>
-            <% end %>
+                method: "put" %></li>
+
             <li><%= link_to "<i class=icon-search></i> View similar properties".html_safe, '#' %></li>
             <li><%= link_to "<i class=icon-tasks></i> Compare it".html_safe, compare_properties_path(id: @property.id), method: "post" %></li>
             <li><a href="#" onclick="window.print(); return false;"><i class=icon-print></i> Print Listing</a></li>
@@ -136,6 +138,7 @@
         </div>
       </div>
     </div>
+
     <!-- favorites properties -->
     <div class = "row">
       <div class="span3">

@@ -17,7 +17,7 @@
     <th> Days on Market </th>
   </head>
   <tbody>
-  <% current_user.favorites.each do |property| %>
+  <% @properties.each do |property| %>
     <tr>
       <td><%= image_tag thumbnail(property, :small) %> </td>
       <td><%= property.title %></td>
