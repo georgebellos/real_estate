@@ -45,14 +45,10 @@ describe FavoritesController do
       end
 
       context 'when a user favorites his own listings' do
-        it 'redirects to show template' do
+        it 'redirects back' do
+          @request.env['HTTP_REFERER'] = property_url(@property)
           post :create, id: @property
-          expect(response).to redirect_to property_path(@property)
-        end
-
-        it 'set a flash[:alert] message' do
-          post :create, id: @property
-          expect(flash[:alert]).to eql 'You can not favorite a listing you have created'
+          expect(response).to redirect_to :back
         end
       end
 
@@ -82,12 +78,12 @@ describe FavoritesController do
 
         it 'redirects to the user account' do
           post :create, id: @other_property, type: 'favorite'
-          expect(response).to redirect_to property_path(@other_property)
+          expect(response).to redirect_to :back
         end
 
         it 'sets a flash[:alert] message' do
-          post :create, id: @other_property
-          expect(flash[:alert]).to eql('You have already favorited this property')
+          post :create, id: @other_property, type: 'favorite'
+          expect(flash[:notice]).to eql("You can't favorite this property")
         end
       end
     end

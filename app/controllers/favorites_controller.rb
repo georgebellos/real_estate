@@ -3,11 +3,12 @@ class FavoritesController < ApplicationController
 
   def create
     @property = Property.find(params[:id])
-    if current_user.properties.include?(@property)
-      redirect_to property_path(@property),
-        alert: 'You can not favorite a listing you have created'
+    if @property.favoritable_by?(current_user)
+      current_user.favorites << @property
+      redirect_to favorites_properties_path,
+        notice: "You favorited #{ @property.category } at #{ @property.street }"
     else
-      make_favorite(@property)
+      redirect_to :back, notice: "You can't favorite this property"
     end
   end
 
@@ -25,18 +26,5 @@ class FavoritesController < ApplicationController
   def destroy
    current_user.favorites = []
    redirect_to :back
-  end
-
-  private
-
-  def make_favorite(property)
-    if current_user.favorites.include?(@property)
-      redirect_to :back,
-        alert: 'You have already favorited this property'
-    else
-      current_user.favorites << @property
-      redirect_to favorites_properties_path,
-        notice: "You favorited #{ @property.category } at #{ @property.street }"
-    end
   end
 end
