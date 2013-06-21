@@ -31,4 +31,25 @@ describe Property do
       expect((build :property).title).to eql "Rent Apartment"
     end
   end
+
+  describe '#favoritable_by?' do
+    it 'returns true for users who can favorite a property' do
+      user = create :user
+      property = create :property
+      expect(property.favoritable_by? user).to be_true
+    end
+
+    it 'returns false for the owner of the property' do
+      user = create :user
+      property = create :property, user: user
+      expect(property.favoritable_by? user).to be_false
+    end
+
+    it 'returns false when a user has already favorited the property' do
+      user = create :user
+      property = create :property
+      user.favorites << property
+      expect(property.favoritable_by? user).to be_false
+    end
+  end
 end

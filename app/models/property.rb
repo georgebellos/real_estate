@@ -72,4 +72,8 @@ class Property < ActiveRecord::Base
   def self.recently_created(size = 8)
     includes(:images).order("created_at ASC").limit(size)
   end
+
+  def favoritable_by?(user)
+    !(user.properties.include?(self) || user.favorites.include?(self))
+  end
 end
