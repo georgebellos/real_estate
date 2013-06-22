@@ -37,24 +37,22 @@ feature 'Signed in users can create Listings', :vcr do
   end
 end
 
-feature 'Viewing Property listings', :vcr do
-  background do
-    @property = create :property_with_images
-    19.times { create :property }
-  end
+feature 'Viewing Property listings' do
 
   scenario 'Viewing a property listing' do
-    visit property_path(@property)
+    property = create :property
+    visit property_path(property)
     expect(page).to have_content('Rent Apartment')
-    expect(page).to have_selector('.img-polaroid')
   end
 
   scenario 'Viewing all property listings with pagination' do
+    19.times { create :property }
     visit properties_path
     expect(page).to have_selector('div.pagination')
   end
 
   scenario 'Viewing a property listing found in "/properties"' do
+    create :property_with_images, number_of_images: 1
     visit properties_path
     within('ul.thumbnails > li:first-child') do
       find("img[@alt='Medium_property']").click
@@ -65,13 +63,12 @@ end
 
 feature 'Viewing a property listing' do
   background do
-    @property = create :property_with_images
+    @property = create :property
   end
 
   scenario 'Viewing a property listing' do
     visit property_path(@property)
     expect(page).to have_content('Rent Apartment')
-    expect(page).to have_selector('.img-polaroid')
   end
 end
 
@@ -135,7 +132,7 @@ feature 'Properties index multiple views' do
   end
 end
 
-feature 'Sort Properties by price', :vcr do
+feature 'Sort Properties by price' do
   background do
     @user = create :user
     create :property, status: 'Buy', category: 'Apartment',

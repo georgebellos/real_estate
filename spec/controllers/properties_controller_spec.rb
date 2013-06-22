@@ -239,10 +239,10 @@ describe PropertiesController do
 
       context 'with image' do
         it 'deletes the property images' do
-          @property = create(:property_with_images, user: @user, number_of_images: 2)
+          @property = create(:property_with_images, user: @user, number_of_images: 1)
           expect{
             delete :destroy, id: @property
-          }.to change(Image, :count).by(-2)
+          }.to change(Image, :count).by(-1)
         end
       end
     end
